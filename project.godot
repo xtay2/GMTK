@@ -26,10 +26,6 @@ config/name="GMKTK 2021"
 
 singletons=[ "res://git_api.gdnlib" ]
 
-[gdnative]
-
-singletons=[ "res://git_api.gdnlib" ]
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"

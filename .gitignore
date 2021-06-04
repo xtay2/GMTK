@@ -15,6 +15,15 @@ mono_crash.*.json
 *~
 user/
 
-
+# Dummy files
+#audio/music/DUMMY
+#audio/sfx/DUMMY
+#code/nodes/DUMMY
+#code/scenes/DUMMY
+#data/DUMMY
+#graphics/animations/DUMMY
+#graphics/materials/DUMMY
+#graphics/shaders/DUMMY
+#graphics/sprites/DUMMY
 
 
