@@ -21,7 +21,10 @@ _global_script_class_icons={
 [application]
 
 config/name="GMKTK 2021"
-config/icon="res://icon.png"
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
 
 [gdnative]
 
