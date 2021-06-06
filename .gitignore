@@ -1,0 +1,29 @@
+
+# Godot-specific ignores
+.import/
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# System/tool-specific ignores
+.directory
+*~
+user/
+
+# Dummy files
+#audio/music/DUMMY
+#audio/sfx/DUMMY
+#code/nodes/DUMMY
+#code/scenes/DUMMY
+#data/DUMMY
+#graphics/animations/DUMMY
+#graphics/materials/DUMMY
+#graphics/shaders/DUMMY
+#graphics/sprites/DUMMY
+
+
