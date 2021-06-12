@@ -19,6 +19,8 @@ var energy_level = 0
 
 var energy_loss = 10
 
+const SELECTED_COLOR = Color(0.129412, 0.878431, 0.862745)
+
 func _ready():
 	cable = cable_class.instance()
 	add_child(cable)
@@ -41,13 +43,16 @@ func _process(_delta):
 		next_tower = null 
 
 func place_this():
-	$Graphic.texture = load("res://Assets/Graphics/PlaceholderTextures/placeholder_32x32.png")
+	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
+	$Texture.play("off")
 
 func update_selected():
 	if is_selected: 
-		$Graphic.texture = load("res://Assets/Graphics/PlaceholderTextures/placeholder_active_32x32.png")
+		$Socket.modulate = SELECTED_COLOR
+		$Texture.modulate = SELECTED_COLOR
 	else:
-		$Graphic.texture = load("res://Assets/Graphics/PlaceholderTextures/placeholder_32x32.png")
+		$Socket.modulate = Color(0,0,0,0)
+		$Texture.modulate = Color(0,0,0,0)
 
 func remove_cable():
 	cable.set_point_position(1, Vector2(16, 16))
@@ -55,13 +60,6 @@ func remove_cable():
 func has_energy():
 	return energy_level > 0
 
-func _on_Graphic_mouse_entered():
-	ui.hovering_tower = self
-	$EnergyHUD.visible = true
-
-func _on_Graphic_mouse_exited():
-	ui.hovering_tower = null
-	$EnergyHUD.visible = false
 
 func power_breakdown():
 	if next_tower:
@@ -70,6 +68,8 @@ func power_breakdown():
 	previous_tower = null
 	energy_level = 0
 	cable.shrink()
+	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
+	$Texture.play("off")
 
 func removeTower():
 	if previous_tower:
@@ -93,6 +93,9 @@ func get_all_previous_nodes():
 func update_energy():
 	if previous_tower:
 		energy_level = previous_tower.get_passed_on_energy()
+		if energy_level > 0:
+			$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_On.png")
+			$Texture.play("on")
 	else:
 		energy_level = 0
 	if $EnergyHUD.visible:
@@ -101,3 +104,13 @@ func update_energy():
 #Sagt den nächsten Türmen wie viel Energy sie haben
 func get_passed_on_energy():
 	return energy_level - energy_loss
+
+
+func _on_Hitbox_mouse_entered():
+	ui.hovering_tower = self
+	$EnergyHUD.visible = true
+
+
+func _on_Hitbox_mouse_exited():
+	ui.hovering_tower = null
+	$EnergyHUD.visible = false
