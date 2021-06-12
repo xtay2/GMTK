@@ -65,25 +65,24 @@ animations = [ {
 script = SubResource( 1 )
 
 [node name="Tower" type="Node2D" parent="."]
-scale = Vector2( -0.312714, -0.593722 )
+position = Vector2( 0, 7 )
 script = ExtResource( 4 )
 t_name = "MGTower"
 detection_radius = 1000
 
 [node name="TowerBase" type="Sprite" parent="."]
-position = Vector2( 0, -3.72529e-09 )
+position = Vector2( -9, 3 )
 rotation = -4.46638e-06
-scale = Vector2( 1, 1.00303 )
 texture = ExtResource( 3 )
+centered = false
 
 [node name="Turret_Gun" type="Sprite" parent="."]
-position = Vector2( 0, -10 )
+position = Vector2( 0, 9 )
 texture = ExtResource( 2 )
-offset = Vector2( 7.5, 0 )
+offset = Vector2( 7, 0 )
 
 [node name="Gun" type="Position2D" parent="Turret_Gun"]
-position = Vector2( 22.2541, -0.267245 )
-scale = Vector2( 1, 0.893718 )
+position = Vector2( 20, 0 )
 script = ExtResource( 5 )
 bullet_szene = ExtResource( 1 )
 gun_cooldown = 6.0
