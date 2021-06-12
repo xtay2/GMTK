@@ -30,11 +30,11 @@ shape = SubResource( 1 )
 one_shot = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -12, 1 )
+position = Vector2( -15, 1 )
 rotation = 3.14159
 scale = Vector2( 1.53917, 1.53917 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Rocket" type="Sprite" parent="."]
