@@ -24,7 +24,7 @@ var max_connections = 5
 #Punkte die Tower abdeckt
 var spots := []
 #Width and height of tower in tiles
-var box := Vector2(3, 3)
+var box := Vector2(3, 4)
 
 func _ready():
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
