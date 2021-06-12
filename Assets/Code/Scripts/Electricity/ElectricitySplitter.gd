@@ -105,7 +105,6 @@ func break_power_rec():
 	$Texture.play("off")
 	break_power_start()
 
-
 func removeTower():
 	if previous_tower:
 		if previous_tower.name == "Reactor":
