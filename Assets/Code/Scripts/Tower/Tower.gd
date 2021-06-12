@@ -34,7 +34,7 @@ func _on_DetectionArea_area_exited(area):
 	if area.get_parent().is_in_group("enemy"):
 		enemy_que.pop_back()
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	if enemy_que.size() != 0:
 		target = enemy_que.back().global_position
 	else:
