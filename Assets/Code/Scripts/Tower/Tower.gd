@@ -8,7 +8,7 @@ export(int) var energie_consumption = 10
 export(int) var detection_radius = 500
 
 var enemy_que: Array
-var target: Vector2
+var target
 var current_energie := 10000
 
 
@@ -37,3 +37,5 @@ func _on_DetectionArea_area_exited(area):
 func _physics_process(delta):
 	if enemy_que.size() != 0:
 		target = enemy_que.back().global_position
+	else:
+		target = null
