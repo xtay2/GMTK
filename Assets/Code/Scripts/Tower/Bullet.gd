@@ -6,6 +6,8 @@ export var damage := 0
 var speed := 100
 var lifetime := 2
 
+onready var expolsion := load("res://Assets/Code/Scenes/BulletExplosion/Explode.tscn")
+
 func _ready():
 	$Timer.wait_time = lifetime
 	$Timer.start()
@@ -23,6 +25,9 @@ func _on_Area2D_area_entered(area):
 
 func destroy():
 	#ADD PARTICEL
+	var ex = expolsion.instance()
+	ex.global_position = global_position
+	get_tree().root.add_child(ex)
 	queue_free()
 
 
