@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/TowerUI.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Code/Scenes/Electricity/Reactor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Graphics/UI/connect_mode_overlay1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=4]
 
@@ -16,9 +15,6 @@ visible = false
 z_index = 100
 texture = ExtResource( 3 )
 centered = false
-
-[node name="Reactor" parent="." instance=ExtResource( 2 )]
-position = Vector2( 448, 103 )
 
 [node name="TowerCount" type="Label" parent="."]
 margin_left = 9.36441

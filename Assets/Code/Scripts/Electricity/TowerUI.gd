@@ -54,13 +54,13 @@ func _input(event):
 		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
 			select()
 		#Remove Tower
-		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and hovering_tower != $Reactor:
+		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and hovering_tower.name != "Reactor":
 			hovering_tower.removeTower()
 			hovering_tower = null
 			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 			return
 		#Remove connections and select
-		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower != $Reactor and hovering_tower.next_tower:
+		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower.name != "Reactor" and hovering_tower.next_tower:
 			hovering_tower.next_tower.power_breakdown()
 			hovering_tower.remove_cable()
 			end_connection_mode()
@@ -69,7 +69,7 @@ func _input(event):
 			return
 		#Connect wenn in Connectmode
 		if connect_mode and event.is_action_pressed("left_click") and selected_towers.Tower1 != null and selected_towers.Tower2 != null:
-			if selected_towers.Tower1 == $Reactor:
+			if selected_towers.Tower1.name == "Reactor":
 				selected_towers.Tower1.add_next(selected_towers.Tower2)
 			else:
 				#Rekursives zerstören der Energie

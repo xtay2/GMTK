@@ -26,8 +26,10 @@ var energy_level = 0
 
 var energy_loss = 10
 
-
-const GRID_DIM = 16
+#Punkte die Tower abdeckt
+var spots := []
+#Width and height of tower in tiles
+var box := Vector2(1, 1)
 
 func _ready():
 	cable = cable_class.instance()
@@ -129,6 +131,5 @@ func _on_Hitbox_mouse_exited():
 	$EnergyHUD.visible = false
 
 func position_this():
-	var pos = Vector2(round(get_global_mouse_position().x / GRID_DIM) * GRID_DIM, round(get_global_mouse_position().y / GRID_DIM) * GRID_DIM)
-	if map.can_place_at(pos):
-		position = pos
+	map.update_spot(self, get_global_mouse_position())
+
