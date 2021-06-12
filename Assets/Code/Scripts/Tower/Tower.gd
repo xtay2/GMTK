@@ -30,7 +30,7 @@ func _on_DetectionArea_area_entered(area):
 		enemy_que.push_front(area)
 
 func _on_DetectionArea_area_exited(area):
-	if area.is_in_group("enemy"):
+	if area.get_parent().is_in_group("enemy"):
 		print("ex")
 		enemy_que.pop_back()
 		

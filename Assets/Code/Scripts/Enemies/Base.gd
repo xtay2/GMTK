@@ -17,7 +17,7 @@ var health = 0
 signal on_die
 
 func _ready():
-	add_to_group("enemy")
+	$Hitbox.add_to_group("enemy")
 	health = start_health
 	
 func _process(delta):

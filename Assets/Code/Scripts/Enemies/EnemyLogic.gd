@@ -26,7 +26,7 @@ func _ready():
 	if result.error != OK:
 		printerr("JSON loading result" + result.error_string)
 	wave_data = result.result
-	
+	new_wave()
 
 func coroutine_spawn_enemies(type_list: Array):
 	for t in type_list:
