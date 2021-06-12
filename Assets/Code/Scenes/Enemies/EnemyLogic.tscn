@@ -1,31 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Code/Scenes/Enemies/Basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Code/Scenes/Enemies/Heavy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Code/Scenes/Enemies/Rush.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-<<<<<<< HEAD
-"points": PoolVector2Array( 50.9692, -57.5763, -50.9692, 57.5763, 178.131, 236.929, -5.97823, 4.21654, 5.97823, -4.21654, 548.129, 87.7972, 0, 0, 0, 0, 844.506, 456.852 )
-=======
 "points": PoolVector2Array( -0.687565, 98.0239, 0.687565, -98.0239, 178.131, 236.929, 0, 0, 0, 0, 179.622, 86.8096, 0, 0, 0, 0, 221.199, 85.5497, 0, 0, 0, 0, 220.569, 23.8135, 0, 0, 0, 0, 377.43, 25.7034, 0, 0, 0, 0, 373.02, 76.1003, 0, 0, 0, 0, 430.976, 78.6201, 0, 0, 0, 0, 429.086, 181.304, 0, 0, 0, 0, 296.165, 178.784, 0, 0, 0, 0, 296.795, 256.269, 0, 0, 0, 0, 499.642, 254.379 )
->>>>>>> 9162a3bf66b2cf076efa2e958a6ce2b1c8d565f4
 }
 
-[node name="EnemyLogic" type="Node2D"]
-
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2( -74.4673, -5.64095 )
+[node name="EnemyLogic" type="Path2D"]
 curve = SubResource( 1 )
 
-[node name="Enemy" parent="Path2D" instance=ExtResource( 1 )]
-<<<<<<< HEAD
-rotation = 2.29559
-=======
-rotation = -1.56371
->>>>>>> 9162a3bf66b2cf076efa2e958a6ce2b1c8d565f4
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
 
-[node name="Enemy2" parent="Path2D" instance=ExtResource( 2 )]
-
-[node name="Enemy3" parent="Path2D" instance=ExtResource( 3 )]
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
