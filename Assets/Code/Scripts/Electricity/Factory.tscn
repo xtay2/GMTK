@@ -61,28 +61,24 @@ __meta__ = {
 position = Vector2( 16, 19 )
 frames = SubResource( 2 )
 animation = "run"
-frame = 2
 playing = true
 
 [node name="Level1" type="AnimatedSprite" parent="."]
 position = Vector2( 21, 19 )
 frames = SubResource( 2 )
 animation = "run"
-frame = 2
 playing = true
 
 [node name="Level2" type="AnimatedSprite" parent="."]
 position = Vector2( 27, 19 )
 frames = SubResource( 2 )
 animation = "run"
-frame = 2
 playing = true
 
 [node name="Level3" type="AnimatedSprite" parent="."]
 position = Vector2( 32, 19 )
 frames = SubResource( 2 )
 animation = "run"
-frame = 1
 playing = true
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 3 )]
