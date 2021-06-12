@@ -18,7 +18,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="Reactor" parent="." instance=ExtResource( 2 )]
-position = Vector2( 448, 103 )
+position = Vector2( 427, 100 )
 
 [node name="TowerCount" type="Label" parent="."]
 margin_left = 9.36441
