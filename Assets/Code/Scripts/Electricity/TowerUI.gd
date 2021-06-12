@@ -137,3 +137,21 @@ func step_connection_mode():
 func start_connect_mode():
 	$EditModeOverlay.visible = true
 	connect_mode = true
+
+func _on_select_powerline():
+	if connect_mode:
+		end_connection_mode()
+	else:
+		start_connect_mode()
+
+func _on_select_tower_type(name):
+	var t_class = null
+	match name:
+		"splitter":
+			t_class = splitter_class
+		"router":
+			t_class = tower_class
+	if t_class == null:
+		printerr("No tower type named %s. Check UI -> TurretUI" % name)
+		return
+	place_tower(tower_class)

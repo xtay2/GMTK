@@ -34,7 +34,7 @@ func _process(_delta):
 		$Turret_Gun.flip_v = false
 
 func _physics_process(_delta):
-	if tower.target and tower.energie_consumption >= energy_level:
+	if tower.target and tower.energie_consumption <= energy_level:
 		$Turret_Gun/Gun.shoot(tower.target)
 
 func is_on_r():

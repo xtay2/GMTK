@@ -25,7 +25,7 @@ font_data = ExtResource( 1 )
 [node name="ProperUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
@@ -87,42 +87,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node" type="Control" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 11.0
-margin_top = -52.0
-margin_right = 48.0
-margin_bottom = -3.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Node"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 62.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 5 )
-text = "Node"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Basic" type="TextureButton" parent="Node"]
-margin_left = 2.0
-margin_top = 16.0
-margin_right = 34.0
-margin_bottom = 49.0
-texture_normal = ExtResource( 4 )
-
 [node name="Powerline" type="Control" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 52.9246
-margin_top = -52.3701
-margin_right = 109.925
-margin_bottom = -3.37006
+margin_left = 3.47269
+margin_top = -50.1652
+margin_right = 60.4731
+margin_bottom = -1.16516
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -138,7 +109,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Basic" type="TextureButton" parent="Powerline"]
+[node name="GridSwitch" type="TextureButton" parent="Powerline"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -154,10 +125,10 @@ __meta__ = {
 [node name="ChooseTurretType" type="Control" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 119.613
-margin_top = -51.3701
-margin_right = 227.613
-margin_bottom = -2.37006
+margin_left = 70.2144
+margin_top = -50.13
+margin_right = 142.214
+margin_bottom = -1.13
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -171,32 +142,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Basic" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
+[node name="Router" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
 margin_right = 32.0
-margin_bottom = 33.0
+margin_bottom = 32.0
 texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Electricity" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
+[node name="Splitter" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
 margin_left = 36.0
 margin_right = 68.0
-margin_bottom = 33.0
+margin_bottom = 32.0
 texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Railgun" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
-margin_left = 72.0
-margin_right = 104.0
-margin_bottom = 33.0
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="ChooseTurretType"]
 anchor_right = 1.0
-margin_bottom = 12.0
+margin_left = -0.33371
+margin_top = 1.83542
+margin_right = -0.33371
+margin_bottom = 13.8354
 custom_fonts/font = SubResource( 5 )
 text = "Towers"
 align = 1
@@ -208,8 +173,6 @@ __meta__ = {
 bus = "Music"
 
 [connection signal="pressed" from="Upgrade" to="." method="_on_Upgrade_pressed"]
-[connection signal="pressed" from="Node/Basic" to="." method="_on_tower_selected" binds= [ "basic" ]]
-[connection signal="pressed" from="Powerline/Basic" to="." method="_on_tower_selected" binds= [ "basic" ]]
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Basic" to="." method="_on_tower_selected" binds= [ "basic" ]]
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Electricity" to="." method="_on_tower_selected" binds= [ "electric" ]]
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Railgun" to="." method="_on_tower_selected" binds= [ "railgun" ]]
+[connection signal="pressed" from="Powerline/GridSwitch" to="." method="_on_powerline_selected" binds= [ "basic" ]]
+[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Router" to="." method="_on_tower_selected" binds= [ "router" ]]
+[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Splitter" to="." method="_on_tower_selected" binds= [ "splitter" ]]
