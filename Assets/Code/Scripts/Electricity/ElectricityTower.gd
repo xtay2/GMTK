@@ -19,16 +19,20 @@ var energy_level = 0
 
 var energy_loss = 10
 
-const SELECTED_COLOR = Color(0.129412, 0.878431, 0.862745)
+const PLACEMENT_COLOR = Color(0.129412, 0.878431, 0.862745)
+
+const SELECTED_COLOR = Color(0.517647, 0.8, 0.301961)
 
 func _ready():
 	cable = cable_class.instance()
 	add_child(cable)
-	cable.initialise(Vector2(16, 16), Vector2(16, 16), null)
+	cable.initialise(Vector2(10, 6), Vector2(10, 6), null)
+	$Socket.modulate = PLACEMENT_COLOR
+	$Texture.modulate = PLACEMENT_COLOR
 
 func connect_to_next(next):
 	next_tower = next
-	var pos = Vector2(next.global_position.x - global_position.x + 16, next.global_position.y - global_position.y + 16)
+	var pos = Vector2(next.global_position.x - global_position.x + 10, next.global_position.y - global_position.y + 6)
 	cable.connect_to_tower(pos, next_tower)
 	
 func connect_to_previous(previous):
@@ -45,20 +49,21 @@ func _process(_delta):
 func place_this():
 	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
 	$Texture.play("off")
+	update_selected()
 
 func update_selected():
 	if is_selected: 
 		$Socket.modulate = SELECTED_COLOR
 		$Texture.modulate = SELECTED_COLOR
 	else:
-		$Socket.modulate = Color(0,0,0,0)
-		$Texture.modulate = Color(0,0,0,0)
+		$Socket.modulate = Color.white
+		$Texture.modulate = Color.white
 
 func remove_cable():
 	cable.set_point_position(1, Vector2(16, 16))
 
 func has_energy():
-	return energy_level > 0
+	return (energy_level - energy_loss) > 0
 
 
 func power_breakdown():

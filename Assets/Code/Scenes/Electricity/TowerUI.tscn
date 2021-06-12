@@ -8,3 +8,10 @@ script = ExtResource( 1 )
 
 [node name="Reactor" parent="." instance=ExtResource( 2 )]
 position = Vector2( 425.124, 116.933 )
+
+[node name="EditModeOverlay" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

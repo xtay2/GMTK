@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/Reactor.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/PlaceholderTextures/placeholder_static_32x32.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="Reactor" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,5 +18,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Connections" type="Label" parent="."]
+margin_left = -3.0
+margin_top = -15.0
+margin_right = 37.0
+margin_bottom = -3.0
+custom_fonts/font = SubResource( 1 )
+text = "0|0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="mouse_entered" from="Texture" to="." method="_on_Texture_mouse_entered"]
 [connection signal="mouse_exited" from="Texture" to="." method="_on_Texture_mouse_exited"]
