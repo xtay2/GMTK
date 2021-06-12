@@ -54,7 +54,7 @@ func _input(event):
 		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
 			select()
 		#Remove Tower
-		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and hovering_tower.name == "ElectricityTower":
+		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and "ElectricityTower" in hovering_tower.name:
 			hovering_tower.removeTower()
 			hovering_tower = null
 			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
@@ -99,10 +99,11 @@ func select():
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
 			
-	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor" and !hovering_tower.previous_tower and selected_towers.Tower1.has_energy():
-		selected_towers.Tower2 = hovering_tower
-		selected_towers.Tower2.is_selected = true
-		selected_towers.Tower2.update_selected()
+	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor":
+		if !hovering_tower.previous_tower and selected_towers.Tower1.has_energy() and selected_towers.Tower1.is_in_range_of(hovering_tower):
+			selected_towers.Tower2 = hovering_tower
+			selected_towers.Tower2.is_selected = true
+			selected_towers.Tower2.update_selected()
 
 #Beende Connectmode für beide Tower
 func end_connection_mode():
