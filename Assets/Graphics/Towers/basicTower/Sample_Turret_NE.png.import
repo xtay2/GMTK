@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sample_Turret_NE.png-5e277ca4ecfc25cd8168eefa70f7ccd2.stex"
+path="res://.import/Sample_Turret_NE.png-1fe89d30657f6ed2778bd276aff3a906.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Towers/BasicTower/Sample_Turret_NE.png"
-dest_files=[ "res://.import/Sample_Turret_NE.png-5e277ca4ecfc25cd8168eefa70f7ccd2.stex" ]
+source_file="res://Assets/Graphics/Towers/basicTower/Sample_Turret_NE.png"
+dest_files=[ "res://.import/Sample_Turret_NE.png-1fe89d30657f6ed2778bd276aff3a906.stex" ]
 
 [params]
 

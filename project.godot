@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "PathFollow2D",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://Assets/Code/Scripts/Enemies/Base.gd",
-},{
 "base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://Assets/Code/Scripts/Tower/Bullet.gd"
+}, {
+"base": "PathFollow2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Assets/Code/Scripts/Enemies/Base.gd"
 }, {
 "base": "",
 "class": "GitAPI",
@@ -35,8 +35,8 @@ _global_script_classes=[ {
 "path": "res://Assets/Code/Scripts/Tower/Tower.gd"
 } ]
 _global_script_class_icons={
-"Enemy": "",
 "Bullet": "",
+"Enemy": "",
 "GitAPI": "",
 "Gun": "",
 "Tower": ""
@@ -47,15 +47,6 @@ _global_script_class_icons={
 config/name="GMKTK 2021"
 run/main_scene="res://Assets/Code/Scenes/Main.tscn"
 config/icon="res://icon.png"
-
-[display]
-
-window/size/width=480
-window/size/height=270
-window/size/test_width=960
-window/size/test_height=540
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
 
 [gdnative]
 
