@@ -8,8 +8,15 @@ var next_tower
 
 var is_selected = false
 
-#Visiual Management for Towers 
+#Mainscene
+onready var main = find_parent("Main")
+
+#Map
+onready var map = main.find_node("Map")
+
+#Visual Management for Towers 
 onready var ui = find_parent("TowerUI")
+
 
 var cable_class = preload("res://Assets/Code/Scenes/Electricity/Cable.tscn")
 
@@ -19,20 +26,19 @@ var energy_level = 0
 
 var energy_loss = 10
 
-const PLACEMENT_COLOR = Color(0.129412, 0.878431, 0.862745)
 
-const SELECTED_COLOR = Color(0.517647, 0.8, 0.301961)
+const GRID_DIM = 16
 
 func _ready():
 	cable = cable_class.instance()
 	add_child(cable)
-	cable.initialise(Vector2(10, 6), Vector2(10, 6), null)
-	$Socket.modulate = PLACEMENT_COLOR
-	$Texture.modulate = PLACEMENT_COLOR
+	cable.initialise(Vector2(0, 6), Vector2(0, 6), null)
+	$Socket.modulate = ui.PLACEMENT_COLOR
+	$Texture.modulate = ui.PLACEMENT_COLOR
 
 func connect_to_next(next):
 	next_tower = next
-	var pos = Vector2(next.global_position.x - global_position.x + 10, next.global_position.y - global_position.y + 6)
+	var pos = Vector2(next.global_position.x - global_position.x, next.global_position.y - global_position.y + 6)
 	cable.connect_to_tower(pos, next_tower)
 	
 func connect_to_previous(previous):
@@ -42,7 +48,7 @@ func connect_to_previous(previous):
 func _process(_delta):
 	update_energy()
 	if ui and ui.place_mode and ui.last_tower == self:
-		position = get_global_mouse_position()
+		position_this()
 	if !previous_tower:
 		next_tower = null 
 
@@ -50,17 +56,18 @@ func place_this():
 	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
 	$Texture.play("off")
 	update_selected()
+	map.place_node(self)
 
 func update_selected():
 	if is_selected: 
-		$Socket.modulate = SELECTED_COLOR
-		$Texture.modulate = SELECTED_COLOR
+		$Socket.modulate = ui.SELECTED_COLOR
+		$Texture.modulate = ui.SELECTED_COLOR
 	else:
 		$Socket.modulate = Color.white
 		$Texture.modulate = Color.white
 
 func remove_cable():
-	cable.set_point_position(1, Vector2(16, 16))
+	cable.shrink()
 
 func has_energy():
 	return (energy_level - energy_loss) > 0
@@ -70,9 +77,9 @@ func power_breakdown():
 	if next_tower:
 		next_tower.power_breakdown()
 		next_tower = null
+	remove_cable()
 	previous_tower = null
 	energy_level = 0
-	cable.shrink()
 	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
 	$Texture.play("off")
 
@@ -85,6 +92,7 @@ func removeTower():
 			previous_tower.cable.shrink()
 	power_breakdown()
 	ui.placed_towers -= 1
+	map.remove_node(self)
 	queue_free()
 
 func get_all_previous_nodes():
@@ -119,3 +127,8 @@ func _on_Hitbox_mouse_entered():
 func _on_Hitbox_mouse_exited():
 	ui.hovering_tower = null
 	$EnergyHUD.visible = false
+
+func position_this():
+	var pos = Vector2(round(get_global_mouse_position().x / GRID_DIM) * GRID_DIM, round(get_global_mouse_position().y / GRID_DIM) * GRID_DIM)
+	if map.can_place_at(pos):
+		position = pos

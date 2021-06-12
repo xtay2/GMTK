@@ -1,5 +1,10 @@
 extends Node2D
 
+#Colors for placing and moving
+const PLACEMENT_COLOR = Color(0.129412, 0.878431, 0.862745)
+const SELECTED_COLOR = Color(0.517647, 0.8, 0.301961)
+
+
 #Tower Counter
 var max_towers = 10
 var placed_towers = 0
@@ -21,6 +26,9 @@ var selected_towers = {"Tower1" : null, "Tower2" : null}
 #The Tower or Reactor the Mouse is hovering over
 var hovering_tower
 
+func _ready():
+	$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
+
 func _input(event):
 	if event is InputEventKey:
 		#Init Placemode 
@@ -28,7 +36,7 @@ func _input(event):
 			place_tower()
 		#Init Connectmode
 		elif event.is_action_pressed("shift") and !place_mode:
-			connect_mode = true
+			start_connect_mode()
 			return
 		#End Connectmode
 		elif event.is_action_released("shift") and connect_mode:
@@ -36,19 +44,30 @@ func _input(event):
 			return
 
 	if event is InputEventMouseButton:
-		#Connect wenn in Connectmode
 		#Confirm Placement
 		if event.is_action_pressed("left_click") and place_mode:
 			last_tower.place_this()
 			place_mode = false
+			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 			return
 		#Select Tower
 		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
 			select()
-		if event.is_action_pressed("right_click") and !place_mode and hovering_tower and hovering_tower != $Reactor:
+		#Remove Tower
+		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and hovering_tower != $Reactor:
 			hovering_tower.removeTower()
 			hovering_tower = null
+			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 			return
+		#Remove connections and select
+		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower != $Reactor and hovering_tower.next_tower:
+			hovering_tower.next_tower.power_breakdown()
+			hovering_tower.remove_cable()
+			end_connection_mode()
+			start_connect_mode()
+			select()
+			return
+		#Connect wenn in Connectmode
 		if connect_mode and event.is_action_pressed("left_click") and selected_towers.Tower1 != null and selected_towers.Tower2 != null:
 			if selected_towers.Tower1 == $Reactor:
 				selected_towers.Tower1.add_next(selected_towers.Tower2)
@@ -70,6 +89,7 @@ func place_tower():
 	last_tower = tower_class.instance()
 	add_child(last_tower)
 	place_mode = true
+	placed_towers += 1
 
 #Wähle Tower aus
 func select():
@@ -95,6 +115,7 @@ func end_connection_mode():
 		selected_towers.Tower2.update_selected()
 	selected_towers = {"Tower1" : null, "Tower2" : null}
 	connect_mode = false
+	$EditModeOverlay.visible = false
 
 #Setze den alten Tower 2 auf den neuen Tower 1
 func step_connection_mode():
@@ -109,4 +130,6 @@ func step_connection_mode():
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
 
-
+func start_connect_mode():
+	$EditModeOverlay.visible = true
+	connect_mode = true
