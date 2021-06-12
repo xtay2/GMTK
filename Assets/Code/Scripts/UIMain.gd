@@ -3,7 +3,6 @@ extends Control
 export(Array, AudioStream) var music_wave
 
 signal on_upgrade()
-signal on_select_node()
 signal on_select_powerline()
 signal on_select_tower_type(name)
 
@@ -38,3 +37,6 @@ func _input(event):  # For the case we need it
 		paused = true
 		get_tree().paused = true
 		
+
+func _on_powerline_selected(extra_arg_0):
+	emit_signal("on_select_powerline")
