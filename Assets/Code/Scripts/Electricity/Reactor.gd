@@ -20,8 +20,8 @@ func _ready():
 func add_next(tower):
 	next_towers.append(tower)
 	var line = cable_class.instance()
-	var pos = Vector2(tower.global_position.x - global_position.x + 10, tower.global_position.y - global_position.y + 6)
-	line.initialise(Vector2(16, 16), pos, tower)
+	var pos = Vector2(tower.global_position.x - global_position.x, tower.global_position.y - global_position.y + 6)
+	line.initialise(Vector2(0, -13), pos, tower)
 	add_child(line)
 	cables.append(line)
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
@@ -40,18 +40,18 @@ func has_energy():
 
 func update_selected():
 	if is_selected: 
-		$Texture.texture = load("res://Assets/Graphics/PlaceholderTextures/placeholder_active_32x32.png")
+		$Texture.modulate = ui.SELECTED_COLOR
 	else:
-		$Texture.texture = load("res://Assets/Graphics/PlaceholderTextures/placeholder_static_32x32.png")
-
-
-func _on_Texture_mouse_entered():
-	ui.hovering_tower = self
-
-
-func _on_Texture_mouse_exited():
-	ui.hovering_tower = null
+		$Texture.modulate = Color.white
 
 #Sagt den nächsten Türmen wie viel Energy sie haben
 func get_passed_on_energy():
 	return total_energy / next_towers.size()
+
+
+func _on_Hitbox_mouse_entered():
+	ui.hovering_tower = self
+
+
+func _on_Hitbox_mouse_exited():
+	ui.hovering_tower = null
