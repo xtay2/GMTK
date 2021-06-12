@@ -18,12 +18,18 @@ onready var tower : Tower = $Tower
 func _process(delta):
 	$Turret_Gun.look_at(get_global_mouse_position())
 #	$Turret_Gun.look_at(tower.enemy_que.front().global_position)
+	if not is_on_r():
+		$Turret_Gun.flip_v = true
+	else:
+		$Turret_Gun.flip_v = false
 
 func _physics_process(delta):
 #	if tower.enemy_que != null and tower.energie_consumption >= tower.current_energie:
 #		$Turret_Gun/Gun.shoot(tower.enemy_que.front())
 		$Turret_Gun/Gun.shoot()
 
+func is_on_r():
+	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
 
 func _on_AnimatedSprite_animation_finished():
 	$Turret_Gun/Gun/AnimatedSprite.frame = 0
@@ -61,12 +67,12 @@ scale = Vector2( 1, 1.00303 )
 texture = ExtResource( 3 )
 
 [node name="Turret_Gun" type="Sprite" parent="."]
-position = Vector2( -0.662163, -11.1919 )
+position = Vector2( -0.529732, -11.1919 )
 texture = ExtResource( 2 )
-offset = Vector2( 15, 0 )
+offset = Vector2( 14, 0 )
 
 [node name="Gun" type="Position2D" parent="Turret_Gun"]
-position = Vector2( 19.9723, 0.0303953 )
+position = Vector2( 37.8508, -0.631768 )
 scale = Vector2( 1, 0.893718 )
 script = ExtResource( 5 )
 bullet_szene = ExtResource( 1 )
