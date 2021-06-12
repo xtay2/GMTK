@@ -6,18 +6,18 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( -0.687565, 98.0239, 0.687565, -98.0239, 178.131, 236.929, 0, 0, 0, 0, 179.622, 86.8096, 0, 0, 0, 0, 221.199, 85.5497, 0, 0, 0, 0, 220.569, 23.8135, 0, 0, 0, 0, 377.43, 25.7034, 0, 0, 0, 0, 373.02, 76.1003, 0, 0, 0, 0, 430.976, 78.6201, 0, 0, 0, 0, 429.086, 181.304, 0, 0, 0, 0, 296.165, 178.784, 0, 0, 0, 0, 296.795, 256.269, 0, 0, 0, 0, 499.642, 254.379 )
+"points": PoolVector2Array( 0, 0, 0, 0, 107.487, 225.974, 0, 0, 0, 0, 206.786, 149.865, 0, 0, 0, 0, 240.678, 63.0526, 0, 0, 0, 0, 328.68, 177.217, 0, 0, 0, 0, 245.435, 255.11, 0, 0, 0, 0, 140.19, 184.352, 0, 0, 0, 0, 390.518, 192.082, 0, 0, 0, 0, 320.95, 129.054, 0, 0, 0, 0, 247.219, 154.622, 0, 0, 0, 0, 176.461, 67.8095, 0, 0, 0, 0, 356.626, 10.1329, 0, 0, 0, 0, 461.276, 105.269 )
 }
 
-[node name="EnemyLogic" type="Node2D"]
-
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2( -74.4673, -5.64095 )
+[node name="EnemyLogic" type="Path2D"]
 curve = SubResource( 1 )
 
-[node name="Enemy" parent="Path2D" instance=ExtResource( 1 )]
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+position = Vector2( 103.664, 231.288 )
 rotation = -1.56371
 
-[node name="Enemy2" parent="Path2D" instance=ExtResource( 2 )]
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 103.664, 231.288 )
 
-[node name="Enemy3" parent="Path2D" instance=ExtResource( 3 )]
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 103.664, 231.288 )
