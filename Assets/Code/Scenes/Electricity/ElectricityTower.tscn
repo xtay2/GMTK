@@ -16,6 +16,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+<<<<<<< HEAD
 [node name="EnergyHUD" type="Label" parent="."]
 margin_left = -3.86462
 margin_top = -14.0446
@@ -27,5 +28,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+=======
+>>>>>>> 00ad8c99d6f8cdaaed3fa4892f8579f6692465de
 [connection signal="mouse_entered" from="Graphic" to="." method="_on_Graphic_mouse_entered"]
 [connection signal="mouse_exited" from="Graphic" to="." method="_on_Graphic_mouse_exited"]

@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Assets/Code/Scripts/Tower/Bullet.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Position2D",
+"class": "Gun",
+"language": "GDScript",
+"path": "res://Assets/Code/Scripts/Tower/Gun.gd"
 }, {
 "base": "Node2D",
 "class": "Tower",
@@ -20,7 +30,9 @@ _global_script_classes=[ {
 "path": "res://Assets/Code/Scripts/Tower/Tower.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "GitAPI": "",
+"Gun": "",
 "Tower": ""
 }
 
