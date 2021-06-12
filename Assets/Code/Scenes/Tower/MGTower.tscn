@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Assets/Code/Scenes/Bullet/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Code/Scenes/Bullet/MGBullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Code/Scripts/Tower/Tower.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Graphics/Towers/TowerBase/turret tower.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/split turret.png" type="Texture" id=4]
@@ -10,6 +10,13 @@
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash2.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash3.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting3.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting2.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting1.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting5.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting6.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting9.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting4.png" type="Texture" id=22]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -100,12 +107,8 @@ func update_selected():
 
 func connect_to_next(next):
 	next_tower = next
-<<<<<<< HEAD
 	var pos = Vector2(next.global_position.x - global_position.x, next.global_position.y - global_position.y + 6)
 	cable.connect_to_tower(pos, next_tower)
-=======
-	cable.connect_to_tower(next_tower)
->>>>>>> 22d7add2ac9f3d8a4c4d9e16ecad069d8dd404c6
 	
 func connect_to_previous(previous):
 	previous_tower = previous
@@ -135,6 +138,14 @@ func is_in_range_of(presumed):
 	return $EnergyRadius.possible_connections().has(presumed)
 "
 
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 22 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
@@ -162,6 +173,11 @@ centered = false
 position = Vector2( 0, 8 )
 texture = ExtResource( 4 )
 offset = Vector2( 10, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun"]
+position = Vector2( 13, -2.58839 )
+frames = SubResource( 3 )
+playing = true
 
 [node name="Gun" type="Position2D" parent="Turret_Gun"]
 position = Vector2( 42.8814, -0.0342212 )
