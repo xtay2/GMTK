@@ -39,18 +39,24 @@ func _ready():
 	$EnergyRadius.initialise(self, 10)
 	
 func _process(_delta):
+<<<<<<< HEAD
 	$Turret_Gun.look_at(get_global_mouse_position())
 #	$Turret_Gun.look_at(tower.enemy_que.front().global_position)
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
+=======
+#	$Turret_Gun.look_at(get_global_mouse_position())
+	if tower.target:
+		$Turret_Gun.look_at(tower.target)
+>>>>>>> abb429a1500fda22b344566d73c4b14eaff86a33
 	if not is_on_r():
 		$Turret_Gun.flip_v = true
 	else:
 		$Turret_Gun.flip_v = false
 
 func _physics_process(_delta):
-#	if tower.enemy_que != null and tower.energie_consumption >= tower.current_energie:
-#		$Turret_Gun/Gun.shoot(tower.enemy_que.front())
-		$Turret_Gun/Gun.shoot()
+	if tower.target:
+		$Turret_Gun/Gun.shoot(tower.target)
+#		$Turret_Gun/Gun.shoot()
 
 func is_on_r():
 	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
@@ -147,7 +153,7 @@ script = SubResource( 1 )
 position = Vector2( 0, 3 )
 script = ExtResource( 4 )
 t_name = "MGTower"
-detection_radius = 1000
+detection_radius = 200
 
 [node name="TowerBase" type="Sprite" parent="."]
 position = Vector2( -9, 3 )
@@ -183,8 +189,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+<<<<<<< HEAD
 [node name="EnergyRadius" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, 8 )
+=======
+>>>>>>> abb429a1500fda22b344566d73c4b14eaff86a33
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]

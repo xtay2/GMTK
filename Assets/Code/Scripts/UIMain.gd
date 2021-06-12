@@ -22,7 +22,7 @@ func update_enemy_info(wave, enemy_count):
 	var music = music_wave[wave - 1]
 	if music != $MusicPlayer.stream:
 		$MusicPlayer.stream = music
-		$MusicPlayer.play(0)
+#		$MusicPlayer.play(0)
 
 func _on_Upgrade_pressed():
 	emit_signal("on_upgrade")

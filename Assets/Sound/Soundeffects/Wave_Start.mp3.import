@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Wave_Start.mp3-0d90599274b1b6d6e4036bed1f4b22bc.mp3str"
+path="res://.import/Wave_Start.mp3-cbce52665fba007cd355c542ae2a2875.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/Soundeffects/Sounds/Wave_Start.mp3"
-dest_files=[ "res://.import/Wave_Start.mp3-0d90599274b1b6d6e4036bed1f4b22bc.mp3str" ]
+source_file="res://Assets/Sound/Soundeffects/Wave_Start.mp3"
+dest_files=[ "res://.import/Wave_Start.mp3-cbce52665fba007cd355c542ae2a2875.mp3str" ]
 
 [params]
 
