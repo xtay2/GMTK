@@ -7,11 +7,7 @@ colors = PoolColorArray( 0.803089, 0.409882, 0.945313, 1, 0.151367, 0.96875, 0.9
 
 [node name="Line2D" type="Line2D"]
 z_index = 1
-<<<<<<< HEAD
 points = PoolVector2Array( 0, 0, 100, 100 )
-=======
-points = PoolVector2Array( 1.612, 0.479, 99.6217, 102.487 )
->>>>>>> 228597329ff59699fffaf67a29e54be73fffb72f
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 gradient = SubResource( 1 )
