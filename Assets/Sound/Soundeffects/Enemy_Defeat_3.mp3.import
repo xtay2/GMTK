@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Enemy_Defeat_3.mp3-6e9d92062d6c33bef540e3cda51812c6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Soundeffects/Sounds/Enemy_Defeat_3.mp3"
+dest_files=[ "res://.import/Enemy_Defeat_3.mp3-6e9d92062d6c33bef540e3cda51812c6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

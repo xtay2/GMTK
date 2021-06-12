@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Wave_Complete.mp3-7aed306dffb7054f0ba00a1af7719ba2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Soundeffects/Sounds/Wave_Complete.mp3"
+dest_files=[ "res://.import/Wave_Complete.mp3-7aed306dffb7054f0ba00a1af7719ba2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

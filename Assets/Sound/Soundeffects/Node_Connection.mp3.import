@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Node_Connection.mp3-b13f5ec1582061d2ac11e6c676e6c23b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Soundeffects/Sounds/Node_Connection.mp3"
+dest_files=[ "res://.import/Node_Connection.mp3-b13f5ec1582061d2ac11e6c676e6c23b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

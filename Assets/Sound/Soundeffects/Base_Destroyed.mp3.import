@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Base_Destroyed.mp3-23766ca8d6a123204dc661dc4436913a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Soundeffects/Sounds/Base_Destroyed.mp3"
+dest_files=[ "res://.import/Base_Destroyed.mp3-23766ca8d6a123204dc661dc4436913a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

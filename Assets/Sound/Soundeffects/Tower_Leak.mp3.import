@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Tower_Leak.mp3-682e83d4cef53865ba5c98db0b90a4ee.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Soundeffects/Sounds/Tower_Leak.mp3"
+dest_files=[ "res://.import/Tower_Leak.mp3-682e83d4cef53865ba5c98db0b90a4ee.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
