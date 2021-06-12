@@ -27,29 +27,29 @@ func _input(event):
 		if event.is_action_pressed("space") and !place_mode and !connect_mode and placed_towers < max_towers:
 			place_tower()
 		#Init Connectmode
-		elif event.is_action_pressed("connection_mode") and !place_mode:
+		elif event.is_action_pressed("shift") and !place_mode:
 			connect_mode = true
 			return
 		#End Connectmode
-		elif event.is_action_released("connection_mode") and connect_mode:
+		elif event.is_action_released("shift") and connect_mode:
 			end_connection_mode()
 			return
 
 	if event is InputEventMouseButton:
 		#Connect wenn in Connectmode
 		#Confirm Placement
-		if event.is_action_pressed("right_click") and place_mode:
+		if event.is_action_pressed("left_click") and place_mode:
 			last_tower.place_this()
 			place_mode = false
 			return
 		#Select Tower
-		elif connect_mode and event.is_action_pressed("right_click") and hovering_tower != null:
+		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
 			select()
-		if event.is_action_pressed("left_click") and !place_mode and hovering_tower and hovering_tower != $Reactor:
+		if event.is_action_pressed("right_click") and !place_mode and hovering_tower and hovering_tower != $Reactor:
 			hovering_tower.removeTower()
 			hovering_tower = null
 			return
-		if connect_mode and event.is_action_pressed("right_click") and selected_towers.Tower1 != null and selected_towers.Tower2 != null:
+		if connect_mode and event.is_action_pressed("left_click") and selected_towers.Tower1 != null and selected_towers.Tower2 != null:
 			if selected_towers.Tower1 == $Reactor:
 				selected_towers.Tower1.add_next(selected_towers.Tower2)
 			else:

@@ -56,16 +56,19 @@ func _on_Graphic_mouse_exited():
 	ui.hovering_tower = null
 
 func power_breakdown():
-	previous_tower = null
-	cable.shrink()
 	if next_tower:
 		next_tower.power_breakdown()
 		next_tower = null
+	previous_tower = null
+	cable.shrink()
 
 func removeTower():
-	if previous_tower.name == "Reactor":
-		previous_tower.remove_next(self)
-	else:
-		power_breakdown()
+	if previous_tower:
+		if previous_tower.name == "Reactor":
+			previous_tower.remove_next(self)
+		else:
+			previous_tower.next = null
+			previous_tower.cable.shrink()
+			power_breakdown()
 	ui.placed_towers -= 1
 	queue_free()
