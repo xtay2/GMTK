@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Code/Scenes/Bullet/MGBullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Code/Scripts/Tower/Tower.gd" type="Script" id=2]
@@ -10,15 +10,8 @@
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash2.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash3.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting3.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting2.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting1.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting5.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting6.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting9.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting4.png" type="Texture" id=22]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Node2D
 
 onready var tower : Tower = $Tower
@@ -42,12 +35,11 @@ func _ready():
 	#Energieleitung
 	cable = cable_class.instance()
 	add_child(cable)
-	cable.initialise(Vector2(0, 6), Vector2(0, 6), null)
+	cable.initialise(power_input, power_input, null)
 	$EnergyRadius.initialise(self, 10)
 	
 func _process(_delta):
-	if tower.target:
-		$Turret_Gun.look_at(tower.target)
+	$Turret_Gun.look_at(get_global_mouse_position())
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
 	if not is_on_r():
 		$Turret_Gun.flip_v = true
@@ -55,8 +47,7 @@ func _process(_delta):
 		$Turret_Gun.flip_v = false
 
 func _physics_process(_delta):
-	if tower.target and tower.energie_consumption <= energy_level:
-		$Turret_Gun/Gun.shoot(tower.target)
+	$Turret_Gun/Gun.shoot()
 
 func is_on_r():
 	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
@@ -83,6 +74,8 @@ var energy_loss = 10
 
 var is_selected = false
 
+var power_input := Vector2(0, 32)
+
 var cable_class = preload(\"res://Assets/Code/Scenes/Electricity/Cable.tscn\")
 
 var cable
@@ -106,8 +99,7 @@ func update_selected():
 
 func connect_to_next(next):
 	next_tower = next
-	var pos = Vector2(next.global_position.x - global_position.x, next.global_position.y - global_position.y + 6)
-	cable.connect_to_tower(pos, next_tower)
+	cable.connect_to_tower(next_tower)
 	
 func connect_to_previous(previous):
 	previous_tower = previous
@@ -125,23 +117,32 @@ func get_passed_on_energy():
 func remove_cable():
 	cable.shrink()
 	
-func power_breakdown():
+func break_power_start():
 	if next_tower:
-		next_tower.power_breakdown()
-		next_tower = null
+		next_tower.break_power_rec()
+	next_tower = null
 	remove_cable()
+	
+func break_power_rec():
 	previous_tower = null
 	energy_level = 0
+	break_power_start()
 
 func is_in_range_of(presumed):
 	return $EnergyRadius.possible_connections().has(presumed)
+	
+func has_next_tower():
+	return next_tower != null
+
+func cut_next():
+	next_tower = null
 "
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 22 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "default",
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "flash",
 "speed": 10.0
 } ]
 
@@ -154,7 +155,7 @@ animations = [ {
 } ]
 
 [node name="MGTower" type="Node2D"]
-script = SubResource( 1 )
+script = SubResource( 4 )
 
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2( 0, 8 )
@@ -207,7 +208,6 @@ __meta__ = {
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, 8 )
-
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]

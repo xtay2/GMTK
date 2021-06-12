@@ -72,6 +72,7 @@ func _input(event):
 			if selected_towers.Tower1.name == "Reactor":
 				selected_towers.Tower1.add_next(selected_towers.Tower2)
 			else:
+				selected_towers.Tower1.break_power_start()
 				selected_towers.Tower1.connect_to_next(selected_towers.Tower2)
 			selected_towers.Tower2.connect_to_previous(selected_towers.Tower1)
 			step_connection_mode()
@@ -90,12 +91,12 @@ func place_tower(class_instance):
 #Wähle Tower aus
 func select():
 	if selected_towers.Tower1 == null:
-		if hovering_tower.has_energy() and (hovering_tower.name == "Reactor" or !hovering_tower.has_next_tower()):
+		if hovering_tower.has_energy():
 			selected_towers.Tower1 = hovering_tower
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
 			
-	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor" and !hovering_tower.has_next_tower():
+	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor":
 		if !hovering_tower.previous_tower and selected_towers.Tower1.has_energy() and selected_towers.Tower1.is_in_range_of(hovering_tower):
 			selected_towers.Tower2 = hovering_tower
 			selected_towers.Tower2.is_selected = true

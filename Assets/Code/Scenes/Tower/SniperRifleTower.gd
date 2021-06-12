@@ -21,7 +21,7 @@ func _ready():
 	#Energieleitung
 	cable = cable_class.instance()
 	add_child(cable)
-	cable.initialise(Vector2(0, 6), Vector2(0, 6), null)
+	cable.initialise(power_input, power_input, null)
 	$EnergyRadius.initialise(self, 10)
 
 func _process(_delta):
