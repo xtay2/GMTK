@@ -1,7 +1,7 @@
 extends Node2D
 class_name Tower
 
-signal enemy_entered(enemy)
+signal enemy_changed(enemy)
 
 export(String) var t_name = ""
 export(int) var energie_consumption = 10
@@ -24,13 +24,7 @@ func _ready():
 func _on_DetectionArea_area_entered(area):
 	if area.is_in_group("enemy"):
 		enemy_que.push_back(area)
-		emit_signal("enemy_entered", enemy_que)
-
 
 func _on_DetectionArea_area_exited(area):
 	if area.is_in_group("enemy"):
 		enemy_que.pop_front()
-		
-func _process(delta):
-#	if enemy != null and energie_consumption <= current_energie:
-	$Gun.shoot()
