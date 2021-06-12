@@ -15,14 +15,14 @@ animations = [ {
 "name": "walk_north",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk_straight",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk_south",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk_straight",
 "speed": 5.0
 } ]
 
@@ -41,10 +41,13 @@ oscillation_magnitude = 15
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "walk_south"
+frame = 1
 speed_scale = 0.5
 playing = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=[
+"enemy",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 2 )

@@ -16,7 +16,6 @@ func _physics_process(delta):
 
 
 func _on_Area2D_area_entered(area):
-	# print(area.name)
 	if area.get_parent().is_in_group("enemy"):
 		area.get_parent().loose_health(damage)
 		destroy()

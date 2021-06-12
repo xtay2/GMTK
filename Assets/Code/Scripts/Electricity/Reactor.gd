@@ -29,6 +29,7 @@ var box := Vector2(3, 4)
 func _ready():
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 	map.place_node(self)
+	$EnergyRadius.initialise(self, 10)
 
 func add_next(tower):
 	next_towers.append(tower)
@@ -67,9 +68,12 @@ func get_passed_on_energy():
 func _on_Hitbox_mouse_entered():
 	ui.hovering_tower = self
 
-
 func _on_Hitbox_mouse_exited():
 	ui.hovering_tower = null
 
-
+func is_in_range_of(presumed):
+	print($EnergyRadius.possible_connections())
+	return $EnergyRadius.possible_connections().has(presumed)
 	
+func _process(_delta):
+	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self

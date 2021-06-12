@@ -15,14 +15,14 @@ animations = [ {
 "name": "walk_north",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk_straight",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "walk_south",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_straight",
 "speed": 5.0
 } ]
 
@@ -31,6 +31,7 @@ extents = Vector2( 9.29695, 9.15387 )
 
 [node name="Enemy" type="PathFollow2D"]
 position = Vector2( 178.131, 236.929 )
+z_index = 2
 rotate = false
 loop = false
 script = ExtResource( 2 )
@@ -41,10 +42,13 @@ oscillation_magnitude = 15
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "walk_south"
+frame = 1
 speed_scale = 1.5
 playing = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=[
+"enemy",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 2 )
