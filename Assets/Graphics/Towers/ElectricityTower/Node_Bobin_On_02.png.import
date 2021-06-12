@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Node_Tower_On.png-a823a055e94ec761e443026aa98116ad.stex"
+path="res://.import/Node_Bobin_On_02.png-d1ae0378b8e0159277d639b46d6d59a8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Towers/basicTowerV2/Node_Tower_On.png"
-dest_files=[ "res://.import/Node_Tower_On.png-a823a055e94ec761e443026aa98116ad.stex" ]
+source_file="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_On_02.png"
+dest_files=[ "res://.import/Node_Bobin_On_02.png-d1ae0378b8e0159277d639b46d6d59a8.stex" ]
 
 [params]
 

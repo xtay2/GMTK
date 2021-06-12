@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bullet.png-e0b71c4166ea1e3e540391a58ee1ab22.stex"
+path="res://.import/Bullet.png-5e327c616f52afe9236fdb4e916e3279.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Towers/basicTower/Bullet.png"
-dest_files=[ "res://.import/Bullet.png-e0b71c4166ea1e3e540391a58ee1ab22.stex" ]
+source_file="res://Assets/Graphics/Towers/BasicTower/Bullet.png"
+dest_files=[ "res://.import/Bullet.png-5e327c616f52afe9236fdb4e916e3279.stex" ]
 
 [params]
 
