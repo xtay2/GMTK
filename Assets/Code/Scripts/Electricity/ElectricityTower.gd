@@ -83,9 +83,15 @@ func removeTower():
 		if previous_tower.name == "Reactor":
 			previous_tower.remove_next(self)
 		else:
+<<<<<<< HEAD
 			previous_tower.cut_next()
 			previous_tower.remove_cable()
 	break_power_start()
+=======
+			previous_tower.next_towers.clear()
+			previous_tower.cable.shrink()
+	power_breakdown()
+>>>>>>> 8d7c9b53ca3b503c96a2449e0d05f201c34db0a8
 	ui.placed_towers -= 1
 	map.remove_node(self)
 	queue_free()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/electrobullet3.png-a796927d85a89b0b65b776ea077fbc96.stex"
+path="res://.import/firebullet-export3.png-c94d0ae5d46357d453a9ec0267f6d769.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Code/Scenes/Tower/electrobullet3.png"
-dest_files=[ "res://.import/electrobullet3.png-a796927d85a89b0b65b776ea077fbc96.stex" ]
+source_file="res://Assets/Graphics/Towers/Bullets/firebullet-export3.png"
+dest_files=[ "res://.import/firebullet-export3.png-c94d0ae5d46357d453a9ec0267f6d769.stex" ]
 
 [params]
 
