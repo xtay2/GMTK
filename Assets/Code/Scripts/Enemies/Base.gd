@@ -15,7 +15,8 @@ var previous_pos = Vector2.ZERO
 var health = 0
 
 func _ready():
-	unit_offset = rand_range(0, 1)
+	#unit_offset = rand_range(0, 1)
+	pass
 	
 func _process(delta):
 	time += delta  # I don't use universal time to handle pausation properly
@@ -23,17 +24,17 @@ func _process(delta):
 	if unit_offset == 1:
 		die()
 	
-	var velocity = $Animation.position - previous_pos
-	previous_pos = $Animation.position
+	var velocity = $Animation.global_position - previous_pos
+	previous_pos = $Animation.global_position
 	
 	var velocity_angle = velocity.angle()
 	$Animation.flip_h = false
 	if -PI/4 < velocity_angle and velocity_angle < PI/4:
 		$Animation.animation = "walk_straight"
-	if PI/4 < velocity_angle and velocity_angle < PI*3/4:
-		$Animation.animation = "walk_north"
-	if -PI/4 > velocity_angle and velocity_angle > -PI*3/4:
+	elif PI/4 < velocity_angle and velocity_angle < PI*3/4:
 		$Animation.animation = "walk_south"
+	elif -PI/4 > velocity_angle and velocity_angle > -PI*3/4:
+		$Animation.animation = "walk_north"
 	else:
 		$Animation.animation = "walk_straight"
 		$Animation.flip_h = true
