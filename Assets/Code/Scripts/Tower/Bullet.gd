@@ -7,7 +7,6 @@ var speed := 100
 var lifetime := 2
 
 func _ready():
-	print(lifetime)
 	$Timer.wait_time = lifetime
 	$Timer.start()
 
