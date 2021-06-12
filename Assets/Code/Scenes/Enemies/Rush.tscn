@@ -45,10 +45,10 @@ speed_scale = 1.5
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 2 )
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

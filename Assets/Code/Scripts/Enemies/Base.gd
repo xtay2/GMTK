@@ -17,8 +17,8 @@ var health = 0
 signal on_die
 
 func _ready():
-	#unit_offset = rand_range(0, 1)
-	pass
+	add_to_group("enemy")
+	health = start_health
 	
 func _process(delta):
 	time += delta  # I don't use universal time to handle pausation properly
@@ -54,5 +54,4 @@ func loose_health(h: float):
 		die()
 
 func _on_Hitbox_area_entered(area):
-	# Ask bullet stuff
-	die()
+	$AudioPlayer.play()

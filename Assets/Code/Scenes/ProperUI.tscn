@@ -6,20 +6,20 @@
 [ext_resource path="res://Assets/Graphics/PlaceholderTextures/placeholder_32x32.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sound/Music/welcome_first_waves.mp3" type="AudioStream" id=5]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
 
 [node name="ProperUI" type="Control"]
@@ -31,7 +31,7 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-music_wave = [ ExtResource( 5 ) ]
+music_wave = [ ExtResource( 5 ), ExtResource( 5 ) ]
 
 [node name="EnemyStateInfo" type="Control" parent="."]
 anchor_left = 1.0
@@ -47,7 +47,7 @@ margin_left = 15.0129
 margin_top = 1.824
 margin_right = 55.0129
 margin_bottom = 15.824
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "10|10"
 
 [node name="Wave" type="Label" parent="EnemyStateInfo"]
@@ -55,7 +55,7 @@ margin_left = 4.34952
 margin_top = 15.0129
 margin_right = 51.3495
 margin_bottom = 29.0129
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Wave 1"
 
 [node name="Power" type="Control" parent="."]
@@ -72,12 +72,16 @@ __meta__ = {
 }
 
 [node name="Upgrade" type="Button" parent="."]
-margin_left = 348.0
-margin_top = 232.0
-margin_right = 465.0
-margin_bottom = 261.0
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -124.989
+margin_top = -34.8863
+margin_right = -7.98853
+margin_bottom = -5.88629
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Upgrade Power"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,7 +103,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 62.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Node"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -128,7 +132,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 62.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Connect"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -193,7 +197,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="ChooseTurretType"]
 anchor_right = 1.0
 margin_bottom = 12.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Towers"
 align = 1
 __meta__ = {
