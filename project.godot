@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PathFollow2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Assets/Code/Scripts/Enemies/Base.gd",
+},{
 "base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://Assets/Code/Scripts/Tower/Tower.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
 "Bullet": "",
 "GitAPI": "",
 "Gun": "",
@@ -100,6 +106,12 @@ left_click={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="PlayerDamage"
+2d_physics/layer_2="EnemyDamage"
+2d_physics/layer_3="BulletColliders"
 
 [rendering]
 
