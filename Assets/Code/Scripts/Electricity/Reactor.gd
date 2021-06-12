@@ -12,16 +12,23 @@ var cables = []
 
 var total_energy = 100
 
+var max_connections = 5
+
+func _ready():
+	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
+
 func add_next(tower):
 	next_towers.append(tower)
 	var line = cable_class.instance()
-	var pos = Vector2(tower.global_position.x - global_position.x + 16, tower.global_position.y - global_position.y + 16)
+	var pos = Vector2(tower.global_position.x - global_position.x + 10, tower.global_position.y - global_position.y + 6)
 	line.initialise(Vector2(16, 16), pos, tower)
 	add_child(line)
 	cables.append(line)
+	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 	
 func remove_next(tower):
 	next_towers.remove(next_towers.bsearch(tower))
+	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 	for child in cables:
 		if child.end_tower == tower:
 			child.queue_free()
@@ -29,7 +36,7 @@ func remove_next(tower):
 			return
 
 func has_energy():
-	return true
+	return next_towers.size() < max_connections 
 
 func update_selected():
 	if is_selected: 

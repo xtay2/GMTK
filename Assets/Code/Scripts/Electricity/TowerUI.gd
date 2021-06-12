@@ -60,7 +60,10 @@ func _input(event):
 				selected_towers.Tower1.connect_to_next(selected_towers.Tower2)
 			selected_towers.Tower2.connect_to_previous(selected_towers.Tower1)
 			step_connection_mode()
-			
+			if selected_towers.Tower1:
+				selected_towers.Tower1.update_energy()
+				if !selected_towers.Tower1.has_energy():
+					end_connection_mode()
 
 #Füge Tower am Anfang im place mode hinzu
 func place_tower():
@@ -76,7 +79,7 @@ func select():
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
 			
-	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor" and !hovering_tower.previous_tower:
+	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor" and !hovering_tower.previous_tower and selected_towers.Tower1.has_energy():
 		selected_towers.Tower2 = hovering_tower
 		selected_towers.Tower2.is_selected = true
 		selected_towers.Tower2.update_selected()
@@ -105,3 +108,5 @@ func step_connection_mode():
 			selected_towers.Tower2 = null
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
+
+

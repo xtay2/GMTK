@@ -8,19 +8,19 @@
 [ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_Off.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 7 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "off",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "on",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "off",
 "speed": 5.0
 } ]
 
@@ -28,11 +28,11 @@ animations = [ {
 script = ExtResource( 1 )
 
 [node name="EnergyHUD" type="Label" parent="."]
-margin_left = -10.8059
-margin_top = -13.2208
-margin_right = 29.1941
-margin_bottom = -1.22076
-custom_fonts/font = SubResource( 2 )
+margin_left = -11.0
+margin_top = -12.0
+margin_right = 29.0
+margin_bottom = -9.53674e-07
+custom_fonts/font = SubResource( 1 )
 text = "Juice"
 align = 1
 __meta__ = {
@@ -50,7 +50,8 @@ __meta__ = {
 }
 
 [node name="Texture" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+z_index = 2
+frames = SubResource( 2 )
 animation = "off"
 playing = true
 centered = false
