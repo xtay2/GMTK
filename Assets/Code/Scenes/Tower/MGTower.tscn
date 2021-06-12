@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash3.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=10]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 onready var tower : Tower = $Tower
@@ -155,7 +155,7 @@ animations = [ {
 } ]
 
 [node name="MGTower" type="Node2D"]
-script = SubResource( 4 )
+script = SubResource( 1 )
 
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2( 0, 8 )
@@ -208,6 +208,7 @@ __meta__ = {
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, 8 )
+
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
