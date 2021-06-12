@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Code/Scripts/Enemies/Base.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Graphics/Characters/Heavy Enemy/heavy_walking_EandW_02.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Characters/Heavy Enemy/heavy_walking_EandW_01.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 9.29695, 9.15387 )
+
+[node name="HeavyEnemy" type="PathFollow2D"]
+position = Vector2( 178.131, 236.929 )
+rotate = false
+loop = false
+script = ExtResource( 2 )
+oscillation_frequency = 0
+oscillation_magnitude = 15
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 5 )
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

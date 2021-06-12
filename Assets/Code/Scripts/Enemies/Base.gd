@@ -2,6 +2,7 @@ extends PathFollow2D  # Necaissary since every path has it's own offset
 class_name Enemy
 
 export var path_completion_time = 10 # How many seconds does it take to comppleate the path
+export var start_health = 10
 
 # To make the movement more interesting
 export var oscillation_frequency = 10  # Hz
@@ -9,11 +10,12 @@ export var oscillation_magnitude = 0  # Pixels
 onready var oscillation_phase = rand_range(0, TAU)  # seconds; to break up the uniformity
 
 var time = 0
+var previous_pos = Vector2.ZERO
+
+var health = 0
 
 func _ready():
 	unit_offset = rand_range(0, 1)
-	rotate = false
-	loop = false
 	
 func _process(delta):
 	time += delta  # I don't use universal time to handle pausation properly
@@ -21,14 +23,32 @@ func _process(delta):
 	if unit_offset == 1:
 		die()
 	
+	var velocity = $Animation.position - previous_pos
+	previous_pos = $Animation.position
+	
+	var velocity_angle = velocity.angle()
+	$Animation.flip_h = false
+	if -PI/4 < velocity_angle and velocity_angle < PI/4:
+		$Animation.animation = "walk_straight"
+	if PI/4 < velocity_angle and velocity_angle < PI*3/4:
+		$Animation.animation = "walk_north"
+	if -PI/4 > velocity_angle and velocity_angle > -PI*3/4:
+		$Animation.animation = "walk_south"
+	else:
+		$Animation.animation = "walk_straight"
+		$Animation.flip_h = true
+	
 	v_offset = oscillation_magnitude * sin(oscillation_phase + TAU * time * oscillation_frequency)
-	#var orth_offset = orthogonal * 
-	#path_instance.h_offset = orth_offset.x
-	#path_instance.v_offset = oscillation_magnitude * sin(oscillation_phase + TAU * time * oscillation_frequency)
-	#position = Vector2.LEFT * oscillation_magnitude * sin(oscillation_phase + TAU * time * oscillation_frequency)
-
+	
 func die():
 	queue_free()
+	# Maybe something else too, idk
+
+func loose_health(h: float):
+	health -= h
+	if health <= 0:
+		die()
 
 func _on_Hitbox_area_entered(area):
+	# Ask bullet stuff
 	die()

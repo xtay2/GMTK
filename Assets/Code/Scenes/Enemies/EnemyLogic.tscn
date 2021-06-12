@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Code/Scenes/Enemies/Basic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Code/Scenes/Enemies/Heavy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Code/Scenes/Enemies/Rush.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -13,5 +15,13 @@ _data = {
 curve = SubResource( 1 )
 
 [node name="Enemy" parent="Path2D" instance=ExtResource( 1 )]
+position = Vector2( 178.131, 236.929 )
+rotation = 2.29559
+
+[node name="Enemy2" parent="Path2D" instance=ExtResource( 2 )]
+position = Vector2( 178.131, 236.929 )
+rotation = 2.29559
+
+[node name="Enemy3" parent="Path2D" instance=ExtResource( 3 )]
 position = Vector2( 178.131, 236.929 )
 rotation = 2.29559
