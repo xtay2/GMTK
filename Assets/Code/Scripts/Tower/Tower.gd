@@ -14,8 +14,9 @@ var detectionArea := Area2D.new()
 var detectionCollision := CollisionShape2D.new()
 
 func _ready():
-	var shape := CircleShape2D.new()
+	var shape := CapsuleShape2D.new()
 	shape.radius = detection_radius
+	shape.height = 0
 	detectionCollision.shape = shape
 	add_child(detectionArea)
 	detectionArea.add_child(detectionCollision)
