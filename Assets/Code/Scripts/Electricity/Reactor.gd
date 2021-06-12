@@ -23,6 +23,8 @@ func remove_next(tower):
 	for child in cables:
 		if child.end_tower == tower:
 			child.queue_free()
+			cables.remove(next_towers.bsearch(child))
+			return
 
 func has_energy():
 	return true
