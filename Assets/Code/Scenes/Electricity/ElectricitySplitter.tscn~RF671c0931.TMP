@@ -1,13 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/Code/Scripts/Electricity/ElectricityTower.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_On_03.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_On_02.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_On_01.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_Off.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Code/Scripts/Electricity/ElectricitySplitter.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 7 )
@@ -70,6 +66,5 @@ __meta__ = {
 [node name="EnergyRadius" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, 6 )
 z_index = 10
-
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]

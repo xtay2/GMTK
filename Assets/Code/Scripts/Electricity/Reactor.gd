@@ -37,6 +37,7 @@ func add_next(tower):
 	var pos = Vector2(tower.global_position.x - global_position.x, tower.global_position.y - global_position.y + 6)
 	line.initialise(Vector2(16, 27), pos, tower)
 	add_child(line)
+	line.connect_to_tower(tower)
 	cables.append(line)
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 	
@@ -77,3 +78,4 @@ func is_in_range_of(presumed):
 	
 func _process(_delta):
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
+	
