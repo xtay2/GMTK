@@ -31,6 +31,7 @@ extents = Vector2( 9.29695, 9.15387 )
 
 [node name="BasicEnemy" type="PathFollow2D"]
 position = Vector2( 178.131, 236.929 )
+rotate = false
 loop = false
 script = ExtResource( 2 )
 oscillation_frequency = 0
@@ -38,6 +39,12 @@ oscillation_magnitude = 15
 
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+<<<<<<< HEAD
+=======
+animation = "walk_north"
+frame = 2
+playing = true
+>>>>>>> 9162a3bf66b2cf076efa2e958a6ce2b1c8d565f4
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
