@@ -54,7 +54,7 @@ func _input(event):
 		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
 			select()
 		#Remove Tower
-		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and hovering_tower.name == "ElectricityTower":
+		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and "ElectricityTower" in hovering_tower.name:
 			hovering_tower.removeTower()
 			hovering_tower = null
 			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
