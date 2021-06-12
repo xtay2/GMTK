@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Map/Map.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Code/Scenes/Electricity/Reactor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Code/Scenes/Tower/BasicTower.tscn" type="PackedScene" id=3]
+
+[sub_resource type="TileSet" id=1]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="BasicTower" parent="." instance=ExtResource( 3 )]
+position = Vector2( 306.149, 203.295 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+
+[node name="Reactor" parent="." instance=ExtResource( 2 )]
+position = Vector2( 347.451, 84.1899 )

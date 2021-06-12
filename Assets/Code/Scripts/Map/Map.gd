@@ -6,9 +6,6 @@ var placed_objects := []
 
 const GRID_DIM = 16
 
-func _ready():
-	place_node(main.find_node("Reactor"))
-
 #Überprüft ob eine position (Vector2) schon besetzt ist
 func can_place(node):
 	for new_spot in node.spots:

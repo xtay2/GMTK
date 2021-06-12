@@ -15,11 +15,28 @@ script/source = "extends Node2D
 
 onready var tower : Tower = $Tower
 
-func _process(delta):
+#Mainscene
+onready var main = find_parent(\"Main\")
+
+#Map
+onready var map = main.find_node(\"Map\")
+
+#Visual Management for Towers 
+onready var ui = find_parent(\"TowerUI\")
+
+#Punkte die Tower abdeckt
+var spots := []
+#Width and height of tower in tiles
+var box := Vector2(1, 1)
+
+func _ready():
+	map.place_node(self)
+
+func _process(_delta):
 	$Turret_Gun.look_at(get_global_mouse_position())
 #	$Turret_Gun.look_at(tower.enemy_que.front().global_position)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 #	if tower.enemy_que != null and tower.energie_consumption >= tower.current_energie:
 #		$Turret_Gun/Gun.shoot(tower.enemy_que.front())
 		$Turret_Gun/Gun.shoot()
@@ -45,23 +62,21 @@ animations = [ {
 } ]
 
 [node name="BasicTower" type="Node2D"]
-position = Vector2( 55.3606, 31.3512 )
 script = SubResource( 1 )
 
 [node name="TowerBase" type="Sprite" parent="."]
-position = Vector2( -1.69407e-21, 0 )
+position = Vector2( -9, 3 )
 rotation = -4.46638e-06
-scale = Vector2( 1, 1.00303 )
 texture = ExtResource( 3 )
+centered = false
 
 [node name="Turret_Gun" type="Sprite" parent="."]
-position = Vector2( 2.67269, -12.2839 )
+position = Vector2( 0, 8 )
 texture = ExtResource( 2 )
 offset = Vector2( 10, 0 )
 
 [node name="Gun" type="Position2D" parent="Turret_Gun"]
-position = Vector2( 21.8721, -0.0171127 )
-scale = Vector2( 1, 0.893718 )
+position = Vector2( 21, 0 )
 script = ExtResource( 5 )
 bullet_szene = ExtResource( 1 )
 gun_cooldown = 1.0
@@ -75,9 +90,8 @@ frames = SubResource( 2 )
 animation = "flash"
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2( -0.0787468, 6.11012 )
+position = Vector2( 0, 7 )
 script = ExtResource( 4 )
 t_name = "BasicTower"
-
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

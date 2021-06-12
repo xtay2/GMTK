@@ -6,7 +6,14 @@ var is_selected = false
 
 var cable_class = preload("res://Assets/Code/Scenes/Electricity/Cable.tscn")
 
-onready var ui = find_parent("TowerUI")
+#Mainscene
+onready var main = find_parent("Main")
+
+#Map
+onready var map = main.find_node("Map")
+
+#Visual Management for Towers 
+onready var ui = main.find_node("TowerUI")
 
 var cables = []
 
@@ -21,6 +28,7 @@ var box := Vector2(3, 3)
 
 func _ready():
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
+	map.place_node(self)
 
 func add_next(tower):
 	next_towers.append(tower)
