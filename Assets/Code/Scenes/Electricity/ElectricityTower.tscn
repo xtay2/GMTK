@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/ElectricityTower.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/PlaceholderTextures/placeholder_static_32x32.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="ElectricityTower" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,5 +15,20 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+<<<<<<< HEAD
+[node name="EnergyHUD" type="Label" parent="."]
+margin_left = -3.86462
+margin_top = -14.0446
+margin_right = 36.1354
+margin_bottom = -0.0446024
+custom_fonts/font = SubResource( 1 )
+text = "Juice"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+=======
+>>>>>>> 00ad8c99d6f8cdaaed3fa4892f8579f6692465de
 [connection signal="mouse_entered" from="Graphic" to="." method="_on_Graphic_mouse_entered"]
 [connection signal="mouse_exited" from="Graphic" to="." method="_on_Graphic_mouse_exited"]

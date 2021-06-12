@@ -10,6 +10,8 @@ onready var ui = find_parent("TowerUI")
 
 var cables = []
 
+var total_energy = 100
+
 func add_next(tower):
 	next_towers.append(tower)
 	var line = cable_class.instance()
@@ -23,6 +25,8 @@ func remove_next(tower):
 	for child in cables:
 		if child.end_tower == tower:
 			child.queue_free()
+			cables.remove(next_towers.bsearch(child))
+			return
 
 func has_energy():
 	return true
@@ -40,3 +44,7 @@ func _on_Texture_mouse_entered():
 
 func _on_Texture_mouse_exited():
 	ui.hovering_tower = null
+
+#Sagt den nächsten Türmen wie viel Energy sie haben
+func get_passed_on_energy():
+	return total_energy / next_towers.size()
