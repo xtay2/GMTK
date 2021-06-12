@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Code/Scenes/Bullet/Bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Towers/BasicTower/Turret_Gun.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Towers/BasicTower/turret tower.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/og turret.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Towers/TowerBase/turret tower.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Code/Scripts/Tower/Tower.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Code/Scripts/Tower/Gun.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash4.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash3.png" type="Texture" id=9]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -19,9 +23,29 @@ func _physics_process(delta):
 #	if tower.enemy_que != null and tower.energie_consumption >= tower.current_energie:
 #		$Turret_Gun/Gun.shoot(tower.enemy_que.front())
 		$Turret_Gun/Gun.shoot()
+
+
+func _on_AnimatedSprite_animation_finished():
+	$Turret_Gun/Gun/AnimatedSprite.frame = 0
+	$Turret_Gun/Gun/AnimatedSprite.visible = false
+
+
+func _on_Gun_has_shoot():
+	$Turret_Gun/Gun/AnimatedSprite.visible = true
+	$Turret_Gun/Gun/AnimatedSprite.scale = Vector2.ONE * rand_range(1, 1.5)
+	$Turret_Gun/Gun/AnimatedSprite.play(\"flash\")
 "
 
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "flash",
+"speed": 10.0
+} ]
+
 [node name="BasicTower" type="Node2D"]
+position = Vector2( 55.3606, 31.3512 )
 script = SubResource( 1 )
 
 [node name="TowerBase" type="Sprite" parent="."]
@@ -31,12 +55,12 @@ scale = Vector2( 1, 1.00303 )
 texture = ExtResource( 3 )
 
 [node name="Turret_Gun" type="Sprite" parent="."]
-position = Vector2( 0, -10.168 )
+position = Vector2( 2.67269, -12.2839 )
 texture = ExtResource( 2 )
-offset = Vector2( 7, 0 )
+offset = Vector2( 10, 0 )
 
 [node name="Gun" type="Position2D" parent="Turret_Gun"]
-position = Vector2( 14.4108, -0.0171127 )
+position = Vector2( 21.8721, -0.0171127 )
 scale = Vector2( 1, 0.893718 )
 script = ExtResource( 5 )
 bullet_szene = ExtResource( 1 )
@@ -45,7 +69,15 @@ bullet_lifetime = 4.0
 bullet_speed = 100
 damage = 10
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun/Gun"]
+visible = false
+frames = SubResource( 2 )
+animation = "flash"
+
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2( -0.0787468, 6.11012 )
 script = ExtResource( 4 )
 t_name = "BasicTower"
+
+[connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
+[connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

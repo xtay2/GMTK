@@ -1,5 +1,6 @@
 extends Position2D
 class_name Gun
+signal has_shoot
 
 export(PackedScene) var bullet_szene
 export(int) var bullet_count: int
@@ -43,6 +44,8 @@ func shoot(target_pos: Vector2 = get_global_mouse_position()):
 			bullet_instace.speed = bullet_speed
 			bullet_instace.lifetime = bullet_lifetime
 			get_tree().root.add_child(bullet_instace)
-			if not sound == null:
+		
+		if not sound == null:
 				sound.play()
+		emit_signal("has_shoot")
 		timer.start()
