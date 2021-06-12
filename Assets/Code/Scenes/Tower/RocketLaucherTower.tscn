@@ -39,8 +39,8 @@ func _ready():
 	$EnergyRadius.initialise(self, 10)
 	
 func _process(_delta):
-	if tower.target:
-		$Turret_Gun.look_at(tower.target)
+	$Turret_Gun.look_at(get_global_mouse_position())
+#	$Turret_Gun.look_at(tower.enemy_que.front().global_position)
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
 	if not is_on_r():
 		$Turret_Gun.flip_v = true
@@ -48,8 +48,9 @@ func _process(_delta):
 		$Turret_Gun.flip_v = false
 
 func _physics_process(_delta):
-	if tower.target and tower.energie_consumption <= energy_level:
-		$Turret_Gun/Gun.shoot(tower.target)
+#	if tower.enemy_que != null and tower.energie_consumption >= tower.current_energie:
+#		$Turret_Gun/Gun.shoot(tower.enemy_que.front())
+		$Turret_Gun/Gun.shoot()
 
 func is_on_r():
 	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
