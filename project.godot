@@ -107,12 +107,6 @@ left_click={
  ]
 }
 
-[layer_names]
-
-2d_physics/layer_1="PlayerDamage"
-2d_physics/layer_2="EnemyDamage"
-2d_physics/layer_3="BulletColliders"
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"
