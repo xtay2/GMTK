@@ -99,10 +99,11 @@ func select():
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
 			
-	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor" and !hovering_tower.previous_tower and selected_towers.Tower1.has_energy():
-		selected_towers.Tower2 = hovering_tower
-		selected_towers.Tower2.is_selected = true
-		selected_towers.Tower2.update_selected()
+	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor":
+		if !hovering_tower.previous_tower and selected_towers.Tower1.has_energy() and selected_towers.Tower1.is_in_range_of(hovering_tower):
+			selected_towers.Tower2 = hovering_tower
+			selected_towers.Tower2.is_selected = true
+			selected_towers.Tower2.update_selected()
 
 #Beende Connectmode für beide Tower
 func end_connection_mode():

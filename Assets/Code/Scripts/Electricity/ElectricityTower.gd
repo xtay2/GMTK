@@ -37,6 +37,7 @@ func _ready():
 	cable.initialise(Vector2(0, 6), Vector2(0, 6), null)
 	$Socket.modulate = ui.PLACEMENT_COLOR
 	$Texture.modulate = ui.PLACEMENT_COLOR
+	$EnergyRadius.initialise(self, 10)
 
 func connect_to_next(next):
 	next_tower = next
@@ -52,7 +53,8 @@ func _process(_delta):
 	if ui and ui.place_mode and ui.last_tower == self:
 		position_this()
 	if !previous_tower:
-		next_tower = null 
+		next_tower = null
+	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
 
 func place_this():
 	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
@@ -74,6 +76,8 @@ func remove_cable():
 func has_energy():
 	return (energy_level - energy_loss) > 0
 
+func is_in_range_of(presumed):
+	return $EnergyRadius.possible_connections().has(presumed)
 
 func power_breakdown():
 	if next_tower:
@@ -132,4 +136,5 @@ func _on_Hitbox_mouse_exited():
 
 func position_this():
 	map.update_spot(self, get_global_mouse_position())
+
 
