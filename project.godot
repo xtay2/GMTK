@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Tower",
 "language": "GDScript",
 "path": "res://Assets/Code/Scripts/Tower/Tower.gd"
+}, {
+"base": "Path2D",
+"class": "enemy_logic",
+"language": "GDScript",
+"path": "res://Assets/Code/Scripts/Enemies/EnemyLogic.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "GitAPI": "",
 "Gun": "",
-"Tower": ""
+"Tower": "",
+"enemy_logic": ""
 }
 
 [application]

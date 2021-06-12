@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/welcome_first_waves.mp3-0bb4c39d70f7cc6a5c20117a3912813b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Music/welcome_first_waves.mp3"
+dest_files=[ "res://.import/welcome_first_waves.mp3-0bb4c39d70f7cc6a5c20117a3912813b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

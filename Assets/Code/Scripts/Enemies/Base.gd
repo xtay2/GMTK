@@ -14,6 +14,8 @@ var previous_pos = Vector2.ZERO
 
 var health = 0
 
+signal on_die
+
 func _ready():
 	#unit_offset = rand_range(0, 1)
 	pass
@@ -42,6 +44,7 @@ func _process(delta):
 	v_offset = oscillation_magnitude * sin(oscillation_phase + TAU * time * oscillation_frequency)
 	
 func die():
+	emit_signal("on_die")
 	queue_free()
 	# Maybe something else too, idk
 
