@@ -36,6 +36,12 @@ func _input(event):
 			place_tower(tower_class)
 		if event.is_action_pressed("two") and !place_mode and !connect_mode and placed_towers < max_towers:
 			place_tower(splitter_class)
+		
+		if place_mode and event.is_action_pressed("right_click"):
+			last_tower.removeTower()
+			place_mode = false
+			return
+			
 		#Init Connectmode
 		elif event.is_action_pressed("shift") and !place_mode:
 			start_connect_mode()
