@@ -67,7 +67,7 @@ func new_wave():
 	emit_signal("update_enemy_info", wave_number, enemy_count)
 	coroutine_spawn_enemies(enemies)
 
-func _died(character: Enemy):
+func _died(_character: Enemy):
 	enemy_count -= 1
 	emit_signal("update_enemy_info", wave_number, enemy_count)
 	if enemy_count == 0:

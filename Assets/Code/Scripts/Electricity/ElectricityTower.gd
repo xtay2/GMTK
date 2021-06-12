@@ -43,7 +43,6 @@ func _ready():
 func connect_to_next(next):
 	if next_towers.empty():
 		next_towers.append(next)
-		var pos = Vector2(next.global_position.x - global_position.x, next.global_position.y - global_position.y + 6)
 		cable.connect_to_tower(next)
 	
 func connect_to_previous(previous):

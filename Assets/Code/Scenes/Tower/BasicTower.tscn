@@ -101,8 +101,12 @@ func update_selected():
 
 func connect_to_next(next):
 	next_tower = next
+<<<<<<< HEAD
 	var pos = Vector2(next.global_position.x - global_position.x, next.global_position.y - global_position.y + 6)
 	cable.connect_to_tower(pos, next_tower)
+=======
+	cable.connect_to_tower(next_tower)
+>>>>>>> 22d7add2ac9f3d8a4c4d9e16ecad069d8dd404c6
 	
 func connect_to_previous(previous):
 	previous_tower = previous
