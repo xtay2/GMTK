@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Turret_Shoot.mp3-625e9e8722278afcd935ad1f6c3e4618.mp3str"
+path="res://.import/Turret_Shoot.mp3-fe3ff08dac8922c406b68f78a8c763f0.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/Soundeffects/Sounds/Turret_Shoot.mp3"
-dest_files=[ "res://.import/Turret_Shoot.mp3-625e9e8722278afcd935ad1f6c3e4618.mp3str" ]
+source_file="res://Assets/Sound/Soundeffects/Turret_Shoot.mp3"
+dest_files=[ "res://.import/Turret_Shoot.mp3-fe3ff08dac8922c406b68f78a8c763f0.mp3str" ]
 
 [params]
 

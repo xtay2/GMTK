@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Enemy_Hit.mp3-9f979cd529287b46eada57fc10c3db23.mp3str"
+path="res://.import/Enemy_Hit.mp3-5a13be38a696cf7bab1d757fdb151162.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/Soundeffects/Sounds/Enemy_Hit.mp3"
-dest_files=[ "res://.import/Enemy_Hit.mp3-9f979cd529287b46eada57fc10c3db23.mp3str" ]
+source_file="res://Assets/Sound/Soundeffects/Enemy_Hit.mp3"
+dest_files=[ "res://.import/Enemy_Hit.mp3-5a13be38a696cf7bab1d757fdb151162.mp3str" ]
 
 [params]
 

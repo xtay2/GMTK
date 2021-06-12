@@ -55,4 +55,5 @@ func loose_health(h: float):
 
 func _on_Hitbox_area_entered(area):
 	# Ask bullet stuff
-	die()
+#	die()
+	pass

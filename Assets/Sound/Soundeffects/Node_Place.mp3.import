@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Node_Place.mp3-c0ecf8dddf54b6c6180986aaf63ad223.mp3str"
+path="res://.import/Node_Place.mp3-f7e5ef88ef74faefebf02782872d4835.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/Soundeffects/Sounds/Node_Place.mp3"
-dest_files=[ "res://.import/Node_Place.mp3-c0ecf8dddf54b6c6180986aaf63ad223.mp3str" ]
+source_file="res://Assets/Sound/Soundeffects/Node_Place.mp3"
+dest_files=[ "res://.import/Node_Place.mp3-f7e5ef88ef74faefebf02782872d4835.mp3str" ]
 
 [params]
 

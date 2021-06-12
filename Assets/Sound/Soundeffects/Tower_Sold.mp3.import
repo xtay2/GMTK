@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Tower_Sold.mp3-034a0820765d5deb3964107137b2ca6f.mp3str"
+path="res://.import/Tower_Sold.mp3-d35dd494df226dec0746b6cdeecb5fe7.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/Soundeffects/Sounds/Tower_Sold.mp3"
-dest_files=[ "res://.import/Tower_Sold.mp3-034a0820765d5deb3964107137b2ca6f.mp3str" ]
+source_file="res://Assets/Sound/Soundeffects/Tower_Sold.mp3"
+dest_files=[ "res://.import/Tower_Sold.mp3-d35dd494df226dec0746b6cdeecb5fe7.mp3str" ]
 
 [params]
 

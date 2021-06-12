@@ -37,7 +37,6 @@ func shoot(target_pos: Vector2 = get_global_mouse_position()):
 			var rot = get_parent().rotation + bullet_rotation - max_radiant
 			if global_position.x <= target_pos.x:
 				rot = get_parent().rotation + max_radiant - bullet_rotation 
-			print(bullet_instace.motion.rotated(rot))
 			bullet_instace.motion = bullet_instace.motion.rotated(rot)
 			bullet_instace.rotation = rot
 			bullet_instace.damage = damage
