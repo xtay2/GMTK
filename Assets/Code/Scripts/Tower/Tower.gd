@@ -11,10 +11,12 @@ var enemy_que: Array
 var target: Vector2
 var current_energie := 10000
 
+
 var detectionArea := Area2D.new()
 var detectionCollision := CollisionShape2D.new()
 
 func _ready():
+	add_to_group("towers")
 	var shape := CapsuleShape2D.new()
 	shape.radius = detection_radius
 	shape.height = 0
@@ -24,14 +26,12 @@ func _ready():
 	add_child(detectionArea)
 	detectionArea.add_child(detectionCollision)
 
-
 func _on_DetectionArea_area_entered(area):
 	if area.is_in_group("enemy"):
 		enemy_que.push_front(area)
 
 func _on_DetectionArea_area_exited(area):
 	if area.get_parent().is_in_group("enemy"):
-		print("ex")
 		enemy_que.pop_back()
 		
 func _physics_process(delta):

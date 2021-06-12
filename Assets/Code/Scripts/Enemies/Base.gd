@@ -23,8 +23,6 @@ func _ready():
 func _process(delta):
 	time += delta  # I don't use universal time to handle pausation properly
 	unit_offset += delta  / path_completion_time
-	if unit_offset == 1:
-		die()
 	
 	var velocity = $Animation.global_position - previous_pos
 	previous_pos = $Animation.global_position
@@ -44,8 +42,11 @@ func _process(delta):
 	v_offset = oscillation_magnitude * sin(oscillation_phase + TAU * time * oscillation_frequency)
 	
 func die():
-	emit_signal("on_die")
-	queue_free()
+	for tower in get_tree().get_nodes_in_group("towers"):
+		if tower.enemy_que.has($Hitbox):
+			tower.enemy_que.erase($Hitbox)
+			queue_free()
+			emit_signal("on_die")
 	# Maybe something else too, idk
 
 func loose_health(h: float):
@@ -54,4 +55,5 @@ func loose_health(h: float):
 		die()
 
 func _on_Hitbox_area_entered(area):
-	$AudioPlayer.play()
+	if area is Bullet:
+		$AudioPlayer.play()

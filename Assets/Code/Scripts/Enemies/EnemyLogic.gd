@@ -1,6 +1,8 @@
 extends Path2D
 class_name enemy_logic
 
+signal enemy_reached_end
+
 const heavy = preload("res://Assets/Code/Scenes/Enemies/Heavy.tscn")
 const rush = preload("res://Assets/Code/Scenes/Enemies/Rush.tscn")
 const emp = preload("res://Assets/Code/Scenes/Enemies/Emp.tscn")
@@ -26,6 +28,8 @@ func _ready():
 	if result.error != OK:
 		printerr("JSON loading result" + result.error_string)
 	wave_data = result.result
+	$Area2D.position = curve.get_point_position(curve.get_point_count() -1)
+	print()
 	new_wave()
 
 func coroutine_spawn_enemies(type_list: Array):
@@ -69,3 +73,11 @@ func _died(character: Enemy):
 	emit_signal("update_enemy_info", wave_number, enemy_count)
 	if enemy_count == 0:
 		emit_signal("wave_compleated")
+
+
+func _on_Area2D_area_entered(area):
+	for tower in get_tree().get_nodes_in_group("towers"):
+		if tower.enemy_que.has(area):
+			tower.enemy_que.erase(area)
+			area.get_parent().die()
+	emit_signal("enemy_reached_end")
