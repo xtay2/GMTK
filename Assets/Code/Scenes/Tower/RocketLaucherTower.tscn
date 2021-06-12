@@ -102,12 +102,7 @@ func update_selected():
 
 func connect_to_next(next):
 	next_tower = next
-<<<<<<< HEAD
 	cable.connect_to_tower(next_tower)
-=======
-	var pos = Vector2(next.global_position.x - global_position.x, next.global_position.y - global_position.y + 6)
-	cable.connect_to_tower(pos, next_tower)
->>>>>>> bfa06e14d4befca06aaf39a2c73b61595b048ae8
 	
 func connect_to_previous(previous):
 	previous_tower = previous
@@ -125,13 +120,16 @@ func get_passed_on_energy():
 func remove_cable():
 	cable.shrink()
 	
-func power_breakdown():
+func break_power_start():
 	if next_tower:
-		next_tower.power_breakdown()
-		next_tower = null
+		next_tower.break_power_rec()
+	next_tower = null
 	remove_cable()
+	
+func break_power_rec():
 	previous_tower = null
 	energy_level = 0
+	break_power_start()
 
 func is_in_range_of(presumed):
 	return $EnergyRadius.possible_connections().has(presumed)

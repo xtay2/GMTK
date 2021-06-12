@@ -77,15 +77,6 @@ func has_energy():
 func is_in_range_of(presumed):
 	return $EnergyRadius.possible_connections().has(presumed)
 
-func power_breakdown():
-	if !next_towers.empty() and next_towers[0]:
-		next_towers[0].power_breakdown()
-		next_towers.clear()
-	remove_cable()
-	previous_tower = null
-	energy_level = 0
-	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
-	$Texture.play("off")
 
 func removeTower():
 	if previous_tower:
@@ -93,12 +84,28 @@ func removeTower():
 			previous_tower.remove_next(self)
 		else:
 			previous_tower.cut_next()
-			previous_tower.cable.shrink()
-	power_breakdown()
+			previous_tower.remove_cable()
+	break_power_start()
 	ui.placed_towers -= 1
 	map.remove_node(self)
 	queue_free()
 
+func remove_cable():
+	cable.shrink()
+
+func break_power_start():
+	if !next_towers.empty() and next_towers[0]:
+		next_towers[0].break_power_rec()
+	next_towers.clear()
+	remove_cable()
+	
+func break_power_rec():
+	previous_tower = null
+	energy_level = 0
+	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
+	$Texture.play("off")
+	break_power_start()
+	
 func get_all_previous_nodes():
 	var list = []
 	var prev = self
@@ -107,8 +114,6 @@ func get_all_previous_nodes():
 		prev = prev.previous_tower
 	return list
 
-func remove_cable():
-	cable.shrink()
 
 func update_energy():
 	if previous_tower:

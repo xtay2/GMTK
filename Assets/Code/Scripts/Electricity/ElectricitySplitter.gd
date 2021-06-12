@@ -92,15 +92,19 @@ func has_energy():
 func is_in_range_of(presumed):
 	return $EnergyRadius.possible_connections().has(presumed)
 
-func power_breakdown():
+func break_power_start():
 	for tower in next_towers:
-		tower.power_breakdown()
+		tower.break_power_rec()
 	next_towers.clear()
 	remove_cable()
+	
+func break_power_rec():
 	previous_tower = null
 	energy_level = 0
 	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/splitter_socket_off.png")
 	$Texture.play("off")
+	break_power_start()
+
 
 func removeTower():
 	if previous_tower:
@@ -109,7 +113,7 @@ func removeTower():
 		else:
 			previous_tower.next_tower = null
 			previous_tower.remove_cable()
-	power_breakdown()
+	break_power_start()
 	ui.placed_towers -= 1
 	map.remove_node(self)
 	queue_free()
