@@ -15,14 +15,14 @@ animations = [ {
 "name": "walk_north",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_south",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "walk_straight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_south",
 "speed": 5.0
 } ]
 
@@ -42,7 +42,6 @@ oscillation_magnitude = 15
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "walk_south"
-frame = 1
 speed_scale = 1.5
 playing = true
 

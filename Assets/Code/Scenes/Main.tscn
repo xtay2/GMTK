@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/TowerUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Code/Scenes/Map/Map.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Code/Scenes/ProperUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Code/Scenes/Enemies/EnemyLogic.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,12 +16,11 @@ position = Vector2( -0.353554, 0 )
 
 [node name="Map" parent="." instance=ExtResource( 3 )]
 z_index = -5
-<<<<<<< HEAD
+
+[node name="EnemyLogic" parent="." instance=ExtResource( 5 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProperUI" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [connection signal="update_enemy_info" from="EnemyLogic" to="CanvasLayer/ProperUI" method="update_enemy_info"]
-=======
->>>>>>> b21e4a72730c212e19abd5baeaf547c0b12d36f4
