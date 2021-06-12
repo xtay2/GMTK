@@ -25,7 +25,7 @@ func _ready():
 func shoot(target_pos: Vector2 = get_global_mouse_position()):
 	if timer.is_stopped():
 		var pallets = max(1, bullet_count)
-		var max_radiant = (bullet_count/2/(PI/bullet_spread))
+		var max_radiant = (bullet_count/2.0/(PI/bullet_spread))
 		for i in range(pallets):
 			randomize()
 			var bullet_instace : Bullet = bullet_szene.instance()

@@ -1,7 +1,7 @@
 extends Node2D
 class_name Tower
 
-signal enemy_changed(enemy)
+#signal enemy_changed(enemy)
 
 export(String) var t_name = ""
 export(int) var energie_consumption = 10
