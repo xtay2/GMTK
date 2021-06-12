@@ -7,7 +7,7 @@ export(String) var t_name = ""
 export(int) var energie_consumption = 10
 export(int) var detection_radius = 500
 
-var enemy: Node2D
+var enemy_que: Array
 var current_energie := 10000
 
 var detectionArea := Area2D.new()
@@ -22,14 +22,14 @@ func _ready():
 
 
 func _on_DetectionArea_area_entered(area):
-	if area.is_in_group("enemy") and enemy == null:
-		enemy = area
-		emit_signal("enemy_entered", enemy)
+	if area.is_in_group("enemy"):
+		enemy_que.push_back(area)
+		emit_signal("enemy_entered", enemy_que)
 
 
 func _on_DetectionArea_area_exited(area):
 	if area.is_in_group("enemy"):
-		enemy = null
+		enemy_que.pop_front()
 		
 func _process(delta):
 #	if enemy != null and energie_consumption <= current_energie:
