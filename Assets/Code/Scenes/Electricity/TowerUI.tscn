@@ -3,8 +3,12 @@
 [ext_resource path="res://Assets/Code/Scripts/Electricity/TowerUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/Reactor.tscn" type="PackedScene" id=2]
 
-[node name="TowerUI" type="Node2D"]
+[node name="TowerUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Reactor" parent="." instance=ExtResource( 2 )]
-position = Vector2( 152.078, 118.366 )
