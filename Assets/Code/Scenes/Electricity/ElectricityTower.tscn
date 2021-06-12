@@ -70,6 +70,5 @@ __meta__ = {
 [node name="EnergyRadius" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, 6 )
 z_index = 10
-
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
