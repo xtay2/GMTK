@@ -72,9 +72,6 @@ func update_selected():
 		$Socket.modulate = Color.white
 		$Texture.modulate = Color.white
 
-func remove_cable():
-	cable.shrink()
-
 func has_energy():
 	return (energy_level - energy_loss) > 0
 
@@ -82,7 +79,7 @@ func is_in_range_of(presumed):
 	return $EnergyRadius.possible_connections().has(presumed)
 
 func power_breakdown():
-	if next_towers[0]:
+	if !next_towers.empty() and next_towers[0]:
 		next_towers[0].power_breakdown()
 		next_towers.clear()
 	remove_cable()
@@ -96,7 +93,7 @@ func removeTower():
 		if previous_tower.name == "Reactor":
 			previous_tower.remove_next(self)
 		else:
-			previous_tower.next_tower = null
+			previous_tower.next_towers.clear()
 			previous_tower.cable.shrink()
 	power_breakdown()
 	ui.placed_towers -= 1
@@ -110,6 +107,9 @@ func get_all_previous_nodes():
 		list.append(prev)
 		prev = prev.previous_tower
 	return list
+
+func remove_cable():
+	cable.shrink()
 
 func update_energy():
 	if previous_tower:
@@ -141,3 +141,6 @@ func position_this():
 
 func has_next_tower():
 	return !next_towers.empty()
+
+func cut_next():
+	next_towers.clear()

@@ -109,7 +109,7 @@ func removeTower():
 			previous_tower.remove_next(self)
 		else:
 			previous_tower.next_tower = null
-			previous_tower.cable.shrink()
+			previous_tower.remove_cable()
 	power_breakdown()
 	ui.placed_towers -= 1
 	map.remove_node(self)
@@ -136,7 +136,7 @@ func update_energy():
 
 #Sagt den nächsten Türmen wie viel Energy sie haben
 func get_passed_on_energy():
-	return energy_level - energy_loss
+	return (energy_level - energy_loss) / 2
 
 
 func _on_Hitbox_mouse_entered():
@@ -153,4 +153,7 @@ func position_this():
 
 
 func has_next_tower():
-	return !next_towers.empty()
+	return next_towers.size() == 2
+
+func cut_next():
+	next_towers.clear()

@@ -78,3 +78,4 @@ func is_in_range_of(presumed):
 	
 func _process(_delta):
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
+	

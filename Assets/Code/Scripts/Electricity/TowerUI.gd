@@ -61,6 +61,11 @@ func _input(event):
 			return
 		#Remove connections and select
 		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower.name != "Reactor" and hovering_tower.has_next_tower():
+			if hovering_tower.previous_tower.name == "Reactor":
+				hovering_tower.previous_tower.remove_next(hovering_tower)
+			else:
+				hovering_tower.previous_tower.cut_next()
+				hovering_tower.previous_tower.remove_cable()
 			hovering_tower.power_breakdown()
 			hovering_tower.remove_cable()
 			end_connection_mode()
