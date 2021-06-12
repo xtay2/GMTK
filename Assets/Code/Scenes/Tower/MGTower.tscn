@@ -15,6 +15,23 @@ script/source = "extends Node2D
 
 onready var tower : Tower = $Tower
 
+#Mainscene
+onready var main = find_parent(\"Main\")
+
+#Map
+onready var map = main.find_node(\"Map\")
+
+#Visual Management for Towers 
+onready var ui = find_parent(\"TowerUI\")
+
+#Punkte die Tower abdeckt
+var spots := []
+#Width and height of tower in tiles
+var box := Vector2(1, 1)
+
+func _ready():
+	map.place_node(self)
+	
 func _process(delta):
 	$Turret_Gun.look_at(get_global_mouse_position())
 #	$Turret_Gun.look_at(tower.enemy_que.front().global_position)
@@ -51,23 +68,22 @@ animations = [ {
 } ]
 
 [node name="MGTower" type="Node2D"]
-position = Vector2( 82.3779, 44.0174 )
 script = SubResource( 1 )
 
 [node name="Tower" type="Node2D" parent="."]
-scale = Vector2( -0.312714, -0.593722 )
+position = Vector2( 0, 8 )
 script = ExtResource( 2 )
 t_name = "MGTower"
 detection_radius = 400
 
 [node name="TowerBase" type="Sprite" parent="."]
-position = Vector2( 0, -3.72529e-09 )
+position = Vector2( -9, 3 )
 rotation = -4.46638e-06
-scale = Vector2( 1, 1.00303 )
 texture = ExtResource( 3 )
+centered = false
 
 [node name="Turret_Gun" type="Sprite" parent="."]
-position = Vector2( -0.2295, -10.3582 )
+position = Vector2( 0, 8 )
 texture = ExtResource( 4 )
 offset = Vector2( 10, 0 )
 
@@ -87,6 +103,5 @@ damage = 5
 visible = false
 frames = SubResource( 2 )
 animation = "flash"
-
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
