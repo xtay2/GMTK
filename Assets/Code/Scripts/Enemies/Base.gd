@@ -1,7 +1,7 @@
 extends PathFollow2D  # Necaissary since every path has it's own offset
 class_name Enemy
 
-export var path_completion_time = 10 # How many seconds does it take to comppleate the path
+export var speed = 20 # How many pixels per second
 export var start_health = 10
 
 # To make the movement more interesting
@@ -22,7 +22,7 @@ func _ready():
 	
 func _process(delta):
 	time += delta  # I don't use universal time to handle pausation properly
-	unit_offset += delta  / path_completion_time
+	offset += delta  * speed
 	
 	var velocity = $Animation.global_position - previous_pos
 	previous_pos = $Animation.global_position

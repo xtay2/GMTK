@@ -19,8 +19,7 @@ script = ExtResource( 1 )
 z_index = -5
 
 [node name="EnemyLogic" parent="." instance=ExtResource( 4 )]
-position = Vector2( 830.801, 384.24 )
-rotation = 3.01978
+position = Vector2( -2, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
