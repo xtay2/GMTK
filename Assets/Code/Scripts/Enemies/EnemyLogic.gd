@@ -58,7 +58,6 @@ func coroutine_spawn_enemies(type_list: Array):
 func new_wave():
 	if wave_number == len(wave_data):
 		print("You win")
-		get_tree().reload_current_scene()
 		return
 	
 	var enemies = wave_data[wave_number]
