@@ -11,5 +11,6 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="mouse_entered" from="Graphic" to="." method="_on_Graphic_mouse_entered"]
 [connection signal="mouse_exited" from="Graphic" to="." method="_on_Graphic_mouse_exited"]
