@@ -22,7 +22,7 @@ onready var main = find_parent(\"Main\")
 onready var map = main.find_node(\"Map\")
 
 #Visual Management for Towers 
-onready var ui = find_parent(\"TowerUI\")
+onready var ui = main.find_node(\"TowerUI\")
 
 #Punkte die Tower abdeckt
 var spots := []
@@ -31,6 +31,10 @@ var box := Vector2(1, 1)
 
 func _ready():
 	map.place_node(self)
+	#Energieleitung
+	cable = cable_class.instance()
+	add_child(cable)
+	cable.initialise(Vector2(0, 6), Vector2(0, 6), null)
 
 func _process(_delta):
 	$Turret_Gun.look_at(get_global_mouse_position())
@@ -57,6 +61,68 @@ func _on_Gun_has_shoot():
 	$Turret_Gun/Gun/AnimatedSprite.visible = true
 	$Turret_Gun/Gun/AnimatedSprite.scale = Vector2.ONE * rand_range(2, 2.5)
 	$Turret_Gun/Gun/AnimatedSprite.play(\"flash\")
+
+#--------------------------------------------------ENERGY-----------------------------------------
+#The Tower the energy is coming from
+var previous_tower
+
+#The Tower the energy is going to
+var next_tower
+
+var energy_level = 0
+var energy_loss = 10
+
+var is_selected = false
+
+var cable_class = preload(\"res://Assets/Code/Scenes/Electricity/Cable.tscn\")
+
+var cable
+
+func _on_Hitbox_mouse_entered():
+	ui.hovering_tower = self
+
+func _on_Hitbox_mouse_exited():
+	ui.hovering_tower = null
+
+func has_energy():
+	return (energy_level - energy_loss) > 0
+
+func update_selected():
+	if is_selected: 
+		$TowerBase.modulate = ui.SELECTED_COLOR
+		$Turret_Gun.modulate = ui.SELECTED_COLOR
+	else:
+		$TowerBase.modulate = Color.white
+		$Turret_Gun.modulate = Color.white
+
+func connect_to_next(next):
+	next_tower = next
+	var pos = Vector2(next.global_position.x - global_position.x, next.global_position.y - global_position.y + 6)
+	cable.connect_to_tower(pos, next_tower)
+	
+func connect_to_previous(previous):
+	previous_tower = previous
+	
+func update_energy():
+	if previous_tower:
+		energy_level = previous_tower.get_passed_on_energy()
+	else:
+		energy_level = 0
+
+#Sagt den nächsten Türmen wie viel Energy sie haben
+func get_passed_on_energy():
+	return energy_level - energy_loss
+	
+func remove_cable():
+	cable.shrink()
+	
+func power_breakdown():
+	if next_tower:
+		next_tower.power_breakdown()
+		next_tower = null
+	remove_cable()
+	previous_tower = null
+	energy_level = 0
 "
 
 [sub_resource type="SpriteFrames" id=2]
@@ -99,5 +165,15 @@ damage = 30
 visible = false
 frames = SubResource( 2 )
 animation = "flash"
+
+[node name="Hitbox" type="TextureRect" parent="."]
+margin_left = -9.0
+margin_right = 9.0
+margin_bottom = 35.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
+[connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
