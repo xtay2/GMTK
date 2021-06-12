@@ -97,7 +97,7 @@ func place_tower(class_instance):
 #Wähle Tower aus
 func select():
 	if selected_towers.Tower1 == null:
-		if hovering_tower.has_energy():
+		if hovering_tower.has_energy() and not ("Factory" in hovering_tower.name):
 			selected_towers.Tower1 = hovering_tower
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
@@ -126,7 +126,7 @@ func step_connection_mode():
 	if selected_towers.Tower1 != null:
 		selected_towers.Tower1.is_selected = false
 		selected_towers.Tower1.update_selected()
-		if selected_towers.Tower2 != null:
+		if selected_towers.Tower2 != null and not ("Factory" in selected_towers.Tower2.name) :
 			selected_towers.Tower1 = selected_towers.Tower2
 			selected_towers.Tower2.is_selected = false
 			selected_towers.Tower2.update_selected()
