@@ -11,6 +11,7 @@ var placed_towers = 0
 
 #Class imports
 var tower_class = preload("res://Assets/Code/Scenes/Electricity/ElectricityTower.tscn")
+var splitter_class = preload("res://Assets/Code/Scenes/Electricity/ElectricitySplitter.tscn")
 var reactor_class = preload("res://Assets/Code/Scenes/Electricity/Reactor.tscn")
 
 #Modes
@@ -30,10 +31,11 @@ func _ready():
 	$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 
 func _input(event):
-	if event is InputEventKey:
 		#Init Placemode 
-		if event.is_action_pressed("space") and !place_mode and !connect_mode and placed_towers < max_towers:
-			place_tower()
+		if event.is_action_pressed("one") and !place_mode and !connect_mode and placed_towers < max_towers:
+			place_tower(tower_class)
+		if event.is_action_pressed("two") and !place_mode and !connect_mode and placed_towers < max_towers:
+			place_tower(splitter_class)
 		#Init Connectmode
 		elif event.is_action_pressed("shift") and !place_mode:
 			start_connect_mode()
@@ -42,8 +44,6 @@ func _input(event):
 		elif event.is_action_released("shift") and connect_mode:
 			end_connection_mode()
 			return
-
-	if event is InputEventMouseButton:
 		#Confirm Placement
 		if event.is_action_pressed("left_click") and place_mode:
 			last_tower.place_this()
@@ -54,14 +54,14 @@ func _input(event):
 		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
 			select()
 		#Remove Tower
-		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and "ElectricityTower" in hovering_tower.name:
+		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and "Electricity" in hovering_tower.name:
 			hovering_tower.removeTower()
 			hovering_tower = null
 			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 			return
 		#Remove connections and select
-		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower.name != "Reactor" and hovering_tower.next_tower:
-			hovering_tower.next_tower.power_breakdown()
+		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower.name != "Reactor" and hovering_tower.has_next_tower():
+			hovering_tower.power_breakdown()
 			hovering_tower.remove_cable()
 			end_connection_mode()
 			start_connect_mode()
@@ -72,10 +72,6 @@ func _input(event):
 			if selected_towers.Tower1.name == "Reactor":
 				selected_towers.Tower1.add_next(selected_towers.Tower2)
 			else:
-				#Rekursives zerstören der Energie
-				if selected_towers.Tower1.next_tower:
-					selected_towers.Tower1.next_tower.power_breakdown()
-				#Connecten der hinteren
 				selected_towers.Tower1.connect_to_next(selected_towers.Tower2)
 			selected_towers.Tower2.connect_to_previous(selected_towers.Tower1)
 			step_connection_mode()
@@ -85,8 +81,8 @@ func _input(event):
 					end_connection_mode()
 
 #Füge Tower am Anfang im place mode hinzu
-func place_tower():
-	last_tower = tower_class.instance()
+func place_tower(class_instance):
+	last_tower = class_instance.instance()
 	add_child(last_tower)
 	place_mode = true
 	placed_towers += 1
@@ -94,12 +90,12 @@ func place_tower():
 #Wähle Tower aus
 func select():
 	if selected_towers.Tower1 == null:
-		if hovering_tower.has_energy():
+		if hovering_tower.has_energy() and (hovering_tower.name == "Reactor" or !hovering_tower.has_next_tower()):
 			selected_towers.Tower1 = hovering_tower
 			selected_towers.Tower1.is_selected = true
 			selected_towers.Tower1.update_selected()
 			
-	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor":
+	elif selected_towers.Tower2 == null and hovering_tower.name != "Reactor" and !hovering_tower.has_next_tower():
 		if !hovering_tower.previous_tower and selected_towers.Tower1.has_energy() and selected_towers.Tower1.is_in_range_of(hovering_tower):
 			selected_towers.Tower2 = hovering_tower
 			selected_towers.Tower2.is_selected = true
