@@ -63,6 +63,8 @@ func update_selected():
 
 #Sagt den nächsten Türmen wie viel Energy sie haben
 func get_passed_on_energy():
+	if next_towers.empty():
+		return 0
 	return total_energy / next_towers.size()
 
 
