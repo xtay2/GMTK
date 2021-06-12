@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder_static_32x32.png-314148ff820431a212832455493f37cd.stex"
+path="res://.import/electric_tower.png-5fb834a31281acf9b457b8a338f9fdcf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/PlaceholderTextures/placeholder_static_32x32.png"
-dest_files=[ "res://.import/placeholder_static_32x32.png-314148ff820431a212832455493f37cd.stex" ]
+source_file="res://Assets/Graphics/Sprites/Towers/electric_tower.png"
+dest_files=[ "res://.import/electric_tower.png-5fb834a31281acf9b457b8a338f9fdcf.stex" ]
 
 [params]
 
