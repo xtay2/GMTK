@@ -14,6 +14,11 @@ var total_energy = 100
 
 var max_connections = 5
 
+#Punkte die Tower abdeckt
+var spots := []
+#Width and height of tower in tiles
+var box := Vector2(3, 3)
+
 func _ready():
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 
@@ -21,19 +26,21 @@ func add_next(tower):
 	next_towers.append(tower)
 	var line = cable_class.instance()
 	var pos = Vector2(tower.global_position.x - global_position.x, tower.global_position.y - global_position.y + 6)
-	line.initialise(Vector2(0, -13), pos, tower)
+	line.initialise(Vector2(16, 27), pos, tower)
 	add_child(line)
 	cables.append(line)
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 	
 func remove_next(tower):
-	next_towers.remove(next_towers.bsearch(tower))
-	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 	for child in cables:
-		if child.end_tower == tower:
+		if child and child.end_tower == tower:
+			next_towers.remove(next_towers.find(tower))
 			child.queue_free()
-			cables.remove(next_towers.bsearch(child))
-			return
+			break
+	if cables.has(null):
+		cables.remove(cables.find(null))
+	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
+
 
 func has_energy():
 	return next_towers.size() < max_connections 
@@ -55,3 +62,6 @@ func _on_Hitbox_mouse_entered():
 
 func _on_Hitbox_mouse_exited():
 	ui.hovering_tower = null
+
+
+	
