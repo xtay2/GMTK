@@ -42,7 +42,6 @@ func die():
 	for tower in get_tree().get_nodes_in_group("towers"):
 		if tower.enemy_que.has($EnemyHitbox):
 			tower.enemy_que.erase($EnemyHitbox)
-			find_parent("EnemyLogic").enemy_has_died()
 			emit_signal("on_die")
 			queue_free()
 			

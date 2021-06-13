@@ -9,22 +9,25 @@ var follower = preload("res://Assets/Code/Scenes/Enemies/CharacterFollower.tscn"
 
 var wave_composition := {"Dino" : 0,"Emp": 0, "Heavy": 0, "Rectangle" : 0, "Rush" : 0}
 
-var enemyCount
+var enemy_count = 0
+var max_enemy_count = INF 
 
 func _ready():
 	init_wave()
 
 func _process(delta):
 	timer += delta
-	if timer > spawn_interval and !wave_composition.empty():
+	if timer > spawn_interval and max_enemy_count > 0:
 		var type = generate_type()
 		var new_follower = follower.instance()
 		new_follower.init_enemy(type)
 		add_child(new_follower)
 		timer = 0
-	elif wave_composition.empty() and enemyCount == 0:
+		max_enemy_count -= 1
+	if wave_composition.empty() and enemy_count <= 0:
 		main.wave += 1
 		init_wave()
+	update_enemy_count()
 
 func init_wave():
 	var w = main.wave
@@ -33,23 +36,24 @@ func init_wave():
 	wave_composition.Emp = round(-10 + w * 2)
 	wave_composition.Heavy = round(-100 + w * 3)
 	wave_composition.Rectangle = round(-100 + w * 5)
-
-func generate_type():
 	var everything = 0
 	for entry in wave_composition:
-		everything += wave_composition.get(entry)
-	enemyCount = everything
-	while true:
+		if wave_composition.get(entry) > 0:
+			everything += wave_composition.get(entry)
+	enemy_count = everything
+	max_enemy_count = everything
+
+func generate_type():
+	while max_enemy_count > 0 :
 		for entry in wave_composition:
-			if wave_composition.get(entry) > 0 and randi() % int(everything) < wave_composition.get(entry):
+			if enemy_count > 0 and randi() % int(enemy_count) < wave_composition.get(entry):
 				wave_composition[entry] -= 1 
 				return entry
-
-func enemy_has_died():
-	enemyCount -= 1
-	print("Enemies Left: " + String(enemyCount))
 
 func _on_reactor_entered(area):
 	if "EnemyHitbox" in area.name:
 		print("Loosecondition")
 	
+
+func update_enemy_count():
+	enemy_count = get_tree().get_nodes_in_group("enemy").size()

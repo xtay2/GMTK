@@ -8,8 +8,11 @@ const rectangle = preload("res://Assets/Code/Scenes/Enemies/Rectangle.tscn")
 
 var speed = 0
 
+var enemy
+
 func _process(delta):
 	offset += speed * delta
+
 
 func init_enemy(type):
 	print(type)
@@ -32,6 +35,9 @@ func init_enemy(type):
 			node.initialise(10, 10)
 	add_child(node)
 	speed = node.speed
+	enemy = node
+	node.connect("on_die", self, "node_died")
 
 
-
+func node_died():
+	queue_free()

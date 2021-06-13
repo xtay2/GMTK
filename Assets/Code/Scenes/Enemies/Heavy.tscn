@@ -37,7 +37,6 @@ oscillation_magnitude = 15
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "walk_south"
-frame = 1
 speed_scale = 0.5
 playing = true
 
