@@ -41,7 +41,6 @@ func _physics_process(_delta):
 		$Turret_Gun/Gun.shoot(tower.target)
 	if tower.energie_consumption < energy_level:
 		$Turret_Gun.texture = aktiv_texture
-		$Turret_Gun/AnimatedSprite.play("Effect")
 	else:
 		$Turret_Gun.texture = passiv_texture
 		$Turret_Gun/AnimatedSprite.frame = 0

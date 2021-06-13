@@ -1,25 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/TowerUI.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sound/Soundeffects/Button.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Graphics/UI/connect_mode_overlay1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends AudioStreamPlayer
-
-func play_sound(code):
-	match code:
-		\"connect\":
-			stream = preload(\"res://Assets/Sound/Soundeffects/Node_Connection.mp3\")
-		\"place_tower\":
-			stream = preload(\"res://Assets/Sound/Soundeffects/Tower_Place.mp3\")
-	if stream != null:
-		play()
-"
 
 [node name="TowerUI" type="Node2D"]
 script = ExtResource( 1 )
@@ -41,9 +27,3 @@ text = "Towercount"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="UISounds" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-script = SubResource( 2 )
-
-[connection signal="play" from="." to="UISounds" method="play_sound"]
