@@ -31,15 +31,22 @@ func _process(delta):
 
 func init_wave():
 	var w = main.wave
-	wave_composition.Dino = round(20 + w * 5)
-	wave_composition.Rush = round(-2 + w * 3)
-	wave_composition.Emp = round(-10 + w * 2)
-	wave_composition.Heavy = round(-100 + w * 3)
-	wave_composition.Rectangle = round(-100 + w * 5)
+	if w % 3 == 0:
+		wave_composition.Dino = round(7 * (1 + w * 0.1))
+	if w % 5 == 0:
+		wave_composition.Rush = round(12 * (1 + w * 0.1))
+	if w % 7 == 0:
+		wave_composition.Emp = round(5 * (1 + w * 0.1))
+	if w % 10 == 0:
+		wave_composition.Heavy = round(3 * (1 + w * 0.1))
 	var everything = 0
 	for ct in wave_composition.values():
 		if ct > 0:
 			everything += ct
+	if everything == 0:
+		print(everything)
+		wave_composition.Rectangle = round(10 * (1 + w * 0.1))
+		everything = wave_composition.Rectangle
 	max_enemy_count = everything
 	print("Starting Wave " + String(main.wave) + " with " + String(max_enemy_count) + " enemies")
 

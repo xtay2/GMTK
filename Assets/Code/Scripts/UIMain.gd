@@ -43,7 +43,7 @@ func _input(event):  # For the case we need it
 		
 
 func _on_powerline_selected(_extra_arg_0):
-	emit_signal("on_select_powerline")
+	emit_signal("toggle_connetion_mode")
 
 func update_buttons():
 	for i in range(4):
@@ -72,6 +72,6 @@ func _on_Speed2_pressed():
 
 
 func _on_Speed3_pressed():
-	main.speed_factor = 5
+	main.speed_factor = 3
 	update_buttons()
 	get_tree().paused = false
