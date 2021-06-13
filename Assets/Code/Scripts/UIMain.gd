@@ -42,7 +42,7 @@ func _input(event):  # For the case we need it
 		get_tree().paused = true
 		
 
-func _on_powerline_selected(extra_arg_0):
+func _on_powerline_selected(_extra_arg_0):
 	emit_signal("on_select_powerline")
 
 func update_buttons():
