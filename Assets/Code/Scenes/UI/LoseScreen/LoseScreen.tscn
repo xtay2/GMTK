@@ -7,9 +7,11 @@
 script/source = "extends Control
 
 func _ready():
-	$CanvasLayer/VBoxContainer/Label2.text += str(G.EnemyKilled)
-
-
+#	$CanvasLayer/VBoxContainer/CenterContainer/VBoxContainer/Label2.text += str(Global.enemy_killed)
+#	$CanvasLayer/VBoxContainer/CenterContainer/VBoxContainer/Label3.text += str(Global.factory_points)
+#	$CanvasLayer/VBoxContainer/CenterContainer/VBoxContainer/Label2.text += str(Global.enemy_killed)
+	pass
+	
 func _on_Button_pressed():
 	pass # Replace with function body.
 
