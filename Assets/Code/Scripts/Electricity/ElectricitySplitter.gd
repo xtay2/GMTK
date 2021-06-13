@@ -159,3 +159,5 @@ func position_this():
 
 func cut_next():
 	next_towers.clear()
+
+

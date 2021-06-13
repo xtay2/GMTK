@@ -21,6 +21,10 @@ var total_energy = 100
 
 var max_connections = 5
 
+var power_used = 0
+
+var damage_done = 0
+
 #Punkte die Tower abdeckt
 var spots := []
 #Width and height of tower in tiles
@@ -80,4 +84,13 @@ func is_in_range_of(presumed):
 	
 func _process(_delta):
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
+	power_used = get_total_consumption()
 	
+
+func get_total_consumption():
+	var list = get_tree().get_nodes_in_group("building")
+	var total_consumption = 0
+	for entry in list:
+		if entry.energy_level > 0:
+			total_consumption += entry.energy_loss
+	return total_consumption

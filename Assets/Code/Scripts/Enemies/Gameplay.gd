@@ -65,7 +65,8 @@ func generate_type():
 
 func _on_reactor_entered(area):
 	if "EnemyHitbox" in area.name:
-		print("Loosecondition")
+		main.find_node("Reactor").damage_done += 5
+		area.get_parent().die()
 	
 
 func update_enemy_count():

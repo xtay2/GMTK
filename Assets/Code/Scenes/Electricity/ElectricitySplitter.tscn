@@ -26,6 +26,7 @@ animations = [ {
 } ]
 
 [node name="ElectricitySplitter" type="Node2D" groups=[
+"building",
 "electricity",
 ]]
 script = ExtResource( 1 )
@@ -73,5 +74,6 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
