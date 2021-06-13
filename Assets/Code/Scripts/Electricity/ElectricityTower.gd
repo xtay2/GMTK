@@ -15,7 +15,7 @@ onready var main = find_parent("Main")
 onready var map = main.find_node("Map")
 
 #Visual Management for Towers 
-onready var ui = find_parent("TowerUI")
+onready var ui = main.find_node("TowerUI")
 
 var power_input := Vector2(0, 30)
 
@@ -25,7 +25,7 @@ var cable
 
 var energy_level = 0
 
-var energy_loss = 10
+export var energy_loss = 10
 
 #Punkte die Tower abdeckt
 var spots := []

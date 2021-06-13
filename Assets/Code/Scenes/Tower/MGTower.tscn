@@ -35,7 +35,8 @@ script = ExtResource( 11 )
 position = Vector2( 8, 6 )
 script = ExtResource( 2 )
 t_name = "MGTower"
-detection_radius = 400
+energie_consumption = 25
+detection_radius = 100
 
 [node name="TowerBase" type="Sprite" parent="."]
 position = Vector2( -1, 1 )
@@ -64,7 +65,7 @@ bullet_spread = 0.3
 gun_cooldown = 0.25
 bullet_lifetime = 4.0
 bullet_speed = 150
-bullet_damage = 10
+bullet_damage = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun/Gun"]
 visible = false
@@ -82,6 +83,7 @@ __meta__ = {
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 10 )]
 position = Vector2( 8, 6 )
+
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
