@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Base_Destroyed.mp3-0d6fdb5e527a3664dfc7d12b2f9b1b6a.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

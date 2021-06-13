@@ -6,11 +6,6 @@ export var oscillation_frequency = 10  # Hz
 export var oscillation_magnitude = 0  # Pixels
 onready var oscillation_phase = rand_range(0, TAU)  # seconds; to break up the uniformity
 
-const DEATH_SOUNDS = [
-	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_1.mp3"),
-	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_2.mp3"),
-	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_3.mp3")
-]
 const HIT_SOUND = preload("res://Assets/Sound/Soundeffects/Enemy_Hit.mp3")
 
 var time = 0
@@ -50,9 +45,7 @@ func die():
 		if tower.enemy_que.has($EnemyHitbox):
 			tower.enemy_que.erase($EnemyHitbox)
 			emit_signal("on_die")
-			Global.enemies_killed += 1
-			queue_free()
-			
+			Global.enemies_killed += 1			
 
 func loose_health(h: float):
 	health -= h
@@ -60,6 +53,7 @@ func loose_health(h: float):
 		die()
 
 func _on_Hitbox_area_entered(area):
-	if area is Bullet:
+	if area.get_parent() is Bullet:
+		$AudioPlayer.pitch_scale = rand_range(0.9, 1.1)
 		$AudioPlayer.stream = HIT_SOUND
 		$AudioPlayer.play()

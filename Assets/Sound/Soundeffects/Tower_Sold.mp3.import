@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Tower_Sold.mp3-d35dd494df226dec0746b6cdeecb5fe7.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

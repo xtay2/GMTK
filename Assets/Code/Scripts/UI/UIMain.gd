@@ -21,7 +21,7 @@ func update_enemy_info(wave, enemy_count):
 	$EnemyStateInfo/Enemies.text = "Enemies left: " + String(enemy_count)
 	$EnemyStateInfo/Wave.text = "%s" % main.wave
 		
-	var music = music_wave[wave - 1]
+	var music = music_wave[(wave - 1) % music_wave.size()]
 	if music != $MusicPlayer.stream:
 		$MusicPlayer.stream = music
 		$MusicPlayer.play(0)

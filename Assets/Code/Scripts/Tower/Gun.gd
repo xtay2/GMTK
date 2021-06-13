@@ -41,6 +41,7 @@ func shoot(target_pos: Vector2 = get_global_mouse_position()):
 			bullet_instace.rotation = rot
 			bullet_instace.initialise(bullet_damage, bullet_speed, bullet_lifetime)
 			get_tree().root.add_child(bullet_instace)
+			$Player.play()
 		
 		if not sound == null:
 				sound.play()

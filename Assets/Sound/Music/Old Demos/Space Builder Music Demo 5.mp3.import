@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Space Builder Music Demo 5.mp3-6e2e69f4413f5dd613fc72ca01dfa62e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Music/Old Demos/Space Builder Music Demo 5.mp3"
+dest_files=[ "res://.import/Space Builder Music Demo 5.mp3-6e2e69f4413f5dd613fc72ca01dfa62e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
