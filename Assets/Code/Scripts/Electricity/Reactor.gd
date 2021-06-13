@@ -36,8 +36,6 @@ func _ready():
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
 	map.place_node(self)
 	$EnergyRadius.initialise(self, 10)
-	yield(get_tree().create_timer(20),"timeout")
-	explode()
 
 func add_next(tower):
 	next_towers.append(tower)

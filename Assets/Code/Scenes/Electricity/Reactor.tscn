@@ -52,6 +52,10 @@ script = ExtResource( 1 )
 position = Vector2( -2, 0 )
 z_as_relative = false
 frames = SubResource( 1 )
+<<<<<<< HEAD
+=======
+frame = 1
+>>>>>>> 1c4376165d2b2954a8f3802da886e8d2b21fa666
 playing = true
 centered = false
 
