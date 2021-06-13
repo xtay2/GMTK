@@ -7,7 +7,7 @@
 script/source = "extends Control
 
 func _ready():
-	
+	$CanvasLayer/VBoxContainer/Label2.text += str(G.EnemyKilled)
 "
 
 [sub_resource type="DynamicFont" id=1]
@@ -52,12 +52,29 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 64.0
+margin_top = 176.0
 margin_right = 640.0
-margin_bottom = 76.0
+margin_bottom = 188.0
+size_flags_vertical = 6
 custom_fonts/font = SubResource( 2 )
 text = "enemys killed: "
 align = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_left = 281.0
+margin_top = 320.0
+margin_right = 358.0
+margin_bottom = 340.0
+size_flags_horizontal = 4
+text = "retry level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="CanvasLayer/VBoxContainer"]
+margin_top = 360.0
+margin_right = 640.0
+margin_bottom = 360.0
 
 [node name="BG" type="CanvasLayer" parent="."]
 layer = 0
