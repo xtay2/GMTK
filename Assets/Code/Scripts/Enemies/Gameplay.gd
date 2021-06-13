@@ -24,7 +24,7 @@ func _process(delta):
 		add_child(new_follower)
 		timer = 0
 		max_enemy_count -= 1
-	if wave_composition.empty() and enemy_count <= 0:
+	if max_enemy_count <= 0 and enemy_count <= 0:
 		main.wave += 1
 		init_wave()
 	update_enemy_count()
@@ -70,3 +70,4 @@ func _on_reactor_entered(area):
 
 func update_enemy_count():
 	enemy_count = get_tree().get_nodes_in_group("enemy").size()
+	main.find_node("ProperUI2").update_enemy_info(main.wave, enemy_count)
