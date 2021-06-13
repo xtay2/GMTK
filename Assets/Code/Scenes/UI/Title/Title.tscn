@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/Graphics/Theme/Title.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Graphics/UI/Title/Terminal_voltage_logo.png" type="Texture" id=2]
@@ -13,8 +13,14 @@
 [ext_resource path="res://Assets/Graphics/UI/Title/close_hover.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Graphics/UI/Title/close_pressed.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Graphics/UI/Title/close.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/UI/Title/Settings_button_clicked.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/UI/Title/Settings_button_inactive.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Graphics/UI/Title/Settings_button_hover.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Graphics/UI/Title/Start_inactive.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Graphics/UI/Title/Start_button_hover.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/UI/Title/Start_button_clicked.png" type="Texture" id=19]
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 func _on_Button_pressed():
@@ -29,15 +35,15 @@ func _on_CloseButton_pressed():
 	$PopUps/PopupPanel.visible = false
 "
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
 shader_param/color = Color( 0.188235, 0.188235, 0.188235, 0.501961 )
 shader_param/OCTAVES = 4
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=4]
 CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -57,38 +63,39 @@ CheckBox/styles/hover_pressed = null
 CheckBox/styles/normal = null
 CheckBox/styles/pressed = null
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 69, 11 )
 expand_margin_left = 8.0
 expand_margin_top = 4.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 69, 11 )
 expand_margin_left = 8.0
 expand_margin_top = 4.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxEmpty" id=12]
+[sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 69, 11 )
 expand_margin_left = 8.0
 expand_margin_top = 4.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 69, 11 )
 expand_margin_left = 8.0
 expand_margin_top = 4.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxEmpty" id=13]
+[sub_resource type="StyleBoxEmpty" id=10]
 
-[sub_resource type="StyleBoxTexture" id=14]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 15, 3 )
 
@@ -96,7 +103,7 @@ region_rect = Rect2( 0, 0, 15, 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-script = SubResource( 5 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -112,7 +119,7 @@ __meta__ = {
 }
 
 [node name="Fog" type="ColorRect" parent="BG"]
-material = SubResource( 4 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -155,40 +162,47 @@ stretch_mode = 6
 [node name="CenterContainer" type="CenterContainer" parent="FG/FG"]
 margin_top = 189.0
 margin_right = 640.0
-margin_bottom = 310.0
+margin_bottom = 307.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="FG/FG/CenterContainer"]
-margin_left = 298.0
-margin_top = 51.0
-margin_right = 342.0
-margin_bottom = 69.0
-text = "Play"
+[node name="Button" type="TextureButton" parent="FG/FG/CenterContainer"]
+margin_left = 240.0
+margin_top = 39.0
+margin_right = 400.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 160, 40 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 18 )
+expand = true
+stretch_mode = 5
 
-[node name="Footer" type="HBoxContainer" parent="FG/FG"]
-margin_top = 326.0
+[node name="CenterContainer2" type="CenterContainer" parent="FG/FG"]
+margin_top = 323.0
 margin_right = 640.0
-margin_bottom = 344.0
-alignment = 2
+margin_bottom = 343.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MuteMusic2" type="Button" parent="FG/FG/Footer"]
-margin_left = 558.0
-margin_right = 636.0
-margin_bottom = 18.0
-text = "Settings"
-
-[node name="Control3" type="Control" parent="FG/FG/Footer"]
-margin_left = 640.0
-margin_right = 640.0
-margin_bottom = 18.0
+[node name="MuteMusic2" type="TextureButton" parent="FG/FG/CenterContainer2"]
+margin_left = 280.0
+margin_right = 360.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 80, 20 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 16 )
+expand = true
+stretch_mode = 5
 
 [node name="Control2" type="Control" parent="FG/FG"]
-margin_top = 360.0
+margin_top = 359.0
 margin_right = 640.0
-margin_bottom = 360.0
+margin_bottom = 359.0
 
 [node name="PopUps" type="CanvasLayer" parent="."]
 layer = 3
@@ -208,6 +222,10 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="PopUps/PopupPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -236,7 +254,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 298.0
 margin_bottom = 12.0
-custom_styles/normal = SubResource( 6 )
+custom_styles/normal = SubResource( 3 )
 text = "Settings"
 align = 1
 __meta__ = {
@@ -274,12 +292,12 @@ margin_top = 17.0
 margin_right = 95.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 95, 12 )
-theme = SubResource( 7 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 12 )
-custom_styles/hover_pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+theme = SubResource( 4 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/hover_pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
 text = "Mute Sound"
 
 [node name="CheckBox2" type="CheckBox" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
@@ -287,12 +305,12 @@ margin_top = 46.0
 margin_right = 95.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 95, 12 )
-theme = SubResource( 7 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/hover_pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+theme = SubResource( 4 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/hover_pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
 text = "Mute Music"
 
 [node name="SoundContainer" type="HBoxContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
@@ -315,7 +333,7 @@ custom_icons/tick = ExtResource( 9 )
 custom_icons/grabber_disabled = ExtResource( 9 )
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 14 )
+custom_styles/slider = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -339,7 +357,7 @@ custom_icons/tick = ExtResource( 9 )
 custom_icons/grabber_disabled = ExtResource( 9 )
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
-custom_styles/slider = SubResource( 14 )
+custom_styles/slider = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -362,5 +380,5 @@ margin_right = 320.0
 margin_bottom = 132.0
 
 [connection signal="pressed" from="FG/FG/CenterContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="FG/FG/Footer/MuteMusic2" to="." method="_on_MuteMusic2_pressed"]
+[connection signal="pressed" from="FG/FG/CenterContainer2/MuteMusic2" to="." method="_on_MuteMusic2_pressed"]
 [connection signal="pressed" from="PopUps/PopupPanel/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
