@@ -59,13 +59,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 156.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 64.0
 margin_right = 640.0
-margin_bottom = 168.0
-size_flags_vertical = 6
+margin_bottom = 260.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/CenterContainer"]
+margin_left = 224.0
+margin_top = 71.0
+margin_right = 415.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_right = 191.0
+margin_bottom = 12.0
 custom_fonts/font = SubResource( 2 )
 text = "enemys killed: "
+align = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 21.0
+margin_right = 191.0
+margin_bottom = 33.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 2 )
+text = "Points through factories: "
+align = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 191.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 2 )
+text = "Total points: "
 align = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
@@ -101,8 +133,8 @@ layer = 0
 [node name="ColorRect" type="ColorRect" parent="BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -0.561279
-margin_right = -0.561279
+margin_left = -1.2287
+margin_right = -1.2287
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
