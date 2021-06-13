@@ -43,6 +43,7 @@ margin_bottom = 21.7138
 font_data = ExtResource( 1 )
 
 [node name="ProperUI" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 0.667419
@@ -296,6 +297,7 @@ __meta__ = {
 [node name="Speed0" type="TextureButton" parent="HBoxContainer"]
 margin_right = 32.0
 margin_bottom = 32.0
+toggle_mode = true
 texture_normal = ExtResource( 29 )
 texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 28 )
@@ -304,6 +306,7 @@ texture_hover = ExtResource( 28 )
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
+toggle_mode = true
 texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 18 )
 texture_hover = ExtResource( 27 )
@@ -312,6 +315,7 @@ texture_hover = ExtResource( 27 )
 margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
+toggle_mode = true
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 24 )
 texture_hover = ExtResource( 22 )
@@ -320,6 +324,7 @@ texture_hover = ExtResource( 22 )
 margin_left = 108.0
 margin_right = 140.0
 margin_bottom = 32.0
+toggle_mode = true
 texture_normal = ExtResource( 25 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 30 )
@@ -328,3 +333,7 @@ texture_hover = ExtResource( 30 )
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Attack" to="." method="_on_tower_selected" binds= [ "splitter" ]]
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/FireRate" to="." method="_on_tower_selected" binds= [ "splitter" ]]
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Range" to="." method="_on_tower_selected" binds= [ "splitter" ]]
+[connection signal="pressed" from="HBoxContainer/Speed0" to="." method="_on_Speed0_pressed"]
+[connection signal="pressed" from="HBoxContainer/Speed1" to="." method="_on_Speed1_pressed"]
+[connection signal="pressed" from="HBoxContainer/Speed2" to="." method="_on_Speed2_pressed"]
+[connection signal="pressed" from="HBoxContainer/Speed3" to="." method="_on_Speed3_pressed"]

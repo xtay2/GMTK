@@ -53,7 +53,7 @@ func update_buttons():
 		Engine.time_scale = main.speed_factor
 
 
-func _on_Pause_pressed():
+func _on_Speed0_pressed():
 	main.speed_factor = 0
 	main.pause_game()
 	update_buttons()
