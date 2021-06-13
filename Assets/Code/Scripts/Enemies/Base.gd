@@ -22,7 +22,7 @@ func initialise(start_health, start_speed):
 	health = start_health
 	speed = start_speed
 	
-func _process(delta):
+func _process(_delta):
 	var velocity = $Animation.global_position - previous_pos
 	previous_pos = $Animation.global_position
 	
@@ -42,9 +42,10 @@ func die():
 	for tower in get_tree().get_nodes_in_group("towers"):
 		if tower.enemy_que.has($EnemyHitbox):
 			tower.enemy_que.erase($EnemyHitbox)
-			queue_free()
+			find_parent("EnemyLogic").enemy_has_died()
 			emit_signal("on_die")
-	# Maybe something else too, idk
+			queue_free()
+			
 
 func loose_health(h: float):
 	health -= h
