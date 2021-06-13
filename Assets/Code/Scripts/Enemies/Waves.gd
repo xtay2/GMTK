@@ -44,10 +44,3 @@ func init_enemy(type):
 	enemy = node
 	node.connect("on_die", self, "node_died")
 
-
-func node_died():
-	var sound = DEATH_SOUNDS[randi() % DEATH_SOUNDS.size()]
-	$DeathAudioPlayer.stream = sound
-	$DeathAudioPlayer.play()
-	get_tree().create_timer(2).connect("finished", self,	"queue_free")
-	enemy.queue_free()

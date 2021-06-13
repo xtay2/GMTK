@@ -26,6 +26,7 @@ script = ExtResource( 1 )
 position = Vector2( -2, 0 )
 z_as_relative = false
 frames = SubResource( 1 )
+frame = 1
 playing = true
 centered = false
 
