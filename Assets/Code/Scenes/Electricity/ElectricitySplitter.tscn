@@ -9,23 +9,23 @@
 [ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/splitter_off.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "off",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "on",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
 } ]
 
-[node name="EnergySplitter" type="Node2D"]
+[node name="ElectricitySplitter" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="EnergyHUD" type="Label" parent="."]
@@ -33,7 +33,7 @@ visible = false
 margin_left = -20.0
 margin_top = -12.0
 margin_right = 20.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Juice"
 align = 1
 __meta__ = {
@@ -41,31 +41,31 @@ __meta__ = {
 }
 
 [node name="Socket" type="TextureRect" parent="."]
-margin_left = -16.0
-margin_top = 4.0
-margin_right = 16.0
-margin_bottom = 36.0
+margin_left = -8.0
+margin_top = 3.0
+margin_right = 24.0
+margin_bottom = 35.0
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Texture" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 5 )
-frames = SubResource( 1 )
+position = Vector2( 8, 4 )
+frames = SubResource( 2 )
 animation = "off"
 playing = true
 
+[node name="EnergyRadius" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8, 7 )
+
 [node name="Hitbox" type="TextureRect" parent="."]
-margin_left = -9.0
-margin_top = 4.0
-margin_right = 9.0
-margin_bottom = 35.0
+margin_left = -4.0
+margin_top = -2.0
+margin_right = 20.0
+margin_bottom = 33.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="EnergyRadius" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 8 )
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
