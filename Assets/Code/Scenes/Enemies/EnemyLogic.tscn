@@ -1,12 +1,21 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Code/Scripts/Enemies/EnemyLogic.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Code/Scenes/Enemies/Gameplay.gd" type="Script" id=1]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 245.766, 18, 0, 0, 0, 0, 252.248, 34, 0, 0, 0, 0, 125.186, 110, 0, 0, 0, 0, -34.2896, 43, 0, 0, 0, 0, 245.766, 18 )
+}
 
-[node name="EnemyLogic" type="Path2D"]
+[node name="EnemyLogic" type="Node2D"]
 script = ExtResource( 1 )
 
+<<<<<<< HEAD
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 77.4468, 0 )
+scale = Vector2( 0.771277, 1 )
+curve = SubResource( 1 )
+=======
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
@@ -16,3 +25,4 @@ one_shot = true
 shape = SubResource( 1 )
 [connection signal="wave_compleated" from="." to="." method="new_wave"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+>>>>>>> a4b771583774093c129bc5acde5bdb1a4a494ffb

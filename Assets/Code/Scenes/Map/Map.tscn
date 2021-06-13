@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Code/Scripts/Map/Map.gd" type="Script" id=1]
+
+[node name="Map" type="Node2D"]
+script = ExtResource( 1 )
+=======
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Map/Map.gd" type="Script" id=1]
@@ -69,3 +77,4 @@ position = Vector2( 464, 280 )
 
 [node name="Factory2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 168, 40 )
+>>>>>>> a4b771583774093c129bc5acde5bdb1a4a494ffb

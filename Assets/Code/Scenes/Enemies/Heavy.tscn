@@ -29,19 +29,14 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.29695, 9.15387 )
 
-[node name="HeavyEnemy" type="PathFollow2D"]
-position = Vector2( 178.131, 236.929 )
-rotate = false
-loop = false
+[node name="HeavyEnemy" type="Node2D"]
 script = ExtResource( 2 )
-path_completion_time = 20
 oscillation_frequency = 0
 oscillation_magnitude = 15
 
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "walk_south"
-frame = 1
 speed_scale = 0.5
 playing = true
 
@@ -53,5 +48,4 @@ playing = true
 shape = SubResource( 2 )
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

@@ -14,11 +14,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Assets/Code/Scripts/Tower/Bullet.gd"
 }, {
+<<<<<<< HEAD
 "base": "PathFollow2D",
+=======
+<<<<<<< HEAD
+"base": "Node2D",
+>>>>>>> dd810d991aeb3cafd2da98eb7df1f68b2a774f93
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Assets/Code/Scripts/Enemies/Base.gd"
 }, {
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> a4b771583774093c129bc5acde5bdb1a4a494ffb
+>>>>>>> dd810d991aeb3cafd2da98eb7df1f68b2a774f93
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",

@@ -1,7 +1,10 @@
-extends PathFollow2D  # Necaissary since every path has it's own offset
+extends Node2D  # Necaissary since every path has it's own offset
 class_name Enemy
 
+<<<<<<< HEAD
+=======
 export var speed = 20 # How many pixels per second
+>>>>>>> a4b771583774093c129bc5acde5bdb1a4a494ffb
 export var start_health = 10
 
 # To make the movement more interesting
@@ -21,9 +24,12 @@ func _ready():
 	health = start_health
 	
 func _process(delta):
+<<<<<<< HEAD
+=======
 	time += delta  # I don't use universal time to handle pausation properly
 	offset += delta  * speed
 	
+>>>>>>> a4b771583774093c129bc5acde5bdb1a4a494ffb
 	var velocity = $Animation.global_position - previous_pos
 	previous_pos = $Animation.global_position
 	
@@ -38,8 +44,6 @@ func _process(delta):
 	else:
 		$Animation.animation = "walk_straight"
 		$Animation.flip_h = true
-	
-	v_offset = oscillation_magnitude * sin(oscillation_phase + TAU * time * oscillation_frequency)
 	
 func die():
 	for tower in get_tree().get_nodes_in_group("towers"):

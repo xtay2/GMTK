@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Code/Scenes/Enemies/Waves.gd" type="Script" id=1]
+
+[node name="CharacterFollower" type="PathFollow2D"]
+rotation = -0.0149223
+script = ExtResource( 1 )
