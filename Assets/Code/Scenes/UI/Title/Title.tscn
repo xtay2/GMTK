@@ -1,8 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/Graphics/Theme/Title.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Graphics/UI/Title/Terminal_voltage_logo.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/Shaders/fog.shader" type="Shader" id=3]
+[ext_resource path="res://Assets/Graphics/UI/Title/unchecked_radio.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/UI/Title/checked_radio.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/UI/Title/Mute_sound_button_inactive_hover.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/UI/Title/Mute_sound_button_active.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/UI/Title/Mute_sound_button_active_hover.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/UI/Title/Tick.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/UI/Title/Bar.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/UI/Title/close_hover.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Graphics/UI/Title/close_pressed.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/UI/Title/close.png" type="Texture" id=13]
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends Control
@@ -26,6 +36,61 @@ shader_param/OCTAVES = 4
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.309804, 0.309804, 0.309804, 1 )
+
+[sub_resource type="Theme" id=7]
+CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = ExtResource( 5 )
+CheckBox/icons/radio_checked = ExtResource( 5 )
+CheckBox/icons/radio_unchecked = ExtResource( 4 )
+CheckBox/icons/unchecked = ExtResource( 4 )
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 69, 11 )
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 69, 11 )
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 69, 11 )
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 6 )
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 15, 3 )
 
 [node name="Title" type="Control"]
 anchor_right = 1.0
@@ -129,6 +194,7 @@ margin_bottom = 360.0
 layer = 3
 
 [node name="PopupPanel" type="PopupPanel" parent="PopUps"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.629974
@@ -136,6 +202,9 @@ margin_right = -320.0
 margin_bottom = -180.63
 rect_min_size = Vector2( 320, 180 )
 theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopUps/PopupPanel"]
 anchor_right = 1.0
@@ -150,23 +219,23 @@ margin_right = 320.0
 [node name="HBoxContainer" type="HBoxContainer" parent="PopUps/PopupPanel/VBoxContainer"]
 margin_top = 4.0
 margin_right = 320.0
-margin_bottom = 116.0
+margin_bottom = 136.0
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control7" type="Control" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
-margin_bottom = 112.0
+margin_bottom = 132.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
 margin_left = 4.0
-margin_right = 260.0
-margin_bottom = 112.0
+margin_right = 302.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 256.0
+margin_right = 298.0
 margin_bottom = 12.0
 custom_styles/normal = SubResource( 6 )
 text = "Settings"
@@ -177,8 +246,8 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 16.0
-margin_right = 256.0
-margin_bottom = 112.0
+margin_right = 298.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -186,14 +255,15 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer"]
-margin_left = 72.0
-margin_right = 183.0
-margin_bottom = 96.0
+margin_left = 101.0
+margin_right = 196.0
+margin_bottom = 116.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 17
 
 [node name="Control8" type="Control" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
-margin_right = 111.0
+margin_right = 95.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -201,68 +271,96 @@ __meta__ = {
 }
 
 [node name="CheckBox" type="CheckBox" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
-margin_top = 4.0
-margin_right = 111.0
-margin_bottom = 28.0
+margin_top = 17.0
+margin_right = 95.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 95, 12 )
+theme = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/hover_pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 text = "Mute Sound"
 
 [node name="CheckBox2" type="CheckBox" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
-margin_top = 32.0
-margin_right = 111.0
-margin_bottom = 56.0
+margin_top = 46.0
+margin_right = 95.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 95, 12 )
+theme = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/hover_pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 text = "Mute Music"
 
 [node name="SoundContainer" type="HBoxContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
-margin_top = 60.0
-margin_right = 111.0
-margin_bottom = 76.0
+margin_top = 75.0
+margin_right = 95.0
+margin_bottom = 87.0
 
 [node name="Label" type="Label" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/SoundContainer"]
-margin_top = 2.0
 margin_right = 49.0
-margin_bottom = 14.0
+margin_bottom = 12.0
 text = "Sound: "
 
 [node name="SoundSlider" type="HSlider" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/SoundContainer"]
 margin_left = 53.0
-margin_right = 111.0
-margin_bottom = 16.0
+margin_right = 95.0
+margin_bottom = 12.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_icons/tick = ExtResource( 9 )
+custom_icons/grabber_disabled = ExtResource( 9 )
+custom_icons/grabber_highlight = ExtResource( 9 )
+custom_icons/grabber = ExtResource( 9 )
+custom_styles/slider = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MusicContainer" type="HBoxContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
-margin_top = 80.0
-margin_right = 111.0
-margin_bottom = 96.0
+margin_top = 104.0
+margin_right = 95.0
+margin_bottom = 116.0
 
 [node name="Label" type="Label" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/MusicContainer"]
-margin_top = 2.0
 margin_right = 51.0
-margin_bottom = 14.0
+margin_bottom = 12.0
 text = "Music: "
 
 [node name="MusicSlider" type="HSlider" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/MusicContainer"]
 margin_left = 55.0
-margin_right = 111.0
-margin_bottom = 16.0
+margin_right = 95.0
+margin_bottom = 5.0
 size_flags_horizontal = 3
+custom_icons/tick = ExtResource( 9 )
+custom_icons/grabber_disabled = ExtResource( 9 )
+custom_icons/grabber_highlight = ExtResource( 9 )
+custom_icons/grabber = ExtResource( 9 )
+custom_styles/slider = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CloseButton" type="Button" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
-margin_left = 264.0
+[node name="CloseButton" type="TextureButton" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
+margin_left = 306.0
 margin_right = 316.0
-margin_bottom = 18.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
 size_flags_vertical = 0
-text = "close"
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
+expand = true
+stretch_mode = 4
 
 [node name="Control6" type="Control" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
 margin_left = 320.0
 margin_right = 320.0
-margin_bottom = 112.0
+margin_bottom = 132.0
 
 [connection signal="pressed" from="FG/FG/CenterContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="FG/FG/Footer/MuteMusic2" to="." method="_on_MuteMusic2_pressed"]
