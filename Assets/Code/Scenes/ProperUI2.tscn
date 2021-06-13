@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Code/Scripts/UIMain.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Code/Scripts/UI/UIMain.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_extension_icon.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_range_up_icon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Code/Scripts/UI/Power.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_box.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Wave/Wave_number_no_numbers.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_default.png" type="Texture" id=9]
@@ -31,7 +32,19 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.828125, 0.154465, 0.103516, 1, 0.933594, 0.403946, 0.317276, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0.788727, 0.371094, 1, 1, 0.127945, 0.839844, 0.806473, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 90, 36 )
 margin_left = 84.3776
@@ -39,7 +52,7 @@ margin_right = 49.8381
 margin_top = 28.8678
 margin_bottom = 21.7138
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 1 )
 
 [node name="ProperUI" type="Control"]
@@ -80,10 +93,10 @@ __meta__ = {
 }
 
 [node name="Enemies" type="Label" parent="EnemyStateInfo"]
-margin_left = 15.7201
-margin_top = 31.876
-margin_right = 55.7201
-margin_bottom = 45.876
+margin_left = -50.0
+margin_top = 33.3326
+margin_right = -9.99999
+margin_bottom = 47.3326
 custom_fonts/font = SubResource( 1 )
 text = "10|10"
 __meta__ = {
@@ -112,6 +125,35 @@ margin_top = -33.1765
 margin_right = -20.3391
 margin_bottom = 12.8235
 rect_scale = Vector2( 2, 2 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overload" type="TextureProgress" parent="Power"]
+margin_left = -1.0
+margin_right = 7.0
+margin_bottom = 46.0
+max_value = 90.0
+step = 10.0
+value = 50.0
+texture_progress = SubResource( 4 )
+fill_mode = 3
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Power" type="TextureProgress" parent="Power"]
+margin_left = -1.0
+margin_right = 7.0
+margin_bottom = 46.0
+max_value = 90.0
+step = 10.0
+value = 20.0
+texture_progress = SubResource( 6 )
+fill_mode = 3
+nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -129,62 +171,6 @@ texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Meter" type="VBoxContainer" parent="Power"]
-margin_left = -0.330445
-margin_top = 1.25453
-margin_right = 5.66956
-margin_bottom = 45.2546
-custom_constants/separation = 1
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Block1" type="TextureRect" parent="Power/Meter"]
-margin_top = 36.0
-margin_right = 6.0
-margin_bottom = 36.0
-
-[node name="Block2" type="TextureRect" parent="Power/Meter"]
-margin_top = 37.0
-margin_right = 6.0
-margin_bottom = 37.0
-
-[node name="Block3" type="TextureRect" parent="Power/Meter"]
-margin_top = 38.0
-margin_right = 6.0
-margin_bottom = 38.0
-
-[node name="Block4" type="TextureRect" parent="Power/Meter"]
-margin_top = 39.0
-margin_right = 6.0
-margin_bottom = 39.0
-
-[node name="Block5" type="TextureRect" parent="Power/Meter"]
-margin_top = 40.0
-margin_right = 6.0
-margin_bottom = 40.0
-
-[node name="Block6" type="TextureRect" parent="Power/Meter"]
-margin_top = 41.0
-margin_right = 6.0
-margin_bottom = 41.0
-
-[node name="Block7" type="TextureRect" parent="Power/Meter"]
-margin_top = 42.0
-margin_right = 6.0
-margin_bottom = 42.0
-
-[node name="Block8" type="TextureRect" parent="Power/Meter"]
-margin_top = 43.0
-margin_right = 6.0
-margin_bottom = 43.0
-
-[node name="Block9" type="TextureRect" parent="Power/Meter"]
-margin_top = 44.0
-margin_right = 6.0
-margin_bottom = 44.0
 
 [node name="Upgrade" type="TextureButton" parent="."]
 anchor_left = 1.0
@@ -211,7 +197,7 @@ margin_top = -49.0
 margin_right = 63.0
 margin_bottom = -27.0
 rect_scale = Vector2( 2, 2 )
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -276,7 +262,7 @@ margin_left = -0.33371
 margin_top = 1.83542
 margin_right = -0.33371
 margin_bottom = 13.8354
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 text = "Towers"
 align = 1
 __meta__ = {

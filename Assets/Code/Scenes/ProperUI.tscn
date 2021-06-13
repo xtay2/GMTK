@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Code/Scripts/UIMain.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Code/Scripts/UI/UIMain.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Graphics/PlaceholderTextures/placeholder_active_32x32.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/PlaceholderTextures/placeholder_32x32.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Graphics/UI/ffw1.png" type="Texture" id=5]
