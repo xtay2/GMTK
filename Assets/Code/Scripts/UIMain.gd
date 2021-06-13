@@ -20,7 +20,7 @@ func update_enemy_info(wave, enemy_count):
 		max_enemy_count = enemy_count
 		
 	$EnemyStateInfo/Enemies.text = "%s | %s" % [enemy_count, max_enemy_count]
-	$EnemyStateInfo/Wave.text = "Wave %s" % main.wave
+	$EnemyStateInfo/Wave.text = "%s" % main.wave
 	
 	var music = music_wave[wave - 1]
 	if music != $MusicPlayer.stream:
