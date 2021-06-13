@@ -87,7 +87,7 @@ func removeTower():
 			previous_tower.remove_cable()
 			break_power_start()
 			previous_tower.cut_next()
-			previous_tower.cable.shrink()
+			previous_tower.remove_cable()
 	break_power_start()
 	ui.placed_towers -= 1
 	map.remove_node(self)
