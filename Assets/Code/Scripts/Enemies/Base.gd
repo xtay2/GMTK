@@ -6,6 +6,13 @@ export var oscillation_frequency = 10  # Hz
 export var oscillation_magnitude = 0  # Pixels
 onready var oscillation_phase = rand_range(0, TAU)  # seconds; to break up the uniformity
 
+const DEATH_SOUNDS = [
+	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_1.mp3"),
+	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_2.mp3"),
+	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_3.mp3")
+]
+const HIT_SOUND = preload("res://Assets/Sound/Soundeffects/Enemy_Hit.mp3")
+
 var time = 0
 var previous_pos = Vector2.ZERO
 
@@ -53,4 +60,5 @@ func loose_health(h: float):
 
 func _on_Hitbox_area_entered(area):
 	if area is Bullet:
+		$AudioPlayer.stream = HIT_SOUND
 		$AudioPlayer.play()

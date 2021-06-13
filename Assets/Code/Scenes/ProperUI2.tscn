@@ -1,11 +1,13 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Code/Scripts/UIMain.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_extension_icon.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_range_up_icon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sound/Soundeffects/Button.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_box.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Wave/Wave_number_no_numbers.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sound/Music/welcome_first_waves.mp3" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_default.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_hover.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Power_bar/Power_bar_shell.png" type="Texture" id=11]
@@ -283,6 +285,8 @@ __meta__ = {
 }
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 bus = "Music"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -323,6 +327,12 @@ margin_bottom = 32.0
 texture_normal = ExtResource( 25 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 30 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 1.0
+bus = "SFX"
+
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Router" to="." method="_on_tower_selected" binds= [ "router" ]]
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Splitter" to="." method="_on_tower_selected" binds= [ "splitter" ]]
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Attack" to="." method="_on_tower_selected" binds= [ "splitter" ]]
