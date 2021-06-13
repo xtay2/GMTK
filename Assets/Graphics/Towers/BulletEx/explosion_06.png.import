@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Factory_Off.png-56cefeb86c89fe6f29ba0691578bfd48.stex"
+path="res://.import/explosion_06.png-6e9ff92725c703cdcb2065a36e9f6914.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Towers/Factory/Factory_Off.png"
-dest_files=[ "res://.import/Factory_Off.png-56cefeb86c89fe6f29ba0691578bfd48.stex" ]
+source_file="res://Assets/Graphics/Towers/BulletEx/explosion_06.png"
+dest_files=[ "res://.import/explosion_06.png-6e9ff92725c703cdcb2065a36e9f6914.stex" ]
 
 [params]
 

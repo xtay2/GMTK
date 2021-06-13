@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Factory_Off.png-56cefeb86c89fe6f29ba0691578bfd48.stex"
+path="res://.import/Projectile_Bomb.png-3b322c2db3d2af6a346b3554ed4e5bb3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Towers/Factory/Factory_Off.png"
-dest_files=[ "res://.import/Factory_Off.png-56cefeb86c89fe6f29ba0691578bfd48.stex" ]
+source_file="res://Assets/Graphics/Towers/Bullets/Projectile_Bomb.png"
+dest_files=[ "res://.import/Projectile_Bomb.png-3b322c2db3d2af6a346b3554ed4e5bb3.stex" ]
 
 [params]
 
