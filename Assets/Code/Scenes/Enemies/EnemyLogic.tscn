@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Enemies/Gameplay.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sound/Soundeffects/Wave_Complete.mp3" type="AudioStream" id=2]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -19,4 +20,10 @@ script = ExtResource( 1 )
 position = Vector2( 325, 44 )
 shape = SubResource( 2 )
 
+<<<<<<< HEAD
+=======
+[node name="WaveAnnouncement" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+>>>>>>> 650ccf1ca58573512059ebe5e68d056ca97fceaa
 [connection signal="area_entered" from="Area2D" to="." method="_on_reactor_entered"]

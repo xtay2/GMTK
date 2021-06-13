@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Tower_Leak.mp3-0cd80e2199a57b6da2f17c9746d140cb.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

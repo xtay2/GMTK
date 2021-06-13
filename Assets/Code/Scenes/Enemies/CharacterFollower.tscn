@@ -7,3 +7,5 @@ rotation = -0.0149223
 rotate = false
 loop = false
 script = ExtResource( 1 )
+
+[node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="."]
