@@ -97,3 +97,4 @@ func set_level(level):
 
 func get_score():
 	return round(score)
+

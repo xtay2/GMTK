@@ -136,3 +136,4 @@ func has_next_tower():
 
 func cut_next():
 	next_tower = null
+

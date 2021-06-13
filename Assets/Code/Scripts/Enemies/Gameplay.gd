@@ -65,10 +65,16 @@ func generate_type():
 	max_enemy_count = 0
 
 func _on_reactor_entered(area):
+
+	if "EnemyHitbox" in area.name:
+		main.find_node("Reactor").damage_done += 5
+		area.get_parent().die()
+
 	if "EnemyHitbox" in area.name:  # Should you use groups here?
 		print("Loosecondition")
 		$WaveAnnouncement.stream = preload("res://Assets/Sound/Soundeffects/Base_Destroyed.mp3")
 		$WaveAnnouncement.play()
+
 	
 func update_enemy_count():
 	enemy_count = get_tree().get_nodes_in_group("enemy").size()

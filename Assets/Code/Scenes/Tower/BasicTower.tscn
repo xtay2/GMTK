@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Code/Scenes/Bullet/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/Gun_On.png" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Code/Scripts/Tower/BasicTower.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/Gun_Off.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sound/Soundeffects/Turret_Shoot.mp3" type="AudioStream" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,7 +21,9 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="BasicTower" type="Node2D"]
+[node name="BasicTower" type="Node2D" groups=[
+"building",
+]]
 z_index = 2
 script = ExtResource( 11 )
 aktiv_texture = ExtResource( 2 )
@@ -68,10 +69,6 @@ bullet_damage = 10
 visible = false
 frames = SubResource( 1 )
 animation = "flash"
-
-[node name="Player" type="AudioStreamPlayer2D" parent="Turret_Gun/Gun"]
-stream = ExtResource( 13 )
-pitch_scale = 0.57
 
 [node name="Hitbox" type="TextureRect" parent="."]
 margin_left = -3.0
