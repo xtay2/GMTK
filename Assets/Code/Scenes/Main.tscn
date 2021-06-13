@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Code/Scenes/Map/Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Code/Scenes/ProperUI.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=1]
 background_mode = 4
 glow_enabled = true
 
@@ -18,7 +18,12 @@ script = ExtResource( 1 )
 z_index = -5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 1 )
 
-[node name="ProperUI" parent="." instance=ExtResource( 5 )]
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ProperUI" parent="UI" instance=ExtResource( 5 )]
 pause_mode = 2
+margin_top = 0.0
+margin_bottom = 0.0
