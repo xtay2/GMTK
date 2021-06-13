@@ -6,6 +6,12 @@ const emp = preload("res://Assets/Code/Scenes/Enemies/Emp.tscn")
 const dino = preload("res://Assets/Code/Scenes/Enemies/Dino.tscn")
 const rectangle = preload("res://Assets/Code/Scenes/Enemies/Rectangle.tscn")
 
+const DEATH_SOUNDS = [
+	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_1.mp3"),
+	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_2.mp3"),
+	preload("res://Assets/Sound/Soundeffects/Enemy_Defeat_3.mp3")
+]
+
 var speed = 0
 
 var enemy
@@ -40,4 +46,8 @@ func init_enemy(type):
 
 
 func node_died():
-	queue_free()
+	var sound = DEATH_SOUNDS[randi() % DEATH_SOUNDS.size()]
+	$DeathAudioPlayer.stream = sound
+	$DeathAudioPlayer.play()
+	get_tree().create_timer(2).connect("finished", self,	"queue_free")
+	enemy.queue_free()

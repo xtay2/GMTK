@@ -20,13 +20,19 @@ func update_enemy_info(wave, enemy_count):
 		
 	$EnemyStateInfo/Enemies.text = "Enemies left: " + String(enemy_count)
 	$EnemyStateInfo/Wave.text = "%s" % main.wave
-	
+		
+	var music = music_wave[(wave - 1) % music_wave.size()]
+	if music != $MusicPlayer.stream:
+		$MusicPlayer.stream = music
+		$MusicPlayer.play(0)
 
 func _on_Upgrade_pressed():
 	emit_signal("on_upgrade")
+	_click()
 
 func _on_tower_selected(name):
 	emit_signal("on_select_tower_type", name)
+	_click()
 
 func _input(event):  # For the case we need it
 	if event.is_action_pressed("pause") and paused:
@@ -39,6 +45,7 @@ func _input(event):  # For the case we need it
 
 func _on_powerline_selected(_extra_arg_0):
 	emit_signal("toggle_connetion_mode")
+	_click()
 
 func update_buttons():
 	for i in range(4):
@@ -52,21 +59,28 @@ func _on_Speed0_pressed():
 	main.speed_factor = 0
 	main.pause_game()
 	update_buttons()
+	_click()
 
 
 func _on_Speed1_pressed():
 	main.speed_factor = 1
 	update_buttons()
 	get_tree().paused = false
+	_click()
 
 
 func _on_Speed2_pressed():
 	main.speed_factor = 2
 	update_buttons()
 	get_tree().paused = false
+	_click()
 
 
 func _on_Speed3_pressed():
 	main.speed_factor = 3
 	update_buttons()
 	get_tree().paused = false
+	_click()
+
+func _click():
+	$Click.play()

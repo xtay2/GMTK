@@ -27,6 +27,8 @@ var selected_towers = {"Tower1" : null, "Tower2" : null}
 #The Tower or Reactor the Mouse is hovering over
 var hovering_tower
 
+signal play(audio)
+
 func _ready():
 	$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 
@@ -52,12 +54,14 @@ func _input(event):
 			return
 		#Confirm Placement
 		if event.is_action_pressed("left_click") and place_mode:
+			emit_signal("play", "place_tower")
 			last_tower.place_this()
 			place_mode = false
 			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 			return
 		#Select Tower
 		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
+			emit_signal("play", "connect")
 			select()
 		#Remove Tower
 		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower:
@@ -77,6 +81,7 @@ func _input(event):
 				return
 		#Connect wenn in Connectmode
 		if connect_mode and event.is_action_pressed("left_click") and selected_towers.Tower1 != null and selected_towers.Tower2 != null:
+			emit_signal("play", "connect")
 			if selected_towers.Tower1.name == "Reactor":
 				selected_towers.Tower1.add_next(selected_towers.Tower2)
 			else:

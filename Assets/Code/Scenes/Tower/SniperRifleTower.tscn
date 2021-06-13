@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Code/Scenes/Bullet/SRBullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/Sniper_On.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Code/Scripts/Tower/SniperRifleTower.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/Sniper_Off.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sound/Soundeffects/Turret_Shoot.mp3" type="AudioStream" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -67,6 +68,10 @@ visible = false
 frames = SubResource( 1 )
 animation = "flash"
 
+[node name="Player" type="AudioStreamPlayer2D" parent="Turret_Gun/Gun"]
+stream = ExtResource( 13 )
+pitch_scale = 0.36
+
 [node name="Hitbox" type="TextureRect" parent="."]
 margin_left = -3.0
 margin_top = 9.0
@@ -79,6 +84,7 @@ __meta__ = {
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 10 )]
 position = Vector2( 5.09468, 15.9055 )
+
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]

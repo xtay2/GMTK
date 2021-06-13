@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Wave_Start.mp3-cbce52665fba007cd355c542ae2a2875.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
