@@ -23,7 +23,7 @@ func _ready():
 	add_child(cable)
 	cable.initialise(power_input, power_input, null)
 	$EnergyRadius.initialise(self, 10)
-
+	
 func _process(_delta):
 	if tower.target:
 		$Turret_Gun.look_at(tower.target)
@@ -34,7 +34,7 @@ func _process(_delta):
 		$Turret_Gun.flip_v = false
 
 func _physics_process(_delta):
-	if tower.target and tower.energie_consumption <= energy_level:
+	if tower.target and tower.energie_consumption < energy_level:
 		$Turret_Gun/Gun.shoot(tower.target)
 
 func is_on_r():
@@ -47,8 +47,9 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_Gun_has_shoot():
 	$Turret_Gun/Gun/AnimatedSprite.visible = true
-	$Turret_Gun/Gun/AnimatedSprite.scale = Vector2.ONE * rand_range(2, 2.5)
+	$Turret_Gun/Gun/AnimatedSprite.scale = Vector2.ONE * rand_range(3, 3.5)
 	$Turret_Gun/Gun/AnimatedSprite.play("flash")
+
 
 #--------------------------------------------------ENERGY-----------------------------------------
 #The Tower the energy is coming from
@@ -75,6 +76,7 @@ func _on_Hitbox_mouse_exited():
 	ui.hovering_tower = null
 
 func has_energy():
+	update_energy()
 	return (energy_level - energy_loss) > 0
 
 func update_selected():
@@ -105,14 +107,6 @@ func get_passed_on_energy():
 func remove_cable():
 	cable.shrink()
 	
-func power_breakdown():
-	if next_tower:
-		next_tower.power_breakdown()
-		next_tower = null
-		next_tower.previous_tower = null
-	remove_cable()
-	energy_level = 0
-	
 func break_power_start():
 	if next_tower:
 		next_tower.break_power_rec()
@@ -129,6 +123,6 @@ func is_in_range_of(presumed):
 
 func has_next_tower():
 	return next_tower != null
-	
+
 func cut_next():
 	next_tower = null

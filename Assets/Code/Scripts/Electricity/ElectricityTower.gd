@@ -72,6 +72,7 @@ func update_selected():
 		$Texture.modulate = Color.white
 
 func has_energy():
+	update_energy()
 	return (energy_level - energy_loss) > 0
 
 func is_in_range_of(presumed):

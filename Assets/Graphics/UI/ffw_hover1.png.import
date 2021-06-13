@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/45e1265ab27393903ca3faea493f5a54.jpg-d9767c972df22510d1771967a4b7e965.stex"
+path="res://.import/ffw_hover1.png-b44d79649ef61bb6cfcedc25ea082fd1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Shaders/45e1265ab27393903ca3faea493f5a54.jpg"
-dest_files=[ "res://.import/45e1265ab27393903ca3faea493f5a54.jpg-d9767c972df22510d1771967a4b7e965.stex" ]
+source_file="res://Assets/Graphics/UI/ffw_hover1.png"
+dest_files=[ "res://.import/ffw_hover1.png-b44d79649ef61bb6cfcedc25ea082fd1.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/5406-normal.jpg-13f195b6be8f9497ad8ac2512886b79e.stex"
+path="res://.import/ffw_pressed4.png-7d66b0cb943f33ab51cbe2cb51c2f85e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Shaders/5406-normal.jpg"
-dest_files=[ "res://.import/5406-normal.jpg-13f195b6be8f9497ad8ac2512886b79e.stex" ]
+source_file="res://Assets/Graphics/UI/ffw_pressed4.png"
+dest_files=[ "res://.import/ffw_pressed4.png-7d66b0cb943f33ab51cbe2cb51c2f85e.stex" ]
 
 [params]
 

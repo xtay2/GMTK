@@ -10,139 +10,9 @@
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash2.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash3.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Code/Scripts/Tower/BasicTower.gd" type="Script" id=11]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-onready var tower : Tower = $Tower
-
-#Mainscene
-onready var main = find_parent(\"Main\")
-
-#Map
-onready var map = main.find_node(\"Map\")
-
-#Visual Management for Towers 
-onready var ui = main.find_node(\"TowerUI\")
-
-
-#Punkte die Tower abdeckt
-var spots := []
-#Width and height of tower in tiles
-var box := Vector2(1, 1)
-
-func _ready():
-	map.place_node(self)
-	#Energieleitung
-	cable = cable_class.instance()
-	add_child(cable)
-	cable.initialise(power_input, power_input, null)
-	$EnergyRadius.initialise(self, 10)
-	
-func _process(_delta):
-	if tower.target:
-		$Turret_Gun.look_at(tower.target)
-	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
-	
-	if not is_on_r():
-		$Turret_Gun.flip_v = true
-	else:
-		$Turret_Gun.flip_v = false
-#	$Turret_Gun.look_at(tower.enemy_que.front().global_position)
-
-func _physics_process(_delta):
-	if tower.target and tower.energie_consumption >= energy_level:
-		$Turret_Gun/Gun.shoot(tower.target)
-func is_on_r():
-	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
-
-func _on_AnimatedSprite_animation_finished():
-	$Turret_Gun/Gun/AnimatedSprite.frame = 0
-	$Turret_Gun/Gun/AnimatedSprite.visible = false
-
-
-func _on_Gun_has_shoot():
-	$Turret_Gun/Gun/AnimatedSprite.visible = true
-	$Turret_Gun/Gun/AnimatedSprite.scale = Vector2.ONE * rand_range(1, 1.5)
-	$Turret_Gun/Gun/AnimatedSprite.play(\"flash\")
-
-#--------------------------------------------------ENERGY-----------------------------------------
-#The Tower the energy is coming from
-var previous_tower
-
-#The Tower the energy is going to
-var next_tower
-
-var energy_level = 0
-var energy_loss = 10
-
-var is_selected = false
-
-var power_input := Vector2(0, 32)
-
-var cable_class = preload(\"res://Assets/Code/Scenes/Electricity/Cable.tscn\")
-
-var cable
-
-func _on_Hitbox_mouse_entered():
-	ui.hovering_tower = self
-
-func _on_Hitbox_mouse_exited():
-	ui.hovering_tower = null
-
-func has_energy():
-	return (energy_level - energy_loss) > 0
-
-func update_selected():
-	if is_selected: 
-		$TowerBase.modulate = ui.SELECTED_COLOR
-		$Turret_Gun.modulate = ui.SELECTED_COLOR
-	else:
-		$TowerBase.modulate = Color.white
-		$Turret_Gun.modulate = Color.white
-
-func connect_to_next(next):
-	next_tower = next
-	cable.connect_to_tower(next_tower)
-	
-func connect_to_previous(previous):
-	previous_tower = previous
-	
-func update_energy():
-	if previous_tower:
-		energy_level = previous_tower.get_passed_on_energy()
-	else:
-		energy_level = 0
-
-#Sagt den nächsten Türmen wie viel Energy sie haben
-func get_passed_on_energy():
-	return energy_level - energy_loss
-	
-func remove_cable():
-	cable.shrink()
-	
-func break_power_start():
-	if next_tower:
-		next_tower.break_power_rec()
-	next_tower = null
-	remove_cable()
-	
-func break_power_rec():
-	previous_tower = null
-	energy_level = 0
-	break_power_start()
-
-func is_in_range_of(presumed):
-	return $EnergyRadius.possible_connections().has(presumed)
-
-func has_next_tower():
-	return next_tower != null
-	
-func cut_next():
-	next_tower = null
-"
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
 "loop": false,
@@ -151,16 +21,16 @@ animations = [ {
 } ]
 
 [node name="BasicTower" type="Node2D"]
-script = SubResource( 1 )
+script = ExtResource( 11 )
 
 [node name="TowerBase" type="Sprite" parent="."]
-position = Vector2( -9, 3 )
+position = Vector2( -1, 0.5 )
 rotation = -4.46638e-06
 texture = ExtResource( 3 )
 centered = false
 
 [node name="Turret_Gun" type="Sprite" parent="."]
-position = Vector2( 0, 8 )
+position = Vector2( 8, 5.5 )
 texture = ExtResource( 2 )
 offset = Vector2( 10, 0 )
 
@@ -175,25 +45,25 @@ damage = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun/Gun"]
 visible = false
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "flash"
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2( 0, 7 )
+position = Vector2( 8, 4.5 )
 script = ExtResource( 4 )
 t_name = "BasicTower"
 
 [node name="Hitbox" type="TextureRect" parent="."]
-margin_left = -9.0
-margin_top = 2.0
-margin_right = 9.0
-margin_bottom = 35.0
+margin_left = -1.0
+margin_top = -0.5
+margin_right = 17.0
+margin_bottom = 32.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 10 )]
-position = Vector2( 0, 10 )
+position = Vector2( 8, 7.5 )
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]

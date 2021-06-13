@@ -60,11 +60,12 @@ func _input(event):
 		elif connect_mode and event.is_action_pressed("left_click") and hovering_tower != null:
 			select()
 		#Remove Tower
-		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower and "Electricity" in hovering_tower.name:
-			hovering_tower.removeTower()
-			hovering_tower = null
-			$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
-			return
+		if event.is_action_pressed("right_click") and !place_mode and !connect_mode and hovering_tower:
+			if "Electricity" in hovering_tower.name:
+				hovering_tower.removeTower()
+				hovering_tower = null
+				$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
+				return
 		#Remove connections and select
 		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower.name != "Reactor" and hovering_tower.has_next_tower():
 			hovering_tower.break_power_start()
@@ -78,7 +79,8 @@ func _input(event):
 			if selected_towers.Tower1.name == "Reactor":
 				selected_towers.Tower1.add_next(selected_towers.Tower2)
 			else:
-				selected_towers.Tower1.break_power_start()
+				if "Tower" in selected_towers.Tower1.name:
+					selected_towers.Tower1.break_power_start()
 				selected_towers.Tower1.connect_to_next(selected_towers.Tower2)
 			selected_towers.Tower2.connect_to_previous(selected_towers.Tower1)
 			step_connection_mode()
