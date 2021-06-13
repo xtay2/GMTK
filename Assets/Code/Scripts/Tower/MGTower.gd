@@ -38,12 +38,15 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	if tower.target and tower.energie_consumption < energy_level:
-		$Turret_Gun.texture = aktiv_texture
 		$Turret_Gun/Gun.shoot(tower.target)
-		$Turret_Gun/AnimatedSprite.playing = true
+	if tower.energie_consumption < energy_level:
+		$Turret_Gun.texture = aktiv_texture
+		$Turret_Gun/AnimatedSprite.play("Effect")
 	else:
 		$Turret_Gun.texture = passiv_texture
+		$Turret_Gun/AnimatedSprite.frame = 0
 		$Turret_Gun/AnimatedSprite.playing = false
+		
 
 func is_on_r():
 	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
