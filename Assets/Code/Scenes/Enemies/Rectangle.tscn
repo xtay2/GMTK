@@ -30,7 +30,6 @@ animations = [ {
 extents = Vector2( 9.29695, 9.15387 )
 
 [node name="Rectangle" type="Node2D"]
-position = Vector2( 178.131, 236.929 )
 script = ExtResource( 2 )
 oscillation_frequency = 0
 oscillation_magnitude = 15

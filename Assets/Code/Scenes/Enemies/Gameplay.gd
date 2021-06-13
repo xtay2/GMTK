@@ -1,7 +1,7 @@
 extends Node2D
 
 var timer = 0
-var spawn_interval = 0.5
+var spawn_interval = 1
 
 onready var main = find_parent("Main")
 
@@ -18,7 +18,7 @@ func _process(delta):
 		var type = generate_type()
 		var new_follower = follower.instance()
 		new_follower.init_enemy(type)
-		$Path2D.add_child(new_follower)
+		add_child(new_follower)
 		timer = 0
 	elif wave_composition.empty():
 		main.wave += 1

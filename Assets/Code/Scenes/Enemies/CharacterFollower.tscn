@@ -4,4 +4,5 @@
 
 [node name="CharacterFollower" type="PathFollow2D"]
 rotation = -0.0149223
+rotate = false
 script = ExtResource( 1 )
