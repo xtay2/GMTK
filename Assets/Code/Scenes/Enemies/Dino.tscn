@@ -29,10 +29,8 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.29695, 9.15387 )
 
-[node name="Dino" type="PathFollow2D"]
+[node name="Dino" type="Node2D"]
 position = Vector2( 0.130997, -0.0709991 )
-rotate = false
-loop = false
 script = ExtResource( 2 )
 
 [node name="Animation" type="AnimatedSprite" parent="."]
@@ -47,5 +45,4 @@ playing = true
 shape = SubResource( 2 )
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

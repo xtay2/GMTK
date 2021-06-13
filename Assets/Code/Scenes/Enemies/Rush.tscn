@@ -10,6 +10,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_south",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk_north",
@@ -19,23 +24,14 @@ animations = [ {
 "loop": true,
 "name": "walk_straight",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_south",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.29695, 9.15387 )
 
-[node name="Enemy" type="PathFollow2D"]
-position = Vector2( 178.131, 236.929 )
+[node name="Enemy" type="Node2D"]
 z_index = 2
-rotate = false
-loop = false
 script = ExtResource( 2 )
-path_completion_time = 5
 oscillation_frequency = 0
 oscillation_magnitude = 15
 
@@ -53,5 +49,4 @@ playing = true
 shape = SubResource( 2 )
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
