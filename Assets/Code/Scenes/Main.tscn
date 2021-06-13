@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/TowerUI.tscn" type="PackedScene" id=2]
@@ -8,6 +8,24 @@
 [sub_resource type="Environment" id=1]
 background_mode = 4
 glow_enabled = true
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+export(int, 1, 1000) var level = 1
+
+
+func load_level(l: int):
+	var level_path = str(\"res://Assets/Data/Levels/level\" + str(l) +\".tscn\")
+	if get_children().size() != 0:
+		get_children()[0].queue_free()
+	var level : Node2D = load(level_path).instance()
+	level.global_position = Vector2.ZERO
+	find_parent(\"Main\").add_child(load(level_path).instance())
+
+func _ready():
+	load_level(1)
+"
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,5 +42,10 @@ environment = SubResource( 1 )
 layer = 2
 
 [node name="ProperUI2" parent="UI" instance=ExtResource( 4 )]
+
+[node name="Level" type="Node2D" parent="."]
+script = SubResource( 2 )
+level = 6
+
 [connection signal="on_select_powerline" from="UI/ProperUI2" to="TowerUI" method="_on_select_powerline"]
 [connection signal="on_select_tower_type" from="UI/ProperUI2" to="TowerUI" method="_on_select_tower_type"]
