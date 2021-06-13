@@ -29,14 +29,9 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "broken",
-"speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 13 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 21 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 22 ) ],
 "loop": false,
@@ -44,10 +39,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 3 )
 
-[node name="Reactor" type="Node2D"]
+[node name="Reactor" type="Node2D" groups=[
+"Reactor",
+]]
 z_index = 10
 script = ExtResource( 1 )
 
@@ -55,14 +52,13 @@ script = ExtResource( 1 )
 position = Vector2( -2, 0 )
 z_as_relative = false
 frames = SubResource( 1 )
-frame = 2
 playing = true
 centered = false
 
 [node name="Explode" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 22, 32 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "explode"
 
 [node name="Connections" type="Label" parent="."]
@@ -70,7 +66,7 @@ margin_left = 13.0
 margin_top = -11.0
 margin_right = 33.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "0|0"
 align = 1
 __meta__ = {
@@ -89,5 +85,6 @@ __meta__ = {
 [node name="EnergyRadius" parent="." instance=ExtResource( 6 )]
 position = Vector2( 22, 14 )
 
+[connection signal="animation_finished" from="Explode" to="." method="_on_Explode_animation_finished"]
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]

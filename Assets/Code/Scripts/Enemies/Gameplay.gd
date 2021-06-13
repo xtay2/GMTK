@@ -1,4 +1,4 @@
-extends Node2D
+extends Path2D
 
 var timer = 0
 var spawn_interval = 1
@@ -14,6 +14,7 @@ var max_enemy_count = INF
 
 func _ready():
 	init_wave()
+	$Area2D.position = curve.get_point_position(curve.get_point_count() - 1)
 
 func _process(delta):
 	timer += delta
