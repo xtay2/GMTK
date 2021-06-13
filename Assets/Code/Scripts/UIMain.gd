@@ -46,7 +46,7 @@ func _on_powerline_selected(_extra_arg_0):
 	emit_signal("on_select_powerline")
 
 func update_buttons():
-	for i in range(5):
+	for i in range(4):
 		var button = find_node("Speed" + String(i))
 		button.pressed = i == main.speed_factor
 	if main.speed_factor > 0:
@@ -73,11 +73,5 @@ func _on_Speed2_pressed():
 
 func _on_Speed3_pressed():
 	main.speed_factor = 5
-	update_buttons()
-	get_tree().paused = false
-
-
-func _on_Speed4_pressed():
-	main.speed_factor = 0.3
 	update_buttons()
 	get_tree().paused = false

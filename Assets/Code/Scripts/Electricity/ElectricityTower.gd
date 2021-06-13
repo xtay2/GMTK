@@ -58,7 +58,7 @@ func _process(_delta):
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
 
 func place_this():
-	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
+	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Extention_Pylon_Off.png")
 	$Texture.play("off")
 	update_selected()
 	map.place_node(self)
@@ -106,7 +106,7 @@ func break_power_start():
 func break_power_rec():
 	previous_tower = null
 	energy_level = 0
-	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png")
+	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Extention_Pylon_Off.png")
 	$Texture.play("off")
 	break_power_start()
 	
@@ -123,7 +123,7 @@ func update_energy():
 	if previous_tower:
 		energy_level = previous_tower.get_passed_on_energy()
 		if energy_level > 0:
-			$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_On.png")
+			$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Extention_Pylon_On.png")
 			$Texture.play("on")
 	else:
 		energy_level = 0

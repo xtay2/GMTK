@@ -39,12 +39,12 @@ var box := Vector2(1, 1)
 func _ready():
 	cable1 = cable_class.instance()
 	add_child(cable1)
-	cable1.initialise(Vector2(5, 6), Vector2(5, 6), null)
+	cable1.initialise(Vector2(2, 4), Vector2(2, 4), null)
 	cables.append(cable1)
 	
 	cable2 = cable_class.instance()
 	add_child(cable2)
-	cable2.initialise(Vector2(-5, 6), Vector2(-5, 6), null)
+	cable2.initialise(Vector2(14, 4), Vector2(14, 4), null)
 	cables.append(cable2)
 	
 	$Socket.modulate = ui.PLACEMENT_COLOR
@@ -68,7 +68,7 @@ func _process(_delta):
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
 
 func place_this():
-	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/splitter_socket_off.png")
+	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Pylon_Off.png")
 	$Texture.play("off")
 	update_selected()
 	map.place_node(self)
@@ -101,7 +101,7 @@ func break_power_start():
 func break_power_rec():
 	previous_tower = null
 	energy_level = 0
-	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/splitter_socket_off.png")
+	$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Pylon_Off.png")
 	$Texture.play("off")
 	break_power_start()
 
@@ -129,7 +129,7 @@ func update_energy():
 	if previous_tower:
 		energy_level = previous_tower.get_passed_on_energy()
 		if energy_level > 0:
-			$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/splitter_socket_on.png")
+			$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Pylon_On.png")
 			$Texture.play("on")
 	else:
 		energy_level = 0
