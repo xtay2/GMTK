@@ -58,7 +58,6 @@ func connect_to_next(next):
 	
 func connect_to_previous(previous):
 	previous_tower = previous
-	
 
 func _process(_delta):
 	update_energy()
@@ -87,6 +86,7 @@ func remove_cable():
 	cable2.shrink()
 
 func has_energy():
+	update_energy()
 	return (energy_level - energy_loss) > 0
 
 func is_in_range_of(presumed):
@@ -110,7 +110,7 @@ func removeTower():
 		if previous_tower.name == "Reactor":
 			previous_tower.remove_next(self)
 		else:
-			previous_tower.next_tower = null
+			previous_tower.cut_next()
 			previous_tower.remove_cable()
 	break_power_start()
 	ui.placed_towers -= 1
