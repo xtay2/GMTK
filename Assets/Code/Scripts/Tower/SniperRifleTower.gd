@@ -68,7 +68,7 @@ var energy_loss = 10
 
 var is_selected = false
 
-var power_input := Vector2(0, 32)
+onready var power_input = find_node("Tower").position
 
 var cable_class = preload("res://Assets/Code/Scenes/Electricity/Cable.tscn")
 

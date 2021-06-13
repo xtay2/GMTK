@@ -67,13 +67,14 @@ func _input(event):
 				$TowerCount.text = String(placed_towers) + "|" + String(max_towers)
 				return
 		#Remove connections and select
-		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower and hovering_tower.name != "Reactor" and hovering_tower.has_next_tower():
-			hovering_tower.break_power_start()
-			hovering_tower.remove_cable()
-			end_connection_mode()
-			start_connect_mode()
-			select()
-			return
+		elif event.is_action_pressed("right_click") and !place_mode and connect_mode and hovering_tower:
+			if hovering_tower.name != "Reactor" and !("Splitter" in hovering_tower.name) and hovering_tower.has_next_tower():
+				hovering_tower.break_power_start()
+				hovering_tower.remove_cable()
+				end_connection_mode()
+				start_connect_mode()
+				select()
+				return
 		#Connect wenn in Connectmode
 		if connect_mode and event.is_action_pressed("left_click") and selected_towers.Tower1 != null and selected_towers.Tower2 != null:
 			if selected_towers.Tower1.name == "Reactor":
