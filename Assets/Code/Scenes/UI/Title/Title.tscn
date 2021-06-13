@@ -133,9 +133,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopUps/PopupPanel/CenterContainer"]
 margin_left = 104.0
-margin_top = 60.0
+margin_top = 40.0
 margin_right = 208.0
-margin_bottom = 112.0
+margin_bottom = 132.0
 
 [node name="CheckBox" type="CheckBox" parent="PopUps/PopupPanel/CenterContainer/VBoxContainer"]
 margin_right = 104.0
@@ -147,5 +147,45 @@ margin_top = 28.0
 margin_right = 104.0
 margin_bottom = 52.0
 text = "Mute Music"
+
+[node name="SoundContainer" type="HBoxContainer" parent="PopUps/PopupPanel/CenterContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 104.0
+margin_bottom = 72.0
+
+[node name="Label" type="Label" parent="PopUps/PopupPanel/CenterContainer/VBoxContainer/SoundContainer"]
+margin_top = 1.0
+margin_right = 47.0
+margin_bottom = 15.0
+text = "Sound: "
+
+[node name="SoundSlider" type="HSlider" parent="PopUps/PopupPanel/CenterContainer/VBoxContainer/SoundContainer"]
+margin_left = 51.0
+margin_right = 104.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicContainer" type="HBoxContainer" parent="PopUps/PopupPanel/CenterContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 104.0
+margin_bottom = 92.0
+
+[node name="Label" type="Label" parent="PopUps/PopupPanel/CenterContainer/VBoxContainer/MusicContainer"]
+margin_top = 1.0
+margin_right = 46.0
+margin_bottom = 15.0
+text = "Music: "
+
+[node name="MusicSlider" type="HSlider" parent="PopUps/PopupPanel/CenterContainer/VBoxContainer/MusicContainer"]
+margin_left = 50.0
+margin_right = 104.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="FG/FG/CenterContainer/Button" to="." method="_on_Button_pressed"]
