@@ -1,18 +1,10 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Code/Scripts/UI/UIMain.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_extension_icon.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_range_up_icon.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Code/Scripts/UI/Power.gd" type="Script" id=5]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_box.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Wave/Wave_number_no_numbers.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_default.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_hover.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Graphics/UI/In_game_1x/Power_bar/Power_bar_shell.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_press.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_attack_up_icon.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_fire_ rate_up_icon.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Graphics/UI/ffw_pressed2.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Graphics/UI/ffw_pressed1.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Graphics/UI/ffw_pressed4.png" type="Texture" id=21]
@@ -43,17 +35,6 @@ colors = PoolColorArray( 0.788727, 0.371094, 1, 1, 0.127945, 0.839844, 0.806473,
 
 [sub_resource type="GradientTexture" id=6]
 gradient = SubResource( 5 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 90, 36 )
-margin_left = 84.3776
-margin_right = 49.8381
-margin_top = 28.8678
-margin_bottom = 21.7138
-
-[sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 1 )
 
 [node name="ProperUI" type="Control"]
 pause_mode = 2
@@ -170,103 +151,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Upgrade" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -89.0
-margin_top = -46.6675
-margin_right = -48.0
-margin_bottom = -26.6675
-rect_scale = Vector2( 2, 2 )
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ChooseTurretType" type="Panel" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -49.0
-margin_right = 63.0
-margin_bottom = -27.0
-rect_scale = Vector2( 2, 2 )
-custom_styles/panel = SubResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ChooseTurretType"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.5
-margin_top = 8.16629
-margin_right = 20.5
-margin_bottom = 5.16629
-rect_scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Router" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
-margin_right = 19.0
-margin_bottom = 19.0
-texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Splitter" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
-margin_left = 23.0
-margin_right = 42.0
-margin_bottom = 19.0
-texture_normal = ExtResource( 3 )
-
-[node name="Attack" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
-margin_left = 46.0
-margin_right = 65.0
-margin_bottom = 19.0
-texture_normal = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FireRate" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
-margin_left = 69.0
-margin_right = 88.0
-margin_bottom = 19.0
-texture_normal = ExtResource( 16 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Range" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
-margin_left = 92.0
-margin_right = 111.0
-margin_bottom = 19.0
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ChooseTurretType"]
-visible = false
-anchor_right = 1.0
-margin_left = -0.33371
-margin_top = 1.83542
-margin_right = -0.33371
-margin_bottom = 13.8354
-custom_fonts/font = SubResource( 8 )
-text = "Towers"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
@@ -313,11 +197,6 @@ texture_normal = ExtResource( 25 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 30 )
 
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Router" to="." method="_on_tower_selected" binds= [ "router" ]]
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Splitter" to="." method="_on_tower_selected" binds= [ "splitter" ]]
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Attack" to="." method="_on_tower_selected" binds= [ "splitter" ]]
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/FireRate" to="." method="_on_tower_selected" binds= [ "splitter" ]]
-[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Range" to="." method="_on_tower_selected" binds= [ "splitter" ]]
 [connection signal="pressed" from="HBoxContainer/Speed0" to="." method="_on_Speed0_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed1" to="." method="_on_Speed1_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed2" to="." method="_on_Speed2_pressed"]
