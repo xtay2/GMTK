@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/Graphics/Theme/Title.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Graphics/UI/Title/Terminal_voltage_logo.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Assets/Graphics/UI/Title/Start_inactive.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Graphics/UI/Title/Start_button_hover.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Graphics/UI/Title/Start_button_clicked.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sound/Music/music1.mp3" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Sound/Soundeffects/Button.mp3" type="AudioStream" id=21]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -26,13 +28,27 @@ script/source = "extends Control
 func _on_Button_pressed():
 	get_tree().change_scene(\"res://Assets/Code/Scenes/Main.tscn\")
 
-
 func _on_MuteMusic2_pressed():
 	$PopUps/PopupPanel.popup_centered()
-
+	$Click.play()
 
 func _on_CloseButton_pressed():
 	$PopUps/PopupPanel.visible = false
+	$Click.play()
+
+func _on_SoundSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(2, linear2db(value / 50))
+
+func _on_MusicSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(1, linear2db(value / 50))
+
+func _on_CheckBox2_toggled(button_pressed):  # Mute Music
+	AudioServer.set_bus_mute(1, button_pressed)
+	$Click.play()
+
+func _on_CheckBox_toggled(button_pressed):  # Mute Sound
+	AudioServer.set_bus_mute(2, button_pressed)
+	$Click.play()
 "
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -208,11 +224,13 @@ margin_bottom = 359.0
 layer = 3
 
 [node name="PopupPanel" type="PopupPanel" parent="PopUps"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -0.629974
-margin_right = -320.0
-margin_bottom = -180.63
+margin_left = 146.835
+margin_top = 91.4393
+margin_right = -173.165
+margin_bottom = -88.5607
 rect_min_size = Vector2( 320, 180 )
 theme = ExtResource( 1 )
 __meta__ = {
@@ -231,11 +249,11 @@ __meta__ = {
 }
 
 [node name="Control5" type="Control" parent="PopUps/PopupPanel/VBoxContainer"]
-margin_right = 320.0
+margin_right = 312.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PopUps/PopupPanel/VBoxContainer"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 312.0
 margin_bottom = 136.0
 alignment = 2
 __meta__ = {
@@ -247,12 +265,12 @@ margin_bottom = 132.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
 margin_left = 4.0
-margin_right = 302.0
+margin_right = 294.0
 margin_bottom = 132.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 298.0
+margin_right = 290.0
 margin_bottom = 12.0
 custom_styles/normal = SubResource( 3 )
 text = "Settings"
@@ -263,7 +281,7 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 16.0
-margin_right = 298.0
+margin_right = 290.0
 margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -272,8 +290,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer"]
-margin_left = 101.0
-margin_right = 196.0
+margin_left = 97.0
+margin_right = 192.0
 margin_bottom = 116.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -334,6 +352,7 @@ custom_icons/grabber_disabled = ExtResource( 9 )
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
 custom_styles/slider = SubResource( 11 )
+value = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -358,13 +377,14 @@ custom_icons/grabber_disabled = ExtResource( 9 )
 custom_icons/grabber_highlight = ExtResource( 9 )
 custom_icons/grabber = ExtResource( 9 )
 custom_styles/slider = SubResource( 11 )
+value = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CloseButton" type="TextureButton" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
-margin_left = 306.0
-margin_right = 316.0
+margin_left = 298.0
+margin_right = 308.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 10, 10 )
 size_flags_vertical = 0
@@ -375,10 +395,23 @@ expand = true
 stretch_mode = 4
 
 [node name="Control6" type="Control" parent="PopUps/PopupPanel/VBoxContainer/HBoxContainer"]
-margin_left = 320.0
-margin_right = 320.0
+margin_left = 312.0
+margin_right = 312.0
 margin_bottom = 132.0
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+autoplay = true
+bus = "Music"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+bus = "SFX"
 
 [connection signal="pressed" from="FG/FG/CenterContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="FG/FG/CenterContainer2/MuteMusic2" to="." method="_on_MuteMusic2_pressed"]
+[connection signal="toggled" from="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="toggled" from="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/CheckBox2" to="." method="_on_CheckBox2_toggled"]
+[connection signal="value_changed" from="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/SoundContainer/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
+[connection signal="value_changed" from="PopUps/PopupPanel/VBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/VBoxContainer/MusicContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="pressed" from="PopUps/PopupPanel/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
