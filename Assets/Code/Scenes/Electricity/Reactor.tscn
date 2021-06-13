@@ -1,21 +1,21 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/Reactor.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/Reactor/reactor_energy_01.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Reactor/Core_on_01.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/Graphics/Reactor/reactor_energy_03.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Graphics/Reactor/reactor_energy_02.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Reactor/Core_on_02.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Reactor/Core_on_03.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=6]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 8.0
 } ]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
 
 [node name="Reactor" type="Node2D"]
@@ -23,8 +23,8 @@ z_index = 10
 script = ExtResource( 1 )
 
 [node name="Texture" type="AnimatedSprite" parent="."]
-position = Vector2( -8, 16 )
-frames = SubResource( 2 )
+position = Vector2( -8, 15.7194 )
+frames = SubResource( 1 )
 frame = 2
 playing = true
 centered = false
@@ -34,7 +34,7 @@ margin_left = 7.0
 margin_top = 5.0
 margin_right = 27.0
 margin_bottom = 17.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0|0"
 align = 1
 __meta__ = {
@@ -52,5 +52,6 @@ __meta__ = {
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 6 )]
 position = Vector2( 16, 27 )
+
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
