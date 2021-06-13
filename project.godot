@@ -50,7 +50,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
+<<<<<<< HEAD
 Global="*res://Assets/Code/Scripts/Global.gd"
+=======
+Gloabal="*res://Assets/Code/Scripts/gloabal.gd"
+>>>>>>> 948700f9f941a1f9974d33546d27dc54713126bf
 
 [display]
 
@@ -138,5 +142,6 @@ toggle_fullscreen={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
