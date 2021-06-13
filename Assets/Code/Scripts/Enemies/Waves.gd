@@ -20,19 +20,19 @@ func init_enemy(type):
 	match(type):
 		"Heavy":
 			node = heavy.instance()
-			node.initialise(10, 10)
+			node.initialise(100, 10)
 		"Rush":
 			node = rush.instance()
-			node.initialise(10, 30)
+			node.initialise(20, 60)
 		"Emp":
 			node = emp.instance()
-			node.initialise(10, 10)
+			node.initialise(40, 20)
 		"Dino":
 			node = dino.instance()
-			node.initialise(10, 10)
+			node.initialise(40, 20)
 		"Rectangle":
 			node = rectangle.instance()
-			node.initialise(10, 10)
+			node.initialise(40, 20)
 	add_child(node)
 	speed = node.speed
 	enemy = node

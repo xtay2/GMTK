@@ -384,3 +384,6 @@ texture_hover = ExtResource( 30 )
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Attack" to="." method="_on_tower_selected" binds= [ "splitter" ]]
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/FireRate" to="." method="_on_tower_selected" binds= [ "splitter" ]]
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Range" to="." method="_on_tower_selected" binds= [ "splitter" ]]
+[connection signal="pressed" from="HBoxContainer/Speed0" to="." method="_on_Pause_pressed"]
+[connection signal="pressed" from="HBoxContainer/Speed1" to="." method="_on_Speed1_pressed"]
+[connection signal="pressed" from="HBoxContainer/Speed2" to="." method="_on_Speed2_pressed"]

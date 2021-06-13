@@ -65,6 +65,12 @@ visible = false
 frames = SubResource( 1 )
 animation = "flash"
 
+[node name="Tower" type="Node2D" parent="."]
+position = Vector2( 8, 4.5 )
+script = ExtResource( 4 )
+t_name = "BasicTower"
+energie_consumption = 15
+
 [node name="Hitbox" type="TextureRect" parent="."]
 margin_left = -3.0
 margin_top = -2.99986

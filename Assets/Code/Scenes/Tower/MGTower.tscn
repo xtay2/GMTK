@@ -41,7 +41,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 t_name = "MGTower"
-detection_radius = 400
+energie_consumption = 25
+detection_radius = 100
 
 [node name="TowerBase" type="Sprite" parent="."]
 position = Vector2( -10, 4.00014 )
@@ -78,7 +79,7 @@ bullet_spread = 0.3
 gun_cooldown = 0.25
 bullet_lifetime = 4.0
 bullet_speed = 150
-bullet_damage = 10
+bullet_damage = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun/Gun"]
 visible = false
