@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Assets/Code/Scripts/Tower/Bullet.gd"
 }, {
-"base": "PathFollow2D",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://Assets/Code/Scripts/Enemies/Base.gd"
-}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -41,7 +36,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "",
-"Enemy": "",
 "GitAPI": "",
 "Gun": "",
 "Tower": "",
@@ -51,7 +45,6 @@ _global_script_class_icons={
 [application]
 
 config/name="GMKTK 2021"
-run/main_scene="res://Assets/Code/Scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [display]
