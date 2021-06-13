@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/ElectricityTower.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_On_03.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_On_02.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_On_01.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Tower_Off.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Node_Bobin_Off.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Extention_Torus_On_03.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Extention_Torus_On_02.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Extention_Torus_On_01.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Extention_Pylon_Off.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricityTower/Extention_Torus_Off.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=8]
 
@@ -37,25 +37,30 @@ custom_fonts/font = SubResource( 1 )
 text = "Juice"
 align = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Socket" type="TextureRect" parent="."]
-margin_top = 6.0
+margin_top = 3.0
 margin_right = 16.0
-margin_bottom = 32.0
+margin_bottom = 35.0
 texture = ExtResource( 5 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Texture" type="AnimatedSprite" parent="."]
-position = Vector2( -1, -2 )
+position = Vector2( -8, -2 )
 z_index = 2
 frames = SubResource( 2 )
 animation = "off"
 playing = true
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Hitbox" type="TextureRect" parent="."]
 margin_left = -2.0
@@ -63,6 +68,7 @@ margin_top = -4.0
 margin_right = 18.0
 margin_bottom = 34.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

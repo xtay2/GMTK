@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/ElectricitySplitter.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/splitter_on3.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/splitter_on1.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/splitter_socket_off.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/splitter_on2.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/splitter_off.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Torus_On_03.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Torus_On_02.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Pylon_Off.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Torus_On_01.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Torus_Off_01.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
@@ -14,7 +14,7 @@ font_data = ExtResource( 8 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "on",
 "speed": 5.0
@@ -42,8 +42,7 @@ __meta__ = {
 }
 
 [node name="Socket" type="Sprite" parent="."]
-position = Vector2( -8, 1 )
-z_index = 3
+position = Vector2( 0, 1 )
 texture = ExtResource( 5 )
 centered = false
 __meta__ = {
