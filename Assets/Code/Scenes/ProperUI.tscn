@@ -234,6 +234,7 @@ margin_bottom = 32.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 14 )
 texture_hover = ExtResource( 12 )
+
 [connection signal="pressed" from="Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="Powerline/GridSwitch" to="." method="_on_powerline_selected" binds= [ "basic" ]]
 [connection signal="pressed" from="ChooseTurretType/HBoxContainer/Router" to="." method="_on_tower_selected" binds= [ "router" ]]

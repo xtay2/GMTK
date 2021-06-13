@@ -21,6 +21,11 @@ z_index = -5
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="ProperUI" parent="." instance=ExtResource( 5 )]
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ProperUI" parent="UI" instance=ExtResource( 5 )]
 pause_mode = 2
 music_wave = [ ExtResource( 4 ), ExtResource( 4 ) ]
+margin_top = 0.0
+margin_bottom = 0.0

@@ -28,7 +28,7 @@ var energy_level = 0
 
 var energy_loss = 10
 
-var power_input := Vector2(0, 32)
+onready var power_input = $EnergyRadius.position
 
 
 #Punkte die Tower abdeckt
@@ -153,9 +153,6 @@ func _on_Hitbox_mouse_exited():
 func position_this():
 	map.update_spot(self, get_global_mouse_position())
 
-
-func has_next_tower():
-	return next_towers.size() == 2
 
 func cut_next():
 	next_towers.clear()

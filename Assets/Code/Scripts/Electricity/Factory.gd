@@ -1,6 +1,10 @@
 extends Node2D
 
-#The Tower the energy is coming from
+#The Tower the energy is coming from#
+export(Texture) var activ_texture
+export(Texture) var passiv_texture
+
+
 var previous_tower
 
 var energy_level = 0
@@ -33,10 +37,12 @@ func _ready():
 func _process(delta):
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
 	if has_energy() and (production_level < 4 and $ProgressBar.value != $ProgressBar.max_value):
+		$Sprite.texture = activ_texture
 		$ProgressBar.value += energy_level * delta
 		if $ProgressBar.value == $ProgressBar.max_value:
 			set_level(production_level + 1)
 	else:
+		$Sprite.texture = passiv_texture
 		$ProgressBar.value -= 100 * delta + 1
 		if $ProgressBar.value == $ProgressBar.min_value:
 			set_level(0)

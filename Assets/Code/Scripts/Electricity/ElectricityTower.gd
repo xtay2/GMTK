@@ -17,7 +17,7 @@ onready var map = main.find_node("Map")
 #Visual Management for Towers 
 onready var ui = main.find_node("TowerUI")
 
-var power_input := Vector2(0, 30)
+onready var power_input = $EnergyRadius.position
 
 var cable_class = preload("res://Assets/Code/Scenes/Electricity/Cable.tscn")
 

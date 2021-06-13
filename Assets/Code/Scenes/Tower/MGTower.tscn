@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/Code/Scenes/Bullet/MGBullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Code/Scripts/Tower/Tower.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Graphics/Towers/TowerBase/turret tower.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/Towers/Guns/split turret.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/Turret_Tower_with_Torus.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/Rail_Cannon_On.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Code/Scripts/Tower/Gun.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash1.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash4.png" type="Texture" id=7]
@@ -11,12 +11,19 @@
 [ext_resource path="res://Assets/Graphics/Towers/Guns/GunFlash3.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Code/Scripts/Tower/MGTower.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/Towers/Guns/Rail_Cannon_Off.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting5.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting2.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting4.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting6.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Graphics/Towers/Particels/MG/split_turrent_shooting3.png" type="Texture" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "flash",
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Effect",
 "speed": 10.0
 } ]
 
@@ -30,24 +37,37 @@ animations = [ {
 
 [node name="MGTower" type="Node2D"]
 script = ExtResource( 11 )
+aktiv_texture = ExtResource( 4 )
+passiv_texture = ExtResource( 13 )
 
 [node name="Tower" type="Node2D" parent="."]
-position = Vector2( 8, 6 )
+position = Vector2( 6, 17 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 t_name = "MGTower"
 energie_consumption = 25
 detection_radius = 100
 
 [node name="TowerBase" type="Sprite" parent="."]
-position = Vector2( -1, 1 )
+position = Vector2( -10, 4.00014 )
 rotation = -4.46638e-06
 texture = ExtResource( 3 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Turret_Gun" type="Sprite" parent="."]
-position = Vector2( 8, 6 )
+position = Vector2( 6.55096, 14.6634 )
+z_index = 3
+z_as_relative = false
 texture = ExtResource( 4 )
 offset = Vector2( 10, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun"]
 position = Vector2( 13, -2.58839 )
@@ -56,7 +76,7 @@ frame = 3
 playing = true
 
 [node name="Gun" type="Position2D" parent="Turret_Gun"]
-position = Vector2( 42.8814, -0.0342212 )
+position = Vector2( 35.0944, -0.742126 )
 scale = Vector2( 1, 0.893718 )
 script = ExtResource( 5 )
 bullet_szene = ExtResource( 1 )
@@ -73,16 +93,17 @@ frames = SubResource( 2 )
 animation = "flash"
 
 [node name="Hitbox" type="TextureRect" parent="."]
-margin_left = -1.0
-margin_top = -1.0
-margin_right = 17.0
-margin_bottom = 33.0
+margin_left = -3.0
+margin_top = 11.944
+margin_right = 15.0
+margin_bottom = 45.944
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 10 )]
-position = Vector2( 8, 6 )
+position = Vector2( 6, 16.944 )
 
 [connection signal="has_shoot" from="Turret_Gun/Gun" to="." method="_on_Gun_has_shoot"]
 [connection signal="animation_finished" from="Turret_Gun/Gun/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

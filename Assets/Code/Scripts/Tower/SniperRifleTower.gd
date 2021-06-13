@@ -2,6 +2,9 @@ extends Node2D
 
 onready var tower : Tower = $Tower
 
+export(Texture) var aktiv_texture 
+export(Texture) var passiv_texture 
+
 #Mainscene
 onready var main = find_parent("Main")
 
@@ -36,6 +39,10 @@ func _process(_delta):
 func _physics_process(_delta):
 	if tower.target and tower.energie_consumption < energy_level:
 		$Turret_Gun/Gun.shoot(tower.target)
+	if tower.energie_consumption < energy_level:
+		$Turret_Gun.texture = aktiv_texture
+	else:
+		$Turret_Gun.texture = passiv_texture
 
 func is_on_r():
 	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
@@ -62,7 +69,7 @@ var energy_loss = 10
 
 var is_selected = false
 
-var power_input := Vector2(0, 32)
+onready var power_input = find_node("Tower").position
 
 var cable_class = preload("res://Assets/Code/Scenes/Electricity/Cable.tscn")
 

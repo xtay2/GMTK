@@ -2,7 +2,7 @@ extends Node2D
 
 var speed_factor = 1
 
-var wave = 10
+var wave = 1
 
 func _input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
