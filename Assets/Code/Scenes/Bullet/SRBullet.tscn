@@ -37,7 +37,7 @@ position = Vector2( -12.271, 0.109097 )
 rotation = 3.14159
 scale = Vector2( 1.43229, 1.3 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Rocket" type="Sprite" parent="."]
