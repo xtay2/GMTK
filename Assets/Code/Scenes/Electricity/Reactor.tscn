@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Electricity/Reactor.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Reactor/Core_on_01.png" type="Texture" id=2]
@@ -6,12 +6,41 @@
 [ext_resource path="res://Assets/Graphics/Reactor/Core_on_02.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Graphics/Reactor/Core_on_03.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_16.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_17.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_18.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_15.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_14.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_13.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_04.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_09.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_10.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_05.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_11.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_07.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_06.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_08.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Graphics/Reactor/Explosion/Core_Explosion_12.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Graphics/Reactor/Core_destroyed.png" type="Texture" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "broken",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 21 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "explode",
 "speed": 5.0
 } ]
 
@@ -26,8 +55,15 @@ script = ExtResource( 1 )
 position = Vector2( -2, 0 )
 z_as_relative = false
 frames = SubResource( 1 )
+frame = 2
 playing = true
 centered = false
+
+[node name="Explode" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 22, 32 )
+frames = SubResource( 3 )
+animation = "explode"
 
 [node name="Connections" type="Label" parent="."]
 margin_left = 13.0

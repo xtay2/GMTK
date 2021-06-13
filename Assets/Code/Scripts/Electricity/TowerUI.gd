@@ -6,7 +6,7 @@ const SELECTED_COLOR = Color(0.517647, 0.8, 0.301961)
 
 
 #Tower Counter
-var max_towers = 10
+var max_towers = 5
 onready var placed_towers = get_tree().get_nodes_in_group("electricity").size()
 
 #Class imports

@@ -61,7 +61,7 @@ position = Vector2( 27, -3 )
 script = ExtResource( 5 )
 bullet_szene = ExtResource( 1 )
 gun_cooldown = 1.0
-bullet_lifetime = 4.0
+bullet_lifetime = 0.5
 bullet_speed = 100
 bullet_damage = 10
 

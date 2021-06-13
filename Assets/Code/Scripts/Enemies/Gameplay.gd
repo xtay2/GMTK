@@ -27,7 +27,6 @@ func _process(delta):
 	if max_enemy_count <= 0 and enemy_count <= 0:
 		main.wave += 1
 		init_wave()
-		$WaveAnnouncement.play()
 	update_enemy_count()
 
 func init_wave():
@@ -70,10 +69,6 @@ func _on_reactor_entered(area):
 		main.find_node("Reactor").damage_done += 5
 		area.get_parent().die()
 
-	if "EnemyHitbox" in area.name:  # Should you use groups here?
-		print("Loosecondition")
-		$WaveAnnouncement.stream = preload("res://Assets/Sound/Soundeffects/Base_Destroyed.mp3")
-		$WaveAnnouncement.play()
 
 	
 func update_enemy_count():
