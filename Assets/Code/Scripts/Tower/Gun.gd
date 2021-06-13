@@ -9,7 +9,7 @@ export(PackedScene)  var _sound: PackedScene
 export (float) var gun_cooldown
 export(float) var bullet_lifetime
 export(int) var bullet_speed
-export(int) var damage
+export(int) var bullet_damage
 onready var timer = Timer.new()
 
 var sound: AudioStreamPlayer2D
@@ -39,9 +39,7 @@ func shoot(target_pos: Vector2 = get_global_mouse_position()):
 				rot = get_parent().rotation + max_radiant - bullet_rotation 
 			bullet_instace.motion = bullet_instace.motion.rotated(rot)
 			bullet_instace.rotation = rot
-			bullet_instace.damage = damage
-			bullet_instace.speed = bullet_speed
-			bullet_instace.lifetime = bullet_lifetime
+			bullet_instace.initialise(bullet_damage, bullet_speed, bullet_lifetime)
 			get_tree().root.add_child(bullet_instace)
 		
 		if not sound == null:

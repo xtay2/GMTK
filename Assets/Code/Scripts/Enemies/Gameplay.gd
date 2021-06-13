@@ -9,6 +9,8 @@ var follower = preload("res://Assets/Code/Scenes/Enemies/CharacterFollower.tscn"
 
 var wave_composition := {"Dino" : 0,"Emp": 0, "Heavy": 0, "Rectangle" : 0, "Rush" : 0}
 
+var enemyCount
+
 func _ready():
 	init_wave()
 
@@ -20,7 +22,7 @@ func _process(delta):
 		new_follower.init_enemy(type)
 		add_child(new_follower)
 		timer = 0
-	elif wave_composition.empty():
+	elif wave_composition.empty() and enemyCount == 0:
 		main.wave += 1
 		init_wave()
 
@@ -36,10 +38,17 @@ func generate_type():
 	var everything = 0
 	for entry in wave_composition:
 		everything += wave_composition.get(entry)
-	
+	enemyCount = everything
 	while true:
 		for entry in wave_composition:
 			if wave_composition.get(entry) > 0 and randi() % int(everything) < wave_composition.get(entry):
 				wave_composition[entry] -= 1 
 				return entry
 
+func _enemy_has_died(node):
+	enemyCount -= 1
+
+func _on_reactor_entered(area):
+	if "EnemyHitbox" in area.name:
+		print("Loosecondition")
+	

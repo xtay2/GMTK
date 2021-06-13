@@ -64,7 +64,7 @@ bullet_spread = 0.3
 gun_cooldown = 0.25
 bullet_lifetime = 4.0
 bullet_speed = 150
-damage = 5
+bullet_damage = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun/Gun"]
 visible = false

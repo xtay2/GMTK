@@ -46,7 +46,7 @@ bullet_szene = ExtResource( 1 )
 gun_cooldown = 5.0
 bullet_lifetime = 10.0
 bullet_speed = 250
-damage = 30
+bullet_damage = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Turret_Gun/Gun"]
 visible = false

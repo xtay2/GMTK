@@ -9,19 +9,18 @@ signal on_select_powerline()
 signal on_select_tower_type(name)
 
 var paused = false
-var current_wave = 0
 var max_enemy_count = 0
 
 func _ready():
 	update_buttons()
 
 func update_enemy_info(wave, enemy_count):
-	if current_wave != wave:
-		current_wave = wave
+	if main.wave != wave:
+		main.wave = wave
 		max_enemy_count = enemy_count
 		
 	$EnemyStateInfo/Enemies.text = "%s | %s" % [enemy_count, max_enemy_count]
-	$EnemyStateInfo/Wave.text = "Wave %s" % wave
+	$EnemyStateInfo/Wave.text = "Wave %s" % main.wave
 	
 	var music = music_wave[wave - 1]
 	if music != $MusicPlayer.stream:

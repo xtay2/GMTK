@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Code/Scenes/Enemies/EnemyLogic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Code/Scenes/Tower/BasicTower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Code/Scenes/Tower/SniperRifleTower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Code/Scenes/Tower/MGTower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Code/Scenes/Tower/RocketLaucherTower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Graphics/Tileset/tileset_road.tres" type="TileSet" id=7]
+[ext_resource path="res://Assets/Code/Scenes/Electricity/Reactor.tscn" type="PackedScene" id=8]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,3 +20,18 @@ tile_data = PoolIntArray( 0, 4, 2, 1, 4, 2, 2, 4, 2, 3, 4, 2, 4, 4, 2, 5, 4, 2, 
 
 [node name="EnemyLogic" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2.24492, 3.36739 )
+
+[node name="BasicTower" parent="EnemyLogic" instance=ExtResource( 3 )]
+position = Vector2( 115.368, 57.4116 )
+
+[node name="MGTower" parent="EnemyLogic" instance=ExtResource( 5 )]
+position = Vector2( 144.552, 186.495 )
+
+[node name="RocketLaucher" parent="EnemyLogic" instance=ExtResource( 6 )]
+position = Vector2( 544.71, 53.483 )
+
+[node name="SniperRifleTower" parent="EnemyLogic" instance=ExtResource( 4 )]
+position = Vector2( 417.871, 155.627 )
+
+[node name="Reactor" parent="EnemyLogic" instance=ExtResource( 8 )]
+position = Vector2( 581.751, 95.5753 )

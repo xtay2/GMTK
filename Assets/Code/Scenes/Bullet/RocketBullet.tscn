@@ -34,12 +34,11 @@ position = Vector2( -15, 1 )
 rotation = 3.14159
 scale = Vector2( 1.53917, 1.53917 )
 frames = SubResource( 2 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Rocket" type="Sprite" parent="."]
 position = Vector2( -0.0175376, 0.0526159 )
 texture = ExtResource( 1 )
-
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
