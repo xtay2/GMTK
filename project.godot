@@ -48,6 +48,10 @@ config/name="GMKTK 2021"
 run/main_scene="res://Assets/Code/Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Assets/Code/Scripts/Global.gd"
+
 [display]
 
 window/size/width=640
