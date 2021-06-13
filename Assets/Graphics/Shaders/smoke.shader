@@ -4,7 +4,7 @@ shader_type canvas_item;
 // If you use this shader, I would prefer it if you gave credit to me and my channel
 
 uniform vec2 center = vec2(0.5, 0.8);
-
+uniform vec4 color: hint_color;
 uniform int OCTAVES = 6;
 
 float rand(vec2 coord){
@@ -77,6 +77,6 @@ void fragment() {
 	smoke_fbm = sqrt(smoke_fbm);
 	smoke_fbm = clamp(smoke_fbm, 0.0, 1.0);
 	
-	COLOR = vec4(smoke_fbm);
+	COLOR = vec4(smoke_fbm * color * vec4(1.2f));
 //	COLOR = vec4(vec3(egg_s), 1.0);
 }
