@@ -29,6 +29,8 @@ var box := Vector2(3, 2)
 
 var production_level = 0
 
+var score = 0
+
 func _ready():
 	set_level(production_level)
 	map.place_node(self)
@@ -46,7 +48,9 @@ func _process(delta):
 		$ProgressBar.value -= 100 * delta + 1
 		if $ProgressBar.value == $ProgressBar.min_value:
 			set_level(0)
-
+	score += production_level * delta
+	Global.factory_points += production_level * delta
+	
 func update_selected():
 	pass
 	
@@ -90,3 +94,6 @@ func set_level(level):
 		else:
 			power_rod.stop()
 			power_rod.frame = 0
+
+func get_score():
+	return round(score)

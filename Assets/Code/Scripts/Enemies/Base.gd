@@ -43,6 +43,7 @@ func die():
 		if tower.enemy_que.has($EnemyHitbox):
 			tower.enemy_que.erase($EnemyHitbox)
 			emit_signal("on_die")
+			Global.enemies_killed += 1
 			queue_free()
 			
 
