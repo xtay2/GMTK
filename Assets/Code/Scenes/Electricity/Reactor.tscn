@@ -12,7 +12,7 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
-"speed": 8.0
+"speed": 5.0
 } ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -23,17 +23,18 @@ z_index = 10
 script = ExtResource( 1 )
 
 [node name="Texture" type="AnimatedSprite" parent="."]
-position = Vector2( -8, 15.7194 )
+position = Vector2( -2, 0 )
+z_as_relative = false
 frames = SubResource( 1 )
 frame = 2
 playing = true
 centered = false
 
 [node name="Connections" type="Label" parent="."]
-margin_left = 7.0
-margin_top = 5.0
-margin_right = 27.0
-margin_bottom = 17.0
+margin_left = 13.0
+margin_top = -11.0
+margin_right = 33.0
+margin_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
 text = "0|0"
 align = 1
@@ -42,16 +43,15 @@ __meta__ = {
 }
 
 [node name="Hitbox" type="TextureRect" parent="."]
-margin_left = -3.0
-margin_top = 15.0
-margin_right = 35.0
-margin_bottom = 65.0
+margin_left = 3.0
+margin_top = -1.0
+margin_right = 41.0
+margin_bottom = 49.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 6 )]
-position = Vector2( 16, 27 )
-
+position = Vector2( 22, 14 )
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
