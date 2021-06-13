@@ -1,9 +1,6 @@
 extends Node2D  # Necaissary since every path has it's own offset
 class_name Enemy
 
-export var speed = 20 # How many pixels per second
-export var start_health = 10
-
 # To make the movement more interesting
 export var oscillation_frequency = 10  # Hz
 export var oscillation_magnitude = 0  # Pixels
@@ -13,12 +10,17 @@ var time = 0
 var previous_pos = Vector2.ZERO
 
 var health = 0
+var speed = 0
 
 signal on_die
 
 func _ready():
-	$Hitbox.add_to_group("enemy")
+	$EnemyHitbox.add_to_group("enemy")
+
+	
+func initialise(start_health, start_speed):
 	health = start_health
+	speed = start_speed
 	
 func _process(delta):
 	var velocity = $Animation.global_position - previous_pos
@@ -38,8 +40,8 @@ func _process(delta):
 	
 func die():
 	for tower in get_tree().get_nodes_in_group("towers"):
-		if tower.enemy_que.has($Hitbox):
-			tower.enemy_que.erase($Hitbox)
+		if tower.enemy_que.has($EnemyHitbox):
+			tower.enemy_que.erase($EnemyHitbox)
 			queue_free()
 			emit_signal("on_die")
 	# Maybe something else too, idk

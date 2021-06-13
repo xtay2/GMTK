@@ -6,7 +6,7 @@ const emp = preload("res://Assets/Code/Scenes/Enemies/Emp.tscn")
 const dino = preload("res://Assets/Code/Scenes/Enemies/Dino.tscn")
 const rectangle = preload("res://Assets/Code/Scenes/Enemies/Rectangle.tscn")
 
-var speed = 10
+var speed = 0
 
 func _process(delta):
 	offset += speed * delta
@@ -17,12 +17,22 @@ func init_enemy(type):
 	match(type):
 		"Heavy":
 			node = heavy.instance()
+			node.initialise(10, 10)
 		"Rush":
 			node = rush.instance()
+			node.initialise(10, 30)
 		"Emp":
 			node = emp.instance()
+			node.initialise(10, 10)
 		"Dino":
 			node = dino.instance()
+			node.initialise(10, 10)
 		"Rectangle":
 			node = rectangle.instance()
+			node.initialise(10, 10)
 	add_child(node)
+	speed = node.speed
+	#node.connect("on_die", find_parent("EnemyLogic"), "_enemy_has_died", node)
+
+
+
