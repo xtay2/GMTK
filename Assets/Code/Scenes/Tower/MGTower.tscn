@@ -61,7 +61,7 @@ offset = Vector2( 10, 0 )
 position = Vector2( 13, -2.58839 )
 frames = SubResource( 1 )
 animation = "Effect"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Gun" type="Position2D" parent="Turret_Gun"]
