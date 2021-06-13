@@ -24,7 +24,7 @@ var max_connections = 5
 #Punkte die Tower abdeckt
 var spots := []
 #Width and height of tower in tiles
-var box := Vector2(3, 4)
+var box := Vector2(3, 3)
 
 func _ready():
 	$Connections.text = String(next_towers.size()) + "|" + String(max_connections)
@@ -35,7 +35,7 @@ func add_next(tower):
 	next_towers.append(tower)
 	var line = cable_class.instance()
 	var pos = Vector2(tower.global_position.x - global_position.x, tower.global_position.y - global_position.y + 6)
-	line.initialise(Vector2(16, 27), pos, tower)
+	line.initialise($EnergyRadius.position, pos, tower)
 	add_child(line)
 	line.connect_to_tower(tower)
 	cables.append(line)
