@@ -156,4 +156,4 @@ func _on_select_tower_type(name):
 	if t_class == null:
 		printerr("No tower type named %s. Check UI -> TurretUI" % name)
 		return
-	place_tower(tower_class)
+	place_tower(t_class)

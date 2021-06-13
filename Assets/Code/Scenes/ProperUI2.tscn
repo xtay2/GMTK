@@ -1,0 +1,386 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Assets/Fonts/minimal3x5.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Code/Scripts/UIMain.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_extension_icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_range_up_icon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/UI/ffw_hover-1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_box.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Wave/Wave_number_no_numbers.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Connect_box/Connect_box_hover.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_default.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_hover.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Power_bar/Power_bar_shell.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Upgrade_button/Upgrade_button_press.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Connect_box/Connect_box_press.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Connect_box/Connect_box_default.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_attack_up_icon.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Graphics/UI/In_game_1x/Pylons/Pylon_fire_ rate_up_icon.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Graphics/UI/ffw-1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Graphics/UI/ffw_pressed2.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/UI/ffw_pressed-1.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Graphics/UI/ffw_pressed1.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Graphics/UI/ffw_pressed4.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Graphics/UI/ffw_hover3.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Graphics/UI/ffw3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Graphics/UI/ffw_pressed3.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Graphics/UI/ffw4.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Graphics/UI/ffw2.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Graphics/UI/ffw_hover2.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Graphics/UI/ffw_hover1.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Graphics/UI/ffw1.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Graphics/UI/ffw_hover4.png" type="Texture" id=30]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 90, 36 )
+margin_left = 84.3776
+margin_right = 49.8381
+margin_top = 28.8678
+margin_bottom = 21.7138
+
+[node name="ProperUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.667419
+margin_bottom = 0.66745
+rect_min_size = Vector2( 640, 360 )
+mouse_filter = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 18.9672, 465.514, 536.152 ],
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 954.39 ]
+}
+music_wave = [ null, null ]
+
+[node name="EnemyStateInfo" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -65.0
+margin_bottom = 27.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="EnemyStateInfo"]
+margin_left = -52.1176
+margin_top = 3.34718
+margin_right = 3.88239
+margin_bottom = 16.3472
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemies" type="Label" parent="EnemyStateInfo"]
+margin_left = 15.7201
+margin_top = 31.876
+margin_right = 55.7201
+margin_bottom = 45.876
+custom_fonts/font = SubResource( 1 )
+text = "10|10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wave" type="Label" parent="EnemyStateInfo"]
+margin_left = 19.6817
+margin_top = 9.27936
+margin_right = 50.6817
+margin_bottom = 21.2794
+custom_fonts/font = SubResource( 2 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Power" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -39.3391
+margin_top = -33.1765
+margin_right = -20.3391
+margin_bottom = 12.8235
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="Power"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -21.2057
+margin_top = -24.7153
+margin_right = -2.20575
+margin_bottom = 24.2847
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Meter" type="VBoxContainer" parent="Power"]
+margin_left = -0.20575
+margin_top = 1.28467
+margin_right = 5.79425
+margin_bottom = 45.2847
+custom_constants/separation = 1
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Block1" type="TextureRect" parent="Power/Meter"]
+margin_top = 36.0
+margin_right = 6.0
+margin_bottom = 36.0
+
+[node name="Block2" type="TextureRect" parent="Power/Meter"]
+margin_top = 37.0
+margin_right = 6.0
+margin_bottom = 37.0
+
+[node name="Block3" type="TextureRect" parent="Power/Meter"]
+margin_top = 38.0
+margin_right = 6.0
+margin_bottom = 38.0
+
+[node name="Block4" type="TextureRect" parent="Power/Meter"]
+margin_top = 39.0
+margin_right = 6.0
+margin_bottom = 39.0
+
+[node name="Block5" type="TextureRect" parent="Power/Meter"]
+margin_top = 40.0
+margin_right = 6.0
+margin_bottom = 40.0
+
+[node name="Block6" type="TextureRect" parent="Power/Meter"]
+margin_top = 41.0
+margin_right = 6.0
+margin_bottom = 41.0
+
+[node name="Block7" type="TextureRect" parent="Power/Meter"]
+margin_top = 42.0
+margin_right = 6.0
+margin_bottom = 42.0
+
+[node name="Block8" type="TextureRect" parent="Power/Meter"]
+margin_top = 43.0
+margin_right = 6.0
+margin_bottom = 43.0
+
+[node name="Block9" type="TextureRect" parent="Power/Meter"]
+margin_top = 44.0
+margin_right = 6.0
+margin_bottom = 44.0
+
+[node name="Upgrade" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -155.643
+margin_top = -78.2836
+margin_right = -80.6432
+margin_bottom = -39.2836
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Powerline" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = -74.0
+margin_right = 81.0
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Powerline"]
+visible = false
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 62.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 3 )
+text = "Connect"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridSwitch" type="TextureButton" parent="Powerline"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.0
+margin_top = -73.5826
+margin_right = 6.0
+margin_bottom = -37.5826
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChooseTurretType" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 95.0478
+margin_top = -73.9521
+margin_right = 215.048
+margin_bottom = -38.9521
+rect_scale = Vector2( 2, 2 )
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseTurretType"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.78455
+margin_top = 11.9289
+margin_right = -7.21545
+margin_bottom = -12.0711
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Router" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
+margin_right = 19.0
+margin_bottom = 19.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Splitter" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
+margin_left = 23.0
+margin_right = 42.0
+margin_bottom = 19.0
+texture_normal = ExtResource( 3 )
+
+[node name="Attack" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
+margin_left = 46.0
+margin_right = 65.0
+margin_bottom = 19.0
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireRate" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
+margin_left = 69.0
+margin_right = 88.0
+margin_bottom = 19.0
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Range" type="TextureButton" parent="ChooseTurretType/HBoxContainer"]
+margin_left = 92.0
+margin_right = 111.0
+margin_bottom = 19.0
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ChooseTurretType"]
+visible = false
+anchor_right = 1.0
+margin_left = -0.33371
+margin_top = 1.83542
+margin_right = -0.33371
+margin_bottom = 13.8354
+custom_fonts/font = SubResource( 3 )
+text = "Towers"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 70.0
+margin_right = 102.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Speed4" type="TextureButton" parent="HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 5 )
+
+[node name="Speed0" type="TextureButton" parent="HBoxContainer"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 28 )
+
+[node name="Speed1" type="TextureButton" parent="HBoxContainer"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 27 )
+
+[node name="Speed2" type="TextureButton" parent="HBoxContainer"]
+margin_left = 108.0
+margin_right = 140.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 22 )
+
+[node name="Speed3" type="TextureButton" parent="HBoxContainer"]
+margin_left = 144.0
+margin_right = 176.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 30 )
+
+[connection signal="pressed" from="Powerline/GridSwitch" to="." method="_on_powerline_selected" binds= [ "basic" ]]
+[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Router" to="." method="_on_tower_selected" binds= [ "router" ]]
+[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Splitter" to="." method="_on_tower_selected" binds= [ "splitter" ]]
+[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Attack" to="." method="_on_tower_selected" binds= [ "splitter" ]]
+[connection signal="pressed" from="ChooseTurretType/HBoxContainer/FireRate" to="." method="_on_tower_selected" binds= [ "splitter" ]]
+[connection signal="pressed" from="ChooseTurretType/HBoxContainer/Range" to="." method="_on_tower_selected" binds= [ "splitter" ]]
