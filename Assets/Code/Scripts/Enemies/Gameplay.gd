@@ -37,18 +37,24 @@ func init_wave():
 	wave_composition.Heavy = round(-100 + w * 3)
 	wave_composition.Rectangle = round(-100 + w * 5)
 	var everything = 0
-	for entry in wave_composition:
-		if wave_composition.get(entry) > 0:
-			everything += wave_composition.get(entry)
-	enemy_count = everything
+	for ct in wave_composition.values():
+		if ct > 0:
+			everything += ct
 	max_enemy_count = everything
+	print("Starting Wave " + String(main.wave) + " with " + String(max_enemy_count) + " enemies")
 
 func generate_type():
-	while max_enemy_count > 0 :
+	var check = true
+	while check:
+		check = false
 		for entry in wave_composition:
-			if enemy_count > 0 and randi() % int(enemy_count) < wave_composition.get(entry):
+			if max_enemy_count > 0 and randi() % int(max_enemy_count) < wave_composition.get(entry):
 				wave_composition[entry] -= 1 
 				return entry
+			if wave_composition[entry] > 0:
+				check = true
+	print("Couldnt generate enemy")
+	max_enemy_count = 0
 
 func _on_reactor_entered(area):
 	if "EnemyHitbox" in area.name:
