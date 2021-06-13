@@ -28,7 +28,7 @@ func _ready():
 	$EnergyRadius.initialise(self, 10)
 	
 func _process(_delta):
-	if tower.target:
+	if tower.target and tower.energie_consumption < energy_level:
 		$Turret_Gun.look_at(tower.target)
 	$EnergyRadius.visible = ui.place_mode or ui.connect_mode or ui.hovering_tower == self
 	if not is_on_r():
