@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GMKTK 2021"
-run/main_scene="res://Assets/Code/Scenes/Main.tscn"
+run/main_scene="res://Assets/Code/Scenes/UI/Title/Title.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -36,7 +36,7 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 10 )
-shader_param/color = Color( 0.2, 0.2, 0.2, 0.501961 )
+shader_param/color = Color( 0.980392, 0.980392, 0.980392, 0.501961 )
 shader_param/OCTAVES = 4
 
 [node name="Map" type="YSort"]
