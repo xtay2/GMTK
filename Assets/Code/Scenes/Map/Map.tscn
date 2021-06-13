@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Code/Scripts/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/Reactor.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Graphics/Tileset/tileset_road.tres" type="TileSet" id=7]
 [ext_resource path="res://Assets/Code/Scripts/Electricity/Factory.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Graphics/Tileset/tile.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Shaders/fog.shader" type="Shader" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tile.png 0"
@@ -32,6 +33,11 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 10 )
+shader_param/color = Color( 0.341176, 0.341176, 0.341176, 0.501961 )
+shader_param/OCTAVES = 4
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 1 )
@@ -66,3 +72,10 @@ position = Vector2( 437.671, 389.264 )
 
 [node name="Factory" parent="." instance=ExtResource( 8 )]
 position = Vector2( 683, 345 )
+
+[node name="Fog" type="CanvasLayer" parent="."]
+
+[node name="Control" type="ColorRect" parent="Fog"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
