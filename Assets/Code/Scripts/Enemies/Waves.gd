@@ -32,7 +32,6 @@ func init_enemy(type):
 			node.initialise(10, 10)
 	add_child(node)
 	speed = node.speed
-	#node.connect("on_die", find_parent("EnemyLogic"), "_enemy_has_died", node)
 
 
 

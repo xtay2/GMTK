@@ -29,10 +29,10 @@ func _process(delta):
 func init_wave():
 	var w = main.wave
 	wave_composition.Dino = round(20 + w * 5)
-	wave_composition.Emp = round(20 + w * 5)
-	wave_composition.Heavy = round(20 + w * 5)
-	wave_composition.Rectangle = round(20 + w * 5)
-	wave_composition.Rush = round(20 + w * 5)
+	wave_composition.Rush = round(-2 + w * 3)
+	wave_composition.Emp = round(-10 + w * 2)
+	wave_composition.Heavy = round(-100 + w * 3)
+	wave_composition.Rectangle = round(-100 + w * 5)
 
 func generate_type():
 	var everything = 0
@@ -45,8 +45,9 @@ func generate_type():
 				wave_composition[entry] -= 1 
 				return entry
 
-func _enemy_has_died(node):
+func enemy_has_died():
 	enemyCount -= 1
+	print("Enemies Left: " + String(enemyCount))
 
 func _on_reactor_entered(area):
 	if "EnemyHitbox" in area.name:
