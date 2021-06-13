@@ -8,6 +8,14 @@ script/source = "extends Control
 
 func _ready():
 	$CanvasLayer/VBoxContainer/Label2.text += str(G.EnemyKilled)
+
+
+func _on_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Button2_pressed():
+	get_tree().change_scene(\"res://Assets/Code/Scenes/UI/Title/Title.tscn\")
 "
 
 [sub_resource type="DynamicFont" id=1]
@@ -52,9 +60,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 176.0
+margin_top = 156.0
 margin_right = 640.0
-margin_bottom = 188.0
+margin_bottom = 168.0
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 2 )
 text = "enemys killed: "
@@ -62,11 +70,22 @@ align = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
 margin_left = 281.0
-margin_top = 320.0
+margin_top = 280.0
 margin_right = 358.0
-margin_bottom = 340.0
+margin_bottom = 300.0
 size_flags_horizontal = 4
 text = "retry level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_left = 261.0
+margin_top = 320.0
+margin_right = 379.0
+margin_bottom = 340.0
+size_flags_horizontal = 4
+text = "go to Tile Screen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,3 +107,6 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
