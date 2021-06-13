@@ -17,16 +17,14 @@ func _ready():
 func update_enemy_info(wave, enemy_count):
 	if main.wave != wave:
 		main.wave = wave
-		max_enemy_count = enemy_count
 		
-	$EnemyStateInfo/Enemies.text = "%s | %s" % [enemy_count, max_enemy_count]
+	$EnemyStateInfo/Enemies.text = "Enemies left: " + String(enemy_count)
 	$EnemyStateInfo/Wave.text = "%s" % main.wave
 		
-	# Unnesassary, we only have 1 music
-	#var music = music_wave[wave - 1]
-	#if music != $MusicPlayer.stream:
-	#	$MusicPlayer.stream = music
-#		$MusicPlayer.play(0)
+	var music = music_wave[wave - 1]
+	if music != $MusicPlayer.stream:
+		$MusicPlayer.stream = music
+		$MusicPlayer.play(0)
 
 func _on_Upgrade_pressed():
 	emit_signal("on_upgrade")
@@ -57,7 +55,7 @@ func update_buttons():
 		Engine.time_scale = main.speed_factor
 
 
-func _on_Pause_pressed():
+func _on_Speed0_pressed():
 	main.speed_factor = 0
 	main.pause_game()
 	update_buttons()

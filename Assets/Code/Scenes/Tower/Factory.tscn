@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Graphics/Towers/Factory/Factory_Segment_On_02.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Graphics/Towers/Factory/Factory_On.png" type="Texture" id=8]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ) ],
 "loop": true,
@@ -17,19 +17,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0 )
 colors = PoolColorArray( 0.433594, 0.416656, 0.416656, 1 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0 )
 colors = PoolColorArray( 0.145844, 0.691406, 0.6019, 1 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
 [node name="Factory" type="Node2D"]
 script = ExtResource( 2 )
@@ -51,30 +51,30 @@ __meta__ = {
 
 [node name="Level0" type="AnimatedSprite" parent="."]
 position = Vector2( 24, 17 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "run"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Level1" type="AnimatedSprite" parent="."]
 position = Vector2( 29, 17 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "run"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Level2" type="AnimatedSprite" parent="."]
 position = Vector2( 35, 17 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "run"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Level3" type="AnimatedSprite" parent="."]
 position = Vector2( 40, 17 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "run"
-frame = 1
+frame = 3
 playing = true
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 3 )]
@@ -86,12 +86,11 @@ margin_right = 48.0
 margin_bottom = 34.0
 max_value = 1000.0
 rounded = true
-texture_under = SubResource( 4 )
-texture_progress = SubResource( 6 )
+texture_under = SubResource( 3 )
+texture_progress = SubResource( 5 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]
