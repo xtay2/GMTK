@@ -24,6 +24,5 @@ environment = SubResource( 1 )
 layer = 2
 
 [node name="ProperUI2" parent="UI" instance=ExtResource( 4 )]
-
 [connection signal="on_select_powerline" from="UI/ProperUI2" to="TowerUI" method="_on_select_powerline"]
 [connection signal="on_select_tower_type" from="UI/ProperUI2" to="TowerUI" method="_on_select_tower_type"]
