@@ -106,6 +106,9 @@ func update_energy():
 		energy_level = previous_tower.get_passed_on_energy()
 	else:
 		energy_level = 0
+		break_power_start()
+	if next_tower:
+		next_tower.update_energy()
 
 #Sagt den nächsten Türmen wie viel Energy sie haben
 func get_passed_on_energy():
