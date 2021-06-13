@@ -7,7 +7,7 @@ const SELECTED_COLOR = Color(0.517647, 0.8, 0.301961)
 
 #Tower Counter
 var max_towers = 10
-var placed_towers = 0
+onready var placed_towers = get_tree().get_nodes_in_group("electricity").size()
 
 #Class imports
 var tower_class = preload("res://Assets/Code/Scenes/Electricity/ElectricityTower.tscn")
@@ -92,10 +92,11 @@ func _input(event):
 
 #Füge Tower am Anfang im place mode hinzu
 func place_tower(class_instance):
-	last_tower = class_instance.instance()
-	add_child(last_tower)
-	place_mode = true
-	placed_towers += 1
+	if !place_mode and !connect_mode and placed_towers < max_towers:
+		last_tower = class_instance.instance()
+		add_child(last_tower)
+		place_mode = true
+		placed_towers += 1
 
 #Wähle Tower aus
 func select():
@@ -141,11 +142,6 @@ func start_connect_mode():
 	$EditModeOverlay.visible = true
 	connect_mode = true
 
-func _on_select_powerline():
-	if connect_mode:
-		end_connection_mode()
-	else:
-		start_connect_mode()
 
 func _on_select_tower_type(name):
 	var t_class = null
