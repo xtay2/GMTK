@@ -1,5 +1,8 @@
 extends Node2D
 
+export(Texture) var aktiv_texture 
+export(Texture) var passiv_texture 
+
 onready var tower : Tower = $Tower
 
 #Mainscene
@@ -38,7 +41,10 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	if tower.target and tower.energie_consumption < energy_level:
+		$Turret_Gun.texture = aktiv_texture
 		$Turret_Gun/Gun.shoot(tower.target)
+	else:
+		$Turret_Gun.texture = passiv_texture
 
 
 func is_on_r():
