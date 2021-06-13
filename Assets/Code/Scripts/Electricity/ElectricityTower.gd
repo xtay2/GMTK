@@ -15,7 +15,7 @@ onready var main = find_parent("Main")
 onready var map = main.find_node("Map")
 
 #Visual Management for Towers 
-onready var ui = find_parent("TowerUI")
+onready var ui = main.find_node("TowerUI")
 
 onready var power_input = $EnergyRadius.position
 
@@ -25,12 +25,51 @@ var cable
 
 var energy_level = 0
 
-var energy_loss = 10
+export var energy_loss = 10
 
 #Punkte die Tower abdeckt
 var spots := []
 #Width and height of tower in tiles
 var box := Vector2(1, 1)
+
+export(Texture) var aktiv_texture 
+export(Texture) var passiv_texture 
+
+onready var tower : Tower = $Tower
+
+	
+func _process(_delta):
+	if tower.target:
+		$Turret_Gun.look_at(tower.target)
+	
+	if not is_on_r():
+		$Turret_Gun.flip_v = true
+	else:
+		$Turret_Gun.flip_v = false
+#	$Turret_Gun.look_at(tower.enemy_que.front().global_position)
+
+func _physics_process(_delta):
+	if tower.target and tower.energie_consumption < energy_level:
+		$Turret_Gun/Gun.shoot(tower.target)
+	if tower.energie_consumption < energy_level:
+		$Turret_Gun.texture = aktiv_texture
+	else:
+		$Turret_Gun.texture = passiv_texture
+
+func is_on_r():
+	return $Turret_Gun.global_rotation_degrees >= -90 and $Turret_Gun.global_rotation_degrees < 90
+
+func _on_AnimatedSprite_animation_finished():
+	$Turret_Gun/Gun/AnimatedSprite.frame = 0
+	$Turret_Gun/Gun/AnimatedSprite.visible = false
+
+
+func _on_Gun_has_shoot():
+	$Turret_Gun/Gun/AnimatedSprite.visible = true
+	$Turret_Gun/Gun/AnimatedSprite.scale = Vector2.ONE * rand_range(1, 1.5)
+	$Turret_Gun/Gun/AnimatedSprite.play("flash")
+
+
 
 func _ready():
 	cable = cable_class.instance()
@@ -125,10 +164,13 @@ func update_energy():
 		if energy_level > 0:
 			$Socket.texture = load("res://Assets/Graphics/Towers/ElectricityTower/Extention_Pylon_On.png")
 			$Texture.play("on")
-	else:
-		energy_level = 0
+		else:
+			energy_level = 0
+			break_power_start()
 	if $EnergyHUD.visible:
 		$EnergyHUD.text = String(energy_level) + "V"
+	for next in next_towers:
+		next.update_energy()
 
 #Sagt den nächsten Türmen wie viel Energy sie haben
 func get_passed_on_energy():

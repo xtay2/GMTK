@@ -131,10 +131,13 @@ func update_energy():
 		if energy_level > 0:
 			$Socket.texture = load("res://Assets/Graphics/Towers/ElectricitySplitter/Fire_Rate_Pylon_On.png")
 			$Texture.play("on")
-	else:
-		energy_level = 0
+		else:
+			energy_level = 0
+			break_power_start()
 	if $EnergyHUD.visible:
 		$EnergyHUD.text = String(energy_level) + "V"
+	for next in next_towers:
+		next.update_energy()
 
 #Sagt den nächsten Türmen wie viel Energy sie haben
 func get_passed_on_energy():

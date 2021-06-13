@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Graphics/Reactor/Core_on_03.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Code/Scenes/Electricity/EnergyRadius.tscn" type="PackedScene" id=6]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -25,7 +25,7 @@ script = ExtResource( 1 )
 [node name="Texture" type="AnimatedSprite" parent="."]
 position = Vector2( -2, 0 )
 z_as_relative = false
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 frame = 2
 playing = true
 centered = false
@@ -53,6 +53,5 @@ __meta__ = {
 
 [node name="EnergyRadius" parent="." instance=ExtResource( 6 )]
 position = Vector2( 22, 14 )
-
 [connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]

@@ -36,6 +36,8 @@ func _on_DetectionArea_area_exited(area):
 		
 func _physics_process(_delta):
 	if enemy_que.size() != 0:
-		target = enemy_que.back().global_position
+		var e = enemy_que.back()
+		if is_instance_valid(e):
+			target = e.global_position
 	else:
 		target = null
